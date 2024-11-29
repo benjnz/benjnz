@@ -5,68 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benedict Jones Portfolio</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <h1>Benedict Jones Portfolio</h1>
-      <p>Innovative Design and Engineering</p>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+    <h1>Benedict Jones Portfolio</h1>
+    <p>Innovative Design & Engineering Projects</p>
   </header>
 
-  <section id="about" class="fade-in">
-    <h2>About Me</h2>
-    <p>I'm studying Design Products at the Royal College of Art, focusing on creating innovative solutions in design, engineering, and interface technology.</p>
-    <p>Feel free to contact me at <a href="mailto:benedictjnz@gmail.com">benedictjnz@gmail.com</a> or via <a href="https://www.linkedin.com/in/benjnz" target="_blank">LinkedIn</a>.</p>
-  </section>
-
-  <section id="projects">
-    <h2 class="fade-in">Projects</h2>
-
+  <main class="gallery">
     <!-- Project 1 -->
-    <div class="project card">
-      <h3>3D Printing at a Micro-Level</h3>
-      <p><strong>Date:</strong> April 2024</p>
-      <p>Explored the limits of PLA and TPU materials for micro-level printing using manually coded GCODE.</p>
-      <div class="media-placeholder">[Image/Video Placeholder]</div>
+    <div class="project-card">
+      <a href="project1.html">
+        <img src="media/project1-placeholder.jpg" alt="3D Printing at a Micro-Level">
+        <div class="project-title">3D Printing at a Micro-Level</div>
+      </a>
     </div>
 
     <!-- Project 2 -->
-    <div class="project card">
-      <h3>Civil Design of a Riverside Retaining Wall</h3>
-      <p><strong>Date:</strong> February 2024</p>
-      <p>Conducted site investigations, calculations, and designs for a retaining wall near a marina.</p>
-      <div class="media-placeholder">[Image/Video Placeholder]</div>
+    <div class="project-card">
+      <a href="project2.html">
+        <img src="media/project2-placeholder.jpg" alt="Civil Design of a Riverside Retaining Wall">
+        <div class="project-title">Civil Design of a Riverside Retaining Wall</div>
+      </a>
     </div>
 
     <!-- Project 3 -->
-    <div class="project card">
-      <h3>Self-Powered IoTs to Quietly Track Home Life</h3>
-      <p><strong>Date:</strong> September 2023</p>
-      <p>Designed and implemented low-level sensors for tracking home activities, visualized via interfaces.</p>
-      <div class="media-placeholder">[Image/Video Placeholder]</div>
+    <div class="project-card">
+      <a href="project3.html">
+        <img src="media/project3-placeholder.jpg" alt="Self-Powered IoTs to Quietly Track Home Life">
+        <div class="project-title">Self-Powered IoTs to Quietly Track Home Life</div>
+      </a>
     </div>
-  </section>
 
-  <section id="contact" class="fade-in">
-    <h2>Contact</h2>
-    <form action="https://formsubmit.co/benedictjnz@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+    <!-- Add more project cards as needed -->
+  </main>
 
   <footer>
     <p>&copy; 2024 Benedict Jones. All rights reserved.</p>
   </footer>
-  <script src="animations.js"></script>
 </body>
 </html>
