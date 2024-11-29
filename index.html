@@ -5,15 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benedict Jones Portfolio</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
   <header>
-    <h1>Benedict Jones Portfolio</h1>
-    <p>Innovative Design & Engineering Projects</p>
+    <div class="hero">
+      <h1>Benedict Jones</h1>
+      <p>Innovative Design & Engineering Projects</p>
+    </div>
   </header>
 
   <main class="gallery">
-    <!-- Project 1 -->
+    <!-- Project Cards -->
     <div class="project-card">
       <a href="project1.html">
         <img src="microprint.jpg" alt="3D Printing at a Micro-Level">
@@ -21,7 +24,6 @@
       </a>
     </div>
 
-    <!-- Project 2 -->
     <div class="project-card">
       <a href="project2.html">
         <img src="drawingwall.png" alt="Civil Design of a Riverside Retaining Wall">
@@ -29,7 +31,6 @@
       </a>
     </div>
 
-    <!-- Project 3 -->
     <div class="project-card">
       <a href="project3.html">
         <img src="sensorss.png" alt="Self-Powered IoTs to Quietly Track Home Life">
@@ -37,7 +38,6 @@
       </a>
     </div>
 
-     <!-- Project 4 -->
     <div class="project-card">
       <a href="project4.html">
         <img src="stool.jpg" alt="Bamboo Tension Stool">
@@ -45,15 +45,13 @@
       </a>
     </div>
 
-         <!-- Project 5 -->
     <div class="project-card">
       <a href="project5.html">
-        <img src="RGmachine.png" alt="3D printable open-source Rube Goldberg Machine ">
+        <img src="RGmachine.png" alt="3D printable open-source Rube Goldberg Machine">
         <div class="project-title">3D printable open source Rube Goldberg Machine</div>
       </a>
     </div>
 
-         <!-- Project 6 -->
     <div class="project-card">
       <a href="project6.html">
         <img src="koth.jpg" alt="Novel Strategic Board Game">
@@ -61,27 +59,25 @@
       </a>
     </div>
 
-    <!-- Project 7 -->
     <div class="project-card">
       <a href="project7.html">
-        <img src="duzcathedral.jpg" alt="Gingerbreaad Architecture">
-        <div class="project-title">Gingerbreaad Architecture</div>
+        <img src="duzcathedral.jpg" alt="Gingerbread Architecture">
+        <div class="project-title">Gingerbread Architecture</div>
       </a>
     </div>
 
-    <!-- Project 8 -->
     <div class="project-card">
       <a href="project8.html">
         <img src="gallifrey.png" alt="Animation">
         <div class="project-title">Animation</div>
       </a>
     </div>
-    
-    <!-- Add more project cards as needed -->
   </main>
 
   <footer>
     <p>&copy; 2024 Benedict Jones. All rights reserved.</p>
   </footer>
+
+  <script src="animations.js"></script>
 </body>
 </html>
