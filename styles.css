@@ -1,50 +1,80 @@
+/* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
-  line-height: 1.6;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 header {
-  background-color: #333;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
   color: white;
-  padding: 2rem;
+  padding: 2rem 1rem;
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 nav a {
-  color: white;
   margin: 0 1rem;
+  color: white;
   text-decoration: none;
 }
 
 section {
-  padding: 2rem;
-  max-width: 800px;
+  padding: 3rem 1rem;
+  max-width: 900px;
   margin: auto;
+  animation: fade-in 1s ease;
 }
 
 .project {
   margin-bottom: 2rem;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: scale(1.03);
 }
 
 .media-placeholder {
   width: 100%;
   height: 200px;
-  background-color: #f0f0f0;
+  background-color: #ddd;
   text-align: center;
   line-height: 200px;
-  color: #999;
-  border: 1px dashed #ccc;
+  color: #888;
+  border: 2px dashed #ccc;
   margin-top: 1rem;
 }
 
-footer {
-  background-color: #333;
+button {
+  background: #4facfe;
+  border: none;
   color: white;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #007acc;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
