@@ -1,3 +1,6 @@
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/loaders/GLTFLoader.js';
+
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -16,7 +19,7 @@ directionalLight.position.set(10, 10, 10);
 scene.add(directionalLight);
 
 // Load the .glb model
-const loader = new THREE.GLTFLoader();
+const loader = new GLTFLoader();
 loader.load(
     'untitled.glb',
     function (gltf) {
