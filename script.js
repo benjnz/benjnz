@@ -32,8 +32,9 @@ loader.load(
         scene.add(model);
 
         // Adjust model's position, scale, and rotation to ensure it's centered
-        model.position.set(0, 0, 0); // Center the model
-        model.scale.set(1, 1, 1);   // Adjust scale if necessary
+model.scale.set(0.5, 0.5, 0.5); // Example for a large model
+camera.position.set(0, 1, 10); // Move the camera back
+
         model.rotation.set(0, 0, 0); // Reset rotation
 
         // Optional: Move the camera closer or further based on the model size
