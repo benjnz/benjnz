@@ -1,8 +1,11 @@
+console.log("THREE is:", THREE);
+
+// Check if GLTFLoader is accessible
+console.log("GLTFLoader is:", THREE.GLTFLoader);
+
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 1, 5);
-
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -11,33 +14,23 @@ document.body.appendChild(renderer.domElement);
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-directionalLight.position.set(10, 10, 10);
-scene.add(directionalLight);
-
-// Load the .glb model using GLTFLoader
+// Load the .glb model
 const loader = new THREE.GLTFLoader();
 loader.load(
-    './untitled.glb', // Path to your GLB model
+    './untitled.glb',
     function (gltf) {
-        const model = gltf.scene;
-        model.position.set(0, -1, 0);
-        model.scale.set(1, 1, 1);
-        scene.add(model);
+        scene.add(gltf.scene);
+        gltf.scene.position.set(0, -1, 0);
         console.log("Model loaded successfully!");
     },
     undefined,
     function (error) {
-        console.error("An error occurred:", error);
+        console.error("Error loading the model:", error);
     }
 );
 
-// Handle resizing
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
+// Position camera
+camera.position.set(0, 1, 5);
 
 // Animation loop
 function animate() {
