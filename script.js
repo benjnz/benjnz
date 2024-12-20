@@ -42,6 +42,9 @@ loader.load(
 // Position the camera
 camera.position.set(0, 1, 5); // Move the camera to better view the scene
 
+gltf.scene.position.set(0, -1, 0); // Example adjustment
+gltf.scene.scale.set(1, 1, 1);    // Adjust scale if necessary
+
 // Handle window resizing
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
