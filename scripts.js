@@ -8,7 +8,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const loader = new GLTFLoader();
-loader.load('models/room-model.glb', (gltf) => {
+loader.load('me.glb', (gltf) => {
     scene.add(gltf.scene);
 });
 
