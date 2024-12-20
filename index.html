@@ -11,18 +11,19 @@
     .hero {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 20px;
     }
 
     .hero-text {
       flex: 1;
+      margin-right: 15px; /* Adds spacing between text and model */
     }
 
     model-viewer {
       flex-shrink: 0;
-      width: 300px;
-      height: 300px;
+      width: 200px; /* Smaller size for the model */
+      height: 200px;
+      box-sizing: border-box; /* Ensures padding/margins don't affect layout */
     }
   </style>
 </head>
