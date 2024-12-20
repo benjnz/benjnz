@@ -7,7 +7,7 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden; /* Prevent scrollbars */
+            overflow: hidden;
         }
         .title {
             position: absolute;
@@ -17,12 +17,17 @@
             color: white;
             font-size: 24px;
             font-family: Arial, sans-serif;
-            z-index: 10; /* Ensure it appears above the canvas */
+            z-index: 10;
         }
     </style>
 </head>
 <body>
     <div class="title">My Portfolio Room</div>
-    <script type="module" src="script.js"></script> <!-- Use type="module" -->
+
+    <!-- Include Three.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
