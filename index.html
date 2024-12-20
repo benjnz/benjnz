@@ -6,7 +6,6 @@
   <title>Benedict Jones Portfolio</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <!-- Import the component -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
@@ -14,21 +13,30 @@
     <div class="hero">
       <h1>Benedict Jones</h1>
       <p>Innovation, Design & Engineering</p>
+      
+      <!-- Fixed View 3D Model -->
+      <model-viewer
+        alt="3D Model Example"
+        src="untitled.glb"
+        shadow-intensity="1"
+        camera-controls
+        camera-orbit="0deg 75deg 2m"
+        field-of-view="50deg"
+        camera-target="0m 1m 0m"
+        scale="1 1 1"
+        orientation="0deg 0deg 0deg"
+        touch-action="pan-y">
+      </model-viewer>
     </div>
   </header>
 
   <main class="gallery">
     <!-- Project Cards -->
     <div class="project-card">
-      <model-viewer
-        alt="3D Model Example"
-        src="untitled.glb"
-        ar
-        shadow-intensity="1"
-        camera-controls
-        touch-action="pan-y">
-      </model-viewer>
-      <div class="project-title">3D Printing at a Micro-Level</div>
+      <a href="project1.html">
+        <img src="microprint.jpg" alt="3D Printing at a Micro-Level">
+        <div class="project-title">3D Printing at a Micro-Level</div>
+      </a>
     </div>
 
     <div class="project-card">
