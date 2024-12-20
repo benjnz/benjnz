@@ -54,7 +54,7 @@ scene.add(spotLight);
 // GLTFLoader setup to load local file
 const loader = new GLTFLoader();
 loader.load(
-  'untitled.glb', // Ensure the file is in the root directory
+  'base_basic_pbr.glb', // Ensure the file is in the root directory
   (gltf) => {
     console.log('Model loaded');
     const model = gltf.scene;
