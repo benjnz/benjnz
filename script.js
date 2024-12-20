@@ -10,7 +10,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1, // Near clipping plane
     1000 // Far clipping plane
 );
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -28,22 +28,22 @@ loader.load(
     'untitled.glb', // Path to the GLB file (directly in the root folder)
     function (gltf) {
         // Add the loaded 3D model to the scene
-        scene.add(gltf.scene);
+        const model = gltf.scene;
+        scene.add(model);
 
-        // Optional: Position the camera relative to the model
-        gltf.scene.position.set(0, 0, 0);
+        // Adjust model's position, scale, and rotation to ensure it's centered
+        model.position.set(0, 0, 0); // Center the model
+        model.scale.set(1, 1, 1);   // Adjust scale if necessary
+        model.rotation.set(0, 0, 0); // Reset rotation
+
+        // Optional: Move the camera closer or further based on the model size
+        camera.position.set(0, 1, 5); // Adjust for better framing
     },
     undefined, // Optional: Progress callback
     function (error) {
         console.error('An error occurred while loading the model:', error);
     }
 );
-
-// Position the camera
-camera.position.set(0, 1, 5); // Move the camera to better view the scene
-
-gltf.scene.position.set(0, -1, 0); // Example adjustment
-gltf.scene.scale.set(1, 1, 1);    // Adjust scale if necessary
 
 // Handle window resizing
 window.addEventListener('resize', () => {
