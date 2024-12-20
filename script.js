@@ -25,7 +25,7 @@ scene.add(directionalLight);
 // Load the .glb model
 const loader = new GLTFLoader();
 loader.load(
-    'me.glb', // Path to the GLB file (directly in the root folder)
+    'untitled.glb', // Path to the GLB file (directly in the root folder)
     function (gltf) {
         // Add the loaded 3D model to the scene
         scene.add(gltf.scene);
