@@ -5,14 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Room</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic styling */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide overflow to keep the 3D view contained */
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Title styling */
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            color: #ffffff;
+            z-index: 10;
+            text-align: center;
+        }
+
+        /* Full screen 3D canvas */
+        canvas {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+    <!-- Title above the viewport -->
+    <div class="title">My Portfolio Room</div>
+
     <!-- Include Three.js from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
     <!-- Include GLTFLoader from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/loaders/GLTFLoader.js"></script>
     <!-- Your custom script -->
     <script type="module" src="script.js"></script>
-    test
 </body>
 </html>
