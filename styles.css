@@ -60,7 +60,7 @@ body {
 /* First row styling */
 .first-row {
   width: 100%; /* Full width of the page */
-  height: 2600px; /* Set height of the row */
+  height: 2340px; /* Set height of the row */
   background-color: white; /* White background */
   display: flex;
   justify-content: center; /* Center horizontally */
