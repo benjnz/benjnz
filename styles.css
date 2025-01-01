@@ -1,133 +1,56 @@
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  color: #333;
-}
-
-/* Ensure the page allows scrolling */
 html, body {
   height: 100%;
   width: 100%;
-  overflow-y: scroll; /* Enable vertical scrolling */
+  overflow-y: scroll; /* Ensure vertical scrolling */
+  font-family: Arial, sans-serif;
 }
 
-.hero-text {
-  text-align: center;
-  padding: 30px;
-  background-color: #f7f7f7;
-  margin-bottom: 40px;
+/* Full page section styles */
+main {
+  display: flex;
+  flex-direction: column;
 }
 
-.hero-text h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.hero-text p {
-  font-size: 18px;
-  color: #777;
-}
-
-/* Create full viewport height sections with smooth color gradients */
+/* Section Styles */
 .section {
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 60px 20px;
-  color: #fff;
+  align-items: center;
+  min-height: 100vh; /* Each section takes at least one full screen height */
+  padding: 20px;
   box-sizing: border-box;
 }
 
-.section:nth-child(odd) {
-  background: linear-gradient(to bottom, #A0C4FF, #3A77D0); /* Light blue to dark blue */
-}
-
-.section:nth-child(even) {
-  background: linear-gradient(to bottom, #A7E5A5, #357C39); /* Light green to dark green */
-}
-
-.section:nth-child(3) {
-  background: linear-gradient(to bottom, #FFF4B5, #F5BB00); /* Light yellow to dark yellow */
-}
-
-.section:nth-child(4) {
-  background: linear-gradient(to bottom, #FFC1E3, #F50057); /* Light pink to dark red */
-}
-
-.section:nth-child(5) {
-  background: linear-gradient(to bottom, #D4E8F5, #304D85); /* Light cyan to dark blue */
-}
-
-/* Column Layout */
-.section-inner {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.column {
-  width: 300px;
-  padding: 30px;
-  background-color: white;
+.section .column {
+  flex: 1;
   margin: 0 10px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.column img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
-.project-title {
-  padding: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  color: #333;
-  background-color: #f7f7f7;
-  border-radius: 0 0 12px 12px;
-}
-
-/* Hover effect on columns */
-.column:hover {
-  transform: translateY(-10px);
-}
-
-/* Clean dividing lines between columns */
-.section-inner > .column:not(:last-child) {
+  background-color: #fff;
+  height: 100%;
+  box-sizing: border-box;
+  border-left: 2px solid white;
   border-right: 2px solid white;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+/* Gradient Backgrounds */
+.blue-gradient {
+  background: linear-gradient(to bottom, #A0C4FF, #3A77D0); /* Light blue to dark blue */
 }
 
-footer p {
-  font-size: 14px;
-  color: #777;
+.green-gradient {
+  background: linear-gradient(to bottom, #A7E5A5, #357C39); /* Light green to dark green */
 }
 
-/* Mobile responsiveness */
-@media (max-width: 900px) {
-  .section-inner {
-    flex-direction: column;
-  }
+.yellow-gradient {
+  background: linear-gradient(to bottom, #FFF4B5, #F5BB00); /* Light yellow to dark yellow */
+}
 
-  .column {
-    margin: 10px 0;
-    width: 90%;
-  }
+.pink-gradient {
+  background: linear-gradient(to bottom, #FFC1E3, #F50057); /* Light pink to dark red */
 }
