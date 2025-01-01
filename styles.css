@@ -133,7 +133,7 @@ body {
   }
 
   .banner {
-    height: 100%; /* Ensure it perfectly fits the row height */
+    height: 20%; /* Ensure it perfectly fits the row height */
     width: auto; /* Maintain aspect ratio */
     object-fit: cover; /* No gaps or stretching */
   }
