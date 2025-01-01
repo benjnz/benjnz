@@ -29,16 +29,18 @@ body {
 }
 
 .logo-img {
-  height: 40px; /* Adjust as needed */
-  width: auto;
-  cursor: pointer; /* Indicate interactivity */
-  transition: transform 0.2s ease; /* Smooth hover effect */
+  height: 80px; /* Adjust height */
+  width: 80px; /* Adjust width */
+  background-image: url('path/to/static-frame.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease-in-out;
 }
 
 .logo-img:hover {
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  background-image: url('path/to/animated.gif'); /* Show animated GIF on hover */
+  transform: scale(1.1); /* Optional zoom effect */
 }
-
 
 
 .menu {
