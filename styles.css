@@ -77,7 +77,7 @@ body {
 }
 
 .banner {
-  height: 100%; /* Fit the row’s height */
+  height: 20%; /* Fit the row’s height */
   width: 100%; /* Maintain aspect ratio */
   max-width: 2340px; /* Prevent image overflow horizontally */
   object-fit: cover; /* Cover the row’s area without leaving gaps */
