@@ -33,7 +33,7 @@ body {
 
 .banner {
   height: 2340px; /* Match the row's height */
-  width: auto; /* Ensure the image keeps its aspect ratio */
+  width: 6000px; /* Ensure the image keeps its aspect ratio */
   max-width: 100%; /* Prevent it from exceeding the page width */
   object-fit: contain; /* Prevent stretching */
 }
