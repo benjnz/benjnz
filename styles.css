@@ -121,7 +121,7 @@ body {
   }
 
   .banner {
-    height: auto; /* Let the height adjust automatically */
+    height: 20%; /* Let the height adjust automatically */
     max-width: 90%; /* Slight margin on smaller screens */
     object-fit: contain; /* Ensure the image isn’t cropped */
   }
