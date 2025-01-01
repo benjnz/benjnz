@@ -20,56 +20,32 @@ main {
 
 /* Section Styles */
 .section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 33.33vh; /* Make each section take up 1/3 of the screen */
-  padding: 20px;
+  width: 100%;
   box-sizing: border-box;
-}
-
-.section .column {
-  flex: 1;
-  margin: 0 10px;
-  background-color: #fff;
-  height: 100%;
-  box-sizing: border-box;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
 }
 
 /* Gradient Backgrounds */
-.blue-gradient {
-  background: linear-gradient(to bottom, #A0C4FF, #3A77D0); /* Light blue to dark blue */
+.neutral-gradient {
+  background: linear-gradient(to bottom, #D3D3D3, #A9A9A9); /* Neutral gray gradient */
 }
 
-.green-gradient {
-  background: linear-gradient(to bottom, #A7E5A5, #357C39); /* Light green to dark green */
+.lightgray-gradient {
+  background: linear-gradient(to bottom, #F5F5F5, #B0B0B0); /* Light gray to darker gray */
 }
 
-.yellow-gradient {
-  background: linear-gradient(to bottom, #FFF4B5, #F5BB00); /* Light yellow to dark yellow */
+.beige-gradient {
+  background: linear-gradient(to bottom, #F5F5DC, #D2B48C); /* Beige to light tan */
 }
 
-.pink-gradient {
-  background: linear-gradient(to bottom, #FFC1E3, #F50057); /* Light pink to dark red */
+.softgray-gradient {
+  background: linear-gradient(to bottom, #E0E0E0, #A1A1A1); /* Soft gray to medium gray */
 }
 
-/* Separator Line Between Sections */
+/* Thick Separator Line Between Sections */
 .separator {
-  height: 2px;
+  height: 10px; /* Increased height for thicker white line */
   background-color: white;
   width: 100%;
 }
 
-/* Mobile responsive: stack columns vertically */
-@media (max-width: 900px) {
-  .section {
-    flex-direction: column;
-  }
-
-  .section .column {
-    margin: 10px 0;
-    width: 90%;
-  }
-}
