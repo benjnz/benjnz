@@ -29,8 +29,8 @@ body {
 }
 
 .logo-img {
-  height: 80px; /* Adjust height */
-  width: 80px; /* Adjust width */
+  height: 60px; /* Adjust as needed */
+  width: auto;
   background-image: url('logo.png');
   background-size: cover;
   background-repeat: no-repeat;
