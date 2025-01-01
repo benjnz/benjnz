@@ -23,7 +23,13 @@ body {
 
 .row {
   display: flex;
-  height: 100vh;
+  height: calc(100vh / 3); /* Each row takes 1/3 of the viewport height */
+  width: 100%;
+}
+
+.divider {
+  height: 10px; /* Thickness of the dividing line */
+  background-color: white;
   width: 100%;
 }
 
@@ -31,20 +37,12 @@ body {
   background: linear-gradient(to bottom, #e0f7fa, #00796b);
 }
 
-.row:nth-child(2) {
+.row:nth-child(3) {
   background: linear-gradient(to bottom, #dcedc8, #388e3c);
 }
 
-.row:nth-child(3) {
-  background: linear-gradient(to bottom, #fff9c4, #fbc02d);
-}
-
-.row:nth-child(4) {
-  background: linear-gradient(to bottom, #f3e5f5, #9c27b0);
-}
-
 .row:nth-child(5) {
-  background: linear-gradient(to bottom, #f8bbd0, #d81b60);
+  background: linear-gradient(to bottom, #fff9c4, #fbc02d);
 }
 
 .row div {
@@ -55,4 +53,3 @@ body {
 .row div:first-child {
   border-left: none; /* Remove border for the first column */
 }
-
