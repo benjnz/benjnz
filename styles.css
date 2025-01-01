@@ -68,7 +68,7 @@ body {
 
 /* First row styling */
 .first-row {
-  width: 6000px; /* Full width of the page */
+  width: 50%; /* Full width of the page */
   height: 2340px; /* Set height of the row */
   background-color: white; /* White background */
   display: flex;
