@@ -1,52 +1,58 @@
-/* Reset styles */
+/* Basic reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll; /* Ensure vertical scrolling */
+body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0; /* Set the background color to light gray */
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Full page section styles */
-main {
+.container {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Section Styles */
-.section {
-  height: 33.33vh; /* Make each section take up 1/3 of the screen */
-  width: 100%;
-  box-sizing: border-box;
-  background-color: lightgray; /* Just to check if sections are showing up */
-}
-
-/* Gradient Backgrounds */
-.neutral-gradient {
-  background: linear-gradient(to bottom, #BEBEBE, #8B8B8B); /* Neutral gray gradient */
-}
-
-.lightgray-gradient {
-  background: linear-gradient(to bottom, #E0E0E0, #B0B0B0); /* Light gray to darker gray */
-}
-
-.beige-gradient {
-  background: linear-gradient(to bottom, #F0E1B4, #D1A054); /* Beige to light tan */
-}
-
-.softgray-gradient {
-  background: linear-gradient(to bottom, #D3D3D3, #A1A1A1); /* Soft gray to medium gray */
-}
-
-/* Thick Separator Line Between Sections */
-.separator {
-  height: 10px; /* Increased height for thicker white line */
-  background-color: white;
+.row {
+  display: flex;
+  height: 100vh;
   width: 100%;
 }
+
+.row:nth-child(1) {
+  background: linear-gradient(to bottom, #e0f7fa, #00796b);
+}
+
+.row:nth-child(2) {
+  background: linear-gradient(to bottom, #dcedc8, #388e3c);
+}
+
+.row:nth-child(3) {
+  background: linear-gradient(to bottom, #fff9c4, #fbc02d);
+}
+
+.row:nth-child(4) {
+  background: linear-gradient(to bottom, #f3e5f5, #9c27b0);
+}
+
+.row:nth-child(5) {
+  background: linear-gradient(to bottom, #f8bbd0, #d81b60);
+}
+
+.row div {
+  width: calc(100% / 5); /* Divide the row into 5 equal columns */
+  border-left: 2px solid white;
+}
+
+.row div:first-child {
+  border-left: none; /* Remove border for the first column */
+}
+
