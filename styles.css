@@ -10,6 +10,7 @@ html, body {
   width: 100%;
   overflow-y: scroll; /* Ensure vertical scrolling */
   font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* Light background color to ensure visibility */
 }
 
 /* Full page section styles */
@@ -27,19 +28,19 @@ main {
 
 /* Gradient Backgrounds */
 .neutral-gradient {
-  background: linear-gradient(to bottom, #D3D3D3, #A9A9A9); /* Neutral gray gradient */
+  background: linear-gradient(to bottom, #BEBEBE, #8B8B8B); /* Neutral gray gradient */
 }
 
 .lightgray-gradient {
-  background: linear-gradient(to bottom, #F5F5F5, #B0B0B0); /* Light gray to darker gray */
+  background: linear-gradient(to bottom, #E0E0E0, #B0B0B0); /* Light gray to darker gray */
 }
 
 .beige-gradient {
-  background: linear-gradient(to bottom, #F5F5DC, #D2B48C); /* Beige to light tan */
+  background: linear-gradient(to bottom, #F0E1B4, #D1A054); /* Beige to light tan */
 }
 
 .softgray-gradient {
-  background: linear-gradient(to bottom, #E0E0E0, #A1A1A1); /* Soft gray to medium gray */
+  background: linear-gradient(to bottom, #D3D3D3, #A1A1A1); /* Soft gray to medium gray */
 }
 
 /* Thick Separator Line Between Sections */
