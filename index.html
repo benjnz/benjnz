@@ -9,71 +9,84 @@
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-      background-color: #f5f5f7;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
       color: #333;
     }
 
-    header {
+    /* Create full viewport height sections with smooth color gradients */
+    .section {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 60px 20px;
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: #fff;
+      box-sizing: border-box;
     }
 
-    .hero-text {
-      text-align: center;
+    .section:nth-child(odd) {
+      background: linear-gradient(to bottom, #A0C4FF, #3A77D0); /* Light blue to dark blue */
     }
 
-    .hero-text h1 {
-      font-size: 40px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
+    .section:nth-child(even) {
+      background: linear-gradient(to bottom, #A7E5A5, #357C39); /* Light green to dark green */
     }
 
-    .hero-text p {
-      font-size: 18px;
-      color: #555;
+    .section:nth-child(3) {
+      background: linear-gradient(to bottom, #FFF4B5, #F5BB00); /* Light yellow to dark yellow */
     }
 
-    main {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 40px;
-      padding: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
+    .section:nth-child(4) {
+      background: linear-gradient(to bottom, #FFC1E3, #F50057); /* Light pink to dark red */
     }
 
-    .project-card {
-      background-color: #fff;
+    .section:nth-child(5) {
+      background: linear-gradient(to bottom, #D4E8F5, #304D85); /* Light cyan to dark blue */
+    }
+
+    /* Column Layout */
+    .section-inner {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .column {
+      width: 300px;
+      padding: 30px;
+      background-color: white;
+      margin: 0 10px;
       border-radius: 12px;
-      overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
 
-    .project-card img {
+    .column img {
       width: 100%;
       height: auto;
-      display: block;
+      border-radius: 12px;
     }
 
-    .project-card .project-title {
+    .project-title {
       padding: 20px;
       font-size: 18px;
       font-weight: bold;
       text-align: center;
       color: #333;
       background-color: #f7f7f7;
+      border-radius: 0 0 12px 12px;
     }
 
-    .project-card:hover {
+    /* Hover effect on columns */
+    .column:hover {
       transform: translateY(-10px);
+    }
+
+    /* Clean dividing lines between columns */
+    .section-inner > .column:not(:last-child) {
+      border-right: 2px solid white;
     }
 
     footer {
@@ -81,7 +94,6 @@
       padding: 20px;
       background-color: #fff;
       box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-      margin-top: 40px;
     }
 
     footer p {
@@ -89,17 +101,14 @@
       color: #777;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 40px 20px;
+    @media (max-width: 900px) {
+      .section-inner {
+        flex-direction: column;
       }
 
-      .hero-text h1 {
-        font-size: 30px;
-      }
-
-      .hero-text p {
-        font-size: 16px;
+      .column {
+        margin: 10px 0;
+        width: 90%;
       }
     }
   </style>
@@ -113,62 +122,77 @@
   </header>
 
   <main>
-    <!-- Project Cards -->
-    <div class="project-card">
-      <a href="project1.html">
-        <img src="microprint.jpg" alt="3D Printing at a Micro-Level">
-        <div class="project-title">3D Printing at a Micro-Level</div>
-      </a>
-    </div>
+    <!-- Row 1: Blue Gradient -->
+    <section class="section">
+      <div class="section-inner">
+        <div class="column">
+          <a href="project1.html">
+            <img src="microprint.jpg" alt="3D Printing at a Micro-Level">
+            <div class="project-title">3D Printing at a Micro-Level</div>
+          </a>
+        </div>
+        <div class="column">
+          <a href="project2.html">
+            <img src="drawingwall.png" alt="Civil Design of a Riverside Retaining Wall">
+            <div class="project-title">Civil Design of a Riverside Retaining Wall</div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-card">
-      <a href="project2.html">
-        <img src="drawingwall.png" alt="Civil Design of a Riverside Retaining Wall">
-        <div class="project-title">Civil Design of a Riverside Retaining Wall</div>
-      </a>
-    </div>
+    <!-- Row 2: Green Gradient -->
+    <section class="section">
+      <div class="section-inner">
+        <div class="column">
+          <a href="project3.html">
+            <img src="sensorss.png" alt="Self-Powered IoTs to Quietly Track Home Life">
+            <div class="project-title">Self-Powered IoTs to Quietly Track Home Life</div>
+          </a>
+        </div>
+        <div class="column">
+          <a href="project4.html">
+            <img src="stool.jpg" alt="Bamboo Tension Stool">
+            <div class="project-title">Bamboo Tension Stool</div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-card">
-      <a href="project3.html">
-        <img src="sensorss.png" alt="Self-Powered IoTs to Quietly Track Home Life">
-        <div class="project-title">Self-Powered IoTs to Quietly Track Home Life</div>
-      </a>
-    </div>
+    <!-- Row 3: Yellow Gradient -->
+    <section class="section">
+      <div class="section-inner">
+        <div class="column">
+          <a href="project5.html">
+            <img src="RGmachine.png" alt="3D printable open-source Rube Goldberg Machine">
+            <div class="project-title">3D printable open-source Rube Goldberg Machine</div>
+          </a>
+        </div>
+        <div class="column">
+          <a href="project6.html">
+            <img src="koth.jpg" alt="Novel Strategic Board Game">
+            <div class="project-title">Novel Strategic Board Game</div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-card">
-      <a href="project4.html">
-        <img src="stool.jpg" alt="Bamboo Tension Stool">
-        <div class="project-title">Bamboo Tension Stool</div>
-      </a>
-    </div>
-
-    <div class="project-card">
-      <a href="project5.html">
-        <img src="RGmachine.png" alt="3D printable open-source Rube Goldberg Machine">
-        <div class="project-title">3D printable open-source Rube Goldberg Machine</div>
-      </a>
-    </div>
-
-    <div class="project-card">
-      <a href="project6.html">
-        <img src="koth.jpg" alt="Novel Strategic Board Game">
-        <div class="project-title">Novel Strategic Board Game</div>
-      </a>
-    </div>
-
-    <div class="project-card">
-      <a href="project7.html">
-        <img src="duzcathedral.jpg" alt="Gingerbread Architecture">
-        <div class="project-title">Gingerbread Architecture</div>
-      </a>
-    </div>
-
-    <div class="project-card">
-      <a href="project8.html">
-        <img src="gallifrey.png" alt="Animation">
-        <div class="project-title">Animation</div>
-      </a>
-    </div>
+    <!-- Row 4: Pink Gradient -->
+    <section class="section">
+      <div class="section-inner">
+        <div class="column">
+          <a href="project7.html">
+            <img src="duzcathedral.jpg" alt="Gingerbread Architecture">
+            <div class="project-title">Gingerbread Architecture</div>
+          </a>
+        </div>
+        <div class="column">
+          <a href="project8.html">
+            <img src="gallifrey.png" alt="Animation">
+            <div class="project-title">Animation</div>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
