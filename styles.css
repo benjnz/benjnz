@@ -68,8 +68,8 @@ body {
 
 /* First row styling */
 .first-row {
-  width: 50%; /* Full width of the page */
-  height: 2340px; /* Set height of the row */
+  width: 100%; /* Full width of the page */
+  height: 20%; /* Set height of the row */
   background-color: white; /* White background */
   display: flex;
   justify-content: center; /* Center horizontally */
