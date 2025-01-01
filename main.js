@@ -1,23 +1,21 @@
-let isPlaying = false;
-
 document.addEventListener("DOMContentLoaded", () => {
   const logo = document.querySelector(".logo-img");
 
   logo.addEventListener("mouseover", () => {
-    if (!isPlaying) {
-      isPlaying = true;
+    if (!logo.classList.contains("playing")) {
+      logo.classList.add("playing"); // Mark the GIF as playing
       const animatedGif = logo.getAttribute("data-animated");
-      logo.src = `${animatedGif}?t=${new Date().getTime()}`;
+      logo.src = `${animatedGif}?t=${new Date().getTime()}`; // Reload GIF
     }
   });
 
   logo.addEventListener("mouseout", () => {
     const staticFrame = logo.getAttribute("data-static");
-    logo.src = staticFrame;
 
-    // Allow playback after a delay
+    // Delay resetting to static frame based on GIF duration (e.g., 3s)
     setTimeout(() => {
-      isPlaying = false;
-    }, 3000); // Adjust delay based on GIF duration
+      logo.src = staticFrame;
+      logo.classList.remove("playing"); // Reset state to allow replay
+    }, 3000); // Adjust this delay to match GIF duration
   });
 });
