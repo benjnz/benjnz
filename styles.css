@@ -29,18 +29,17 @@ body {
 }
 
 .logo-img {
-  height: 60px; /* Adjust as needed */
-  width: auto;
-  background-image: url('logo.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: transform 0.3s ease-in-out;
+  height: 80px; /* Adjust as needed */
+  width: 80px; /* Adjust as needed */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth fade */
+  cursor: pointer;
 }
 
-.logo-img:hover {
-  background-image: url('logo.gif'); /* Show animated GIF on hover */
-  transform: scale(1.1); /* Optional zoom effect */
+.logo-img.playing {
+  opacity: 0; /* Hide static frame while GIF plays */
+  transform: scale(1.1); /* Optional zoom effect on hover */
 }
+
 
 
 .menu {
