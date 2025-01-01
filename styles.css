@@ -31,14 +31,14 @@ body {
 .logo-img {
   height: 80px; /* Adjust height */
   width: 80px; /* Adjust width */
-  background-image: url('path/to/static-frame.png');
+  background-image: url('logo.png');
   background-size: cover;
   background-repeat: no-repeat;
   transition: transform 0.3s ease-in-out;
 }
 
 .logo-img:hover {
-  background-image: url('path/to/animated.gif'); /* Show animated GIF on hover */
+  background-image: url('logo.gif'); /* Show animated GIF on hover */
   transform: scale(1.1); /* Optional zoom effect */
 }
 
