@@ -129,7 +129,7 @@ body {
 
 @media (min-width: 1200px) {
   .first-row {
-    height: 2340px; /* Retain the original height for large screens */
+    height: 100%; /* Retain the original height for large screens */
   }
 
   .banner {
