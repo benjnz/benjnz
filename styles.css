@@ -29,8 +29,8 @@ body {
 }
 
 .logo-img {
-  height: 80px; /* Adjust as needed */
-  width: 80px; /* Adjust as needed */
+  height: 60px; /* Adjust as needed */
+  width: auto; /* Adjust as needed */
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth fade */
   cursor: pointer;
 }
