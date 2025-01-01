@@ -24,17 +24,18 @@ body {
 /* First row styling */
 .first-row {
   width: 100%; /* Full width of the page */
-  height: 2340px; /* Match the banner image height */
+  height: 2340px; /* Set height of the row */
   background-color: white; /* White background */
   display: flex;
-  justify-content: center; /* Center the image horizontally */
-  align-items: center; /* Center the image vertically */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 .banner {
-  height: 100%; /* Match the row's height */
-  max-width: 100vw; /* Prevent stretching beyond viewport width */
-  object-fit: contain; /* Keep the image proportion intact */
+  height: 2340px; /* Match the row's height */
+  width: auto; /* Ensure the image keeps its aspect ratio */
+  max-width: 100%; /* Prevent it from exceeding the page width */
+  object-fit: contain; /* Prevent stretching */
 }
 
 /* Divider styling */
