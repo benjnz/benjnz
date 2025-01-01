@@ -9,24 +9,23 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column; /* Stack elements vertically */
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 /* Top banner styling */
 .top-banner {
-  width: 100%;
+  width: 100%; /* Full width of the page */
   background-color: #f8f8f8; /* Light grey like Apple.com */
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
+  justify-content: space-between; /* Space between logo and menu */
+  align-items: center; /* Center vertically */
+  position: sticky; /* Stick to the top of the page */
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc; /* Subtle border for separation */
 }
 
 .logo {
@@ -37,7 +36,7 @@ body {
 
 .menu {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Spacing between menu items */
 }
 
 .menu a {
@@ -55,7 +54,7 @@ body {
 .container {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack rows vertically */
 }
 
 /* First row styling */
@@ -70,7 +69,7 @@ body {
 
 .banner {
   height: 2340px; /* Match the row's height */
-  width: 6000px; /* Ensure the image keeps its aspect ratio */
+  width: auto; /* Maintain aspect ratio */
   max-width: 100%; /* Prevent it from exceeding the page width */
   object-fit: contain; /* Prevent stretching */
 }
