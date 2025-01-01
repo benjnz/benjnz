@@ -10,7 +10,7 @@ html, body {
   width: 100%;
   overflow-y: scroll; /* Ensure vertical scrolling */
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0; /* Light background color to ensure visibility */
+  background-color: #f0f0f0; /* Set the background color to light gray */
 }
 
 /* Full page section styles */
@@ -24,6 +24,7 @@ main {
   height: 33.33vh; /* Make each section take up 1/3 of the screen */
   width: 100%;
   box-sizing: border-box;
+  background-color: lightgray; /* Just to check if sections are showing up */
 }
 
 /* Gradient Backgrounds */
@@ -49,4 +50,3 @@ main {
   background-color: white;
   width: 100%;
 }
-
