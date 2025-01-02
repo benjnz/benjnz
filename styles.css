@@ -33,7 +33,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100px; /* Adjust size as needed */
-  width: 100px;
+  width: auto;
   overflow: hidden; /* Ensure no overflow from resizing */
 }
 
