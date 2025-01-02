@@ -32,7 +32,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px; /* Adjust size as needed */
+  height: 30px; /* Adjust size as needed */
   width: auto;
   overflow: hidden; /* Ensure no overflow from resizing */
 }
@@ -120,12 +120,12 @@ body {
 /* Responsive scaling for banner image */
 @media (max-width: 768px) {
   .first-row {
-    height: 800px; /* Reduce height for smaller devices */
+    height: 150px; /* Reduce height for smaller devices */
   }
 
   .banner {
-    height: 20%; /* Let the height adjust automatically */
-    max-width: 90%; /* Slight margin on smaller screens */
+    height: 100%; /* Let the height adjust automatically */
+    max-width: 100%; /* Slight margin on smaller screens */
     object-fit: contain; /* Ensure the image isn’t cropped */
   }
 }
@@ -137,7 +137,7 @@ body {
 
   .banner {
     height: 20%; /* Ensure it perfectly fits the row height */
-    width: auto; /* Maintain aspect ratio */
+    width: 80%; /* Maintain aspect ratio */
     object-fit: cover; /* No gaps or stretching */
   }
 }
