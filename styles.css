@@ -28,16 +28,20 @@ body {
   border-bottom: 1px solid #dcdcdc; /* Subtle border for separation */
 }
 
-.logo-img {
-  height: 60px; /* Adjust as needed */
-  width: auto; /* Adjust as needed */
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth fade */
-  cursor: pointer;
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust size as needed */
+  width: 100px;
+  overflow: hidden; /* Ensure no overflow from resizing */
 }
 
-.logo-img.playing {
-  opacity: 0; /* Hide static frame while GIF plays */
-  transform: scale(1.1); /* Optional zoom effect on hover */
+.logo-img {
+  height: 100%; /* Match container height */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+  transition: opacity 0.1s linear; /* Smooth transition */
 }
 
 
