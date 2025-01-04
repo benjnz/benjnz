@@ -99,6 +99,27 @@ body {
   z-index: 10; /* Ensure it is above the banner */
 }
 
+.second-row {
+  position: relative;
+  width: 100%;
+  height: 20%; /* Matches the height of the banner */
+  background-color: #2a2929; /* White background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional specific logo styling for the second row */
+.logo-overlay-second {
+  position: absolute;
+   bottom: 40px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10;
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .first-row {
