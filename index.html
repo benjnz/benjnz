@@ -1,96 +1,264 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ben Jones</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
-</head>
-<body>
-  <!-- Top Banner -->
-  <div class="top-banner">
-    <div class="logo">
-      <img 
-        src="logo.png" 
-        data-gif="logo.gif" 
-        data-duration="1520"
-        alt="Logo" 
-        class="logo-img"
-      >
-    </div>
-    <div class="menu">
-      <a href="#About">About Me</a>
-      <a href="#Connect">Connect</a>
-    </div>
-  </div>
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Page Content -->
-<div class="container">
-  <!-- First Row -->
-  <div class="first-row">
-    <picture>
-      <source srcset="StoolBanner.webp" type="image/webp">
-      <img src="StoolBanner.png" alt="Banner Image" class="banner">
-    </picture>
-    <img src="rca.png" alt="Logo Overlay" class="logo-overlay">
-  </div>
-  <!-- Divider -->
-  <div class="divider"></div>
-  <!-- Second Row -->
-  <div class="second-row">
-    <picture>
-      <source srcset="MicroPrints.webp" type="image/webp">
-      <img src="MicroPrints.png" alt="Second Banner Image" class="banner">
-    </picture>
-    <img src="fullcontrol.png" alt="Second Logo Overlay" class="logo-overlay">
-    <img src="durham.png" alt="Logo Above" class="logo-above">
-  </div>
-  <!-- Divider -->
-  <div class="divider"></div>
-  <!-- Third Row -->
-  <div class="third-row">
-    <picture>
-      <source srcset="IoT.webp" type="image/webp">
-      <img src="IoT.webp" alt="Third Banner Image" class="banner">
-    </picture>
-    <img src="swansea.png" alt="Third Logo Overlay" class="logo-overlay-third">
-  </div>
-  <!-- Divider -->
-  <div class="divider"></div>
-   <!-- Fourth Row -->
-  <div class="fourth-row">
-    <picture>
-      <source srcset="KOTH.webp" type="image/webp">
-      <img src="KOTH.webp" alt="Third Banner Image" class="banner">
-  </div>
-  <!-- Divider -->
-  <div class="divider"></div>
-</div>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Top banner styling */
+.top-banner {
+  width: 100%; /* Full width of the page */
+  background-color: #f8f8f8; /* Light grey like Apple.com */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between; /* Space between logo and menu */
+  align-items: center; /* Center vertically */
+  position: sticky; /* Stick to the top of the page */
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #dcdcdc; /* Subtle border for separation */
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; /* Adjust size as needed */
+  width: auto;
+  overflow: hidden; /* Ensure no overflow from resizing */
+}
+
+.logo-img {
+  height: 100%; /* Match container height */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+  transition: opacity 0.1s linear; /* Smooth transition */
+}
 
 
-    <!-- Divider -->
-    <div class="divider"></div>
-    <!-- Other Rows -->
-    <div class="row">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="divider"></div>
-    <div class="row">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
+.menu {
+  display: flex;
+  gap: 20px; /* Spacing between menu items */
+}
 
-  <!-- Include the JavaScript file at the end of the body -->
-  <script src="main.js"></script>
-</body>
-</html>
+.menu a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #007aff; /* Apple’s signature blue for links */
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Container */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Stack rows vertically */
+}
+
+/* First row styling */
+.first-row {
+  position: relative;
+  width: 100%; /* Full width of the page */
+  height: 20%; /* Set height of the row */
+  background-color: white; /* White background */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.banner {
+  height: 20%; /* Fit the row’s height */
+  width: 100%; /* Maintain aspect ratio */
+  max-width: 1200px; /* Prevent image overflow horizontally */
+display: block; /* Ensure no inline gaps */
+}
+
+
+/* Logo overlay styling */
+.logo-overlay {
+  position: absolute; /* Fixed to the banner */
+  bottom: 40px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10; /* Ensure it is above the banner */
+}
+
+.second-row {
+  position: relative;
+  width: 100%;
+  height: 20%; /* Matches the height of the banner */
+  background-color: #2a2929; /* White background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Optional specific logo styling for the second row */
+.logo-overlay-second {
+  position: absolute;
+  bottom: 40px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10;
+}
+
+/* Second logo above the first one */
+.logo-above {
+  position: absolute;
+  bottom: 80px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10;
+}
+
+/* Third Row */
+.third-row {
+  position: relative;
+  width: 100%;
+  height: 20%; /* Matches the height of the banner */
+  background-color: #000000; /* White background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fourth Row */
+.fourth-row {
+  position: relative;
+  width: 100%;
+  height: 20%; /* Matches the height of the banner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo for the third row */
+.logo-overlay-third {
+  position: absolute;
+  bottom: 40px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 810px) {
+  .first-row {
+    height: auto; /* Adjust height if needed for smaller screens */
+  }
+
+  .logo-overlay {
+    bottom: 5%; /* Adjust for smaller screens */
+    right: 5%; /* Adjust for smaller screens */
+    width: 60px; /* Adjust size for smaller screens */
+    
+  }
+
+  /* Second logo above the first one */
+.logo-above {
+    bottom: 17%; /* Adjust for smaller screens */
+    right: 5%; /* Adjust for smaller screens */
+    width: 60px; /* Adjust size for smaller screens */
+}
+
+  /* Logo for the third row */
+.logo-overlay-third {
+    bottom: 5%; /* Adjust for smaller screens */
+    right: 5%; /* Adjust for smaller screens */
+    width: 60px; /* Adjust size for smaller screens */
+}
+}
+
+  /* Responsive adjustments */
+@media (max-width: 450px) {
+  .first-row {
+    height: auto; /* Adjust height if needed for smaller screens */
+  }
+
+  .logo {
+    height: 20px;
+  }
+
+   .menu a {
+    font-size: 10px;
+  }
+
+  .logo-overlay {
+    bottom: 5%; /* Adjust for smaller screens */
+    right: 5%; /* Adjust for smaller screens */
+    width: 40px; /* Adjust size for smaller screens */
+    
+  }
+
+  /* Second logo above the first one */
+.logo-above {
+    bottom: 17%; /* Adjust for smaller screens */
+    right: 5%; /* Adjust for smaller screens */
+    width: 40px; /* Adjust size for smaller screens */
+}
+
+  /* Logo for the third row */
+.logo-overlay-third {
+    bottom: 5%; /* Adjust for smaller screens */
+    right: 5%; /* Adjust for smaller screens */
+    width: 40px; /* Adjust size for smaller screens */
+}
+  
+  
+}
+
+/* Divider styling */
+.divider {
+  height: 10px; /* Thickness of the dividing line */
+  background-color: white;
+  width: 100%;
+}
+
+/* Other rows styling */
+.row {
+  display: flex;
+  height: calc(100vh / 3); /* Each row takes 1/3 of the viewport height */
+  width: 100%;
+}
+
+.row:nth-child(3) {
+  background: linear-gradient(to bottom, #dcedc8, #388e3c);
+}
+
+.row:nth-child(5) {
+  background: linear-gradient(to bottom, #fff9c4, #fbc02d);
+}
+
+.row div {
+  width: calc(100% / 5); /* Divide the row into 5 equal columns */
+  border-left: 2px solid white;
+}
+
+.row div:first-child {
+  border-left: none; /* Remove border for the first column */
+}
+
+
+@media (min-width: 1200px) {
+
+}
