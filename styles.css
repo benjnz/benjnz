@@ -8,10 +8,11 @@
 @font-face {
     font-family: "Eina Regular";
     src: url("/fonts/eina-01-regular.ttf") format("truetype");
-    font-weight: 600;
+    font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
     font-family: "Eina Semi Bold";
     src: url("/fonts/Eina01SemiBold.ttf") format("truetype");
     font-weight: 600;
@@ -19,13 +20,14 @@
 }
 
 body {
-  font-family: Eina Regular;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  min-height: 100vh;
-  overflow-x: hidden;
+    font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    min-height: 100vh;
+    overflow-x: hidden;
 }
+
 
 /* Top banner styling */
 .top-banner {
