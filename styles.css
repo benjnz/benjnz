@@ -5,8 +5,21 @@
   box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Eina Regular";
+    src: url("/fonts/eina-01-regular.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+    font-family: "Eina Semi Bold";
+    src: url("/fonts/Eina01SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: Eina Regular;
   background-color: #ffffff;
   display: flex;
   flex-direction: column; /* Stack elements vertically */
