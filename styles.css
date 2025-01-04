@@ -86,6 +86,14 @@ body {
   object-fit: cover; /* Cover the row’s area without leaving gaps */
 }
 
+.logo-overlay {
+  position: absolute; /* Position relative to the nearest positioned ancestor (.first-row) */
+  bottom: 20px; /* Distance from the bottom edge */
+  right: 20px; /* Distance from the right edge */
+  width: 150px; /* Set width of the logo */
+  height: auto; /* Maintain aspect ratio */
+}
+
 /* Divider styling */
 .divider {
   height: 10px; /* Thickness of the dividing line */
