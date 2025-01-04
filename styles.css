@@ -112,12 +112,23 @@ body {
 /* Optional specific logo styling for the second row */
 .logo-overlay-second {
   position: absolute;
-   bottom: 40px; /* Adjust to exact distance from bottom edge */
+  bottom: 40px; /* Adjust to exact distance from bottom edge */
   right: 40px; /* Adjust to exact distance from the right edge */
   width: 120px; /* Set the size of the logo */
   height: auto; /* Maintain aspect ratio */
   z-index: 10;
 }
+
+/* Second logo above the first one */
+.logo-above {
+  position: absolute;
+  bottom: 80px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10;
+}
+
 
 
 /* Responsive adjustments */
