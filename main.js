@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const logo = document.querySelector(".logo-img");
 
+  // Handle mouseover event
   logo.addEventListener("mouseover", () => {
     if (logo.classList.contains("playing")) return;
 
@@ -17,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }, duration);
   });
 
+  // Refresh the GIF source every 10 seconds (if necessary)
   setInterval(function() {
-  var gifImage = document.getElementById('gifImage');
-  var src = gifImage.src; // Get the current source
+    const gifImage = document.querySelector('.logo-img');
+    if (!gifImage) return; // Prevent errors if the element doesn't exist
+    const src = gifImage.src;
 
-  // Refresh the GIF by appending a random query parameter to the URL
-  gifImage.src = ''; // Reset the image source
-  gifImage.src = src + '?' + new Date().getTime(); // Reassign the same source with a unique timestamp to force reload
-}, 10000); // 10000 ms = 10 seconds
-
-  
+    // Force reloading the GIF by appending a unique timestamp
+    gifImage.src = ''; // Reset the image source
+    gifImage.src = src + '?' + new Date().getTime(); // Reassign the same source with a unique timestamp to force reload
+  }, 10000); // 10000 ms = 10 seconds
 });
