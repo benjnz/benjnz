@@ -71,6 +71,7 @@ body {
 
 /* First row styling */
 .first-row {
+  position: relative;
   width: 100%; /* Full width of the page */
   height: 20%; /* Set height of the row */
   background-color: white; /* White background */
@@ -86,13 +87,31 @@ body {
   object-fit: cover; /* Cover the row’s area without leaving gaps */
 }
 
+
+
+/* Logo overlay styling */
 .logo-overlay {
-  position: absolute; /* Position relative to the nearest positioned ancestor (.first-row) */
-  bottom: 20px; /* Distance from the bottom edge */
-  right: 20px; /* Distance from the right edge */
-  width: 150px; /* Set width of the logo */
+  position: absolute; /* Fixed to the banner */
+  bottom: 40px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
   height: auto; /* Maintain aspect ratio */
+  z-index: 10; /* Ensure it is above the banner */
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .first-row {
+    height: auto; /* Adjust height if needed for smaller screens */
+  }
+
+  .logo-overlay {
+    bottom: 5%; /* Adjust for smaller screens */
+    right: 5%; /* Adjust for smaller screens */
+    width: 60px; /* Adjust size for smaller screens */
+  }
+}
+
 
 /* Divider styling */
 .divider {
