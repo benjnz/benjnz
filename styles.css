@@ -195,6 +195,16 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
+/* Logo for the fifth row */
+.logo-overlay-fifth {
+  position: absolute;
+  bottom: 40px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10;
+}
+
 
 
 /* Responsive adjustments */
@@ -232,11 +242,11 @@ display: block; /* Ensure no inline gaps */
   }
 
   .logo {
-    height: 20px;
+    height: 25px;
   }
 
    .menu a {
-    font-size: 10px;
+    font-size: 25px;
   }
 
   .logo-overlay {
