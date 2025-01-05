@@ -211,11 +211,11 @@ display: block; /* Ensure no inline gaps */
   }
 
   .logo {
-    height: 30px;
+    height:25px;
   }
 
    .menu a {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .logo-overlay {
