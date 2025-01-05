@@ -123,15 +123,6 @@ display: block; /* Ensure no inline gaps */
   
 }
 
-/* Optional specific logo styling for the second row */
-.logo-overlay-second {
-  position: absolute;
-  bottom: 40px; /* Adjust to exact distance from bottom edge */
-  right: 40px; /* Adjust to exact distance from the right edge */
-  width: 120px; /* Set the size of the logo */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 10;
-}
 
 /* Second logo above the first one */
 .logo-above {
@@ -154,15 +145,7 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
-/* Logo for the third row */
-.logo-overlay-third {
-  position: absolute;
-  bottom: 40px; /* Adjust to exact distance from bottom edge */
-  right: 40px; /* Adjust to exact distance from the right edge */
-  width: 120px; /* Set the size of the logo */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 10;
-}
+
 
 /* Fourth Row */
 .fourth-row {
@@ -195,15 +178,7 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
-/* Logo for the sixth row */
-.logo-overlay-sixth {
-  position: absolute;
-  bottom: 40px; /* Adjust to exact distance from bottom edge */
-  right: 40px; /* Adjust to exact distance from the right edge */
-  width: 120px; /* Set the size of the logo */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 10;
-}
+
 
 
 
@@ -227,12 +202,6 @@ display: block; /* Ensure no inline gaps */
     width: 60px; /* Adjust size for smaller screens */
 }
 
-  /* Logo for the third row */
-.logo-overlay-third {
-    bottom: 5%; /* Adjust for smaller screens */
-    right: 5%; /* Adjust for smaller screens */
-    width: 60px; /* Adjust size for smaller screens */
-}
 }
 
   /* Responsive adjustments */
@@ -259,13 +228,6 @@ display: block; /* Ensure no inline gaps */
   /* Second logo above the first one */
 .logo-above {
     bottom: 17%; /* Adjust for smaller screens */
-    right: 5%; /* Adjust for smaller screens */
-    width: 40px; /* Adjust size for smaller screens */
-}
-
-  /* Logo for the third row */
-.logo-overlay-third {
-    bottom: 5%; /* Adjust for smaller screens */
     right: 5%; /* Adjust for smaller screens */
     width: 40px; /* Adjust size for smaller screens */
 }
