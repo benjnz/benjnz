@@ -195,8 +195,8 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
-/* Logo for the fifth row */
-.logo-overlay-fifth {
+/* Logo for the sixth row */
+.logo-overlay-sixth {
   position: absolute;
   bottom: 40px; /* Adjust to exact distance from bottom edge */
   right: 40px; /* Adjust to exact distance from the right edge */
