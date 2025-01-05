@@ -154,6 +154,16 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
+/* Logo for the third row */
+.logo-overlay-third {
+  position: absolute;
+  bottom: 40px; /* Adjust to exact distance from bottom edge */
+  right: 40px; /* Adjust to exact distance from the right edge */
+  width: 120px; /* Set the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  z-index: 10;
+}
+
 /* Fourth Row */
 .fourth-row {
   position: relative;
@@ -164,14 +174,14 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
-/* Logo for the third row */
-.logo-overlay-third {
-  position: absolute;
-  bottom: 40px; /* Adjust to exact distance from bottom edge */
-  right: 40px; /* Adjust to exact distance from the right edge */
-  width: 120px; /* Set the size of the logo */
-  height: auto; /* Maintain aspect ratio */
-  z-index: 10;
+/* Fifth Row */
+.fifth-row {
+  position: relative;
+  width: 100%;
+  height: 20%; /* Matches the height of the banner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
