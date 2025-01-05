@@ -154,6 +154,15 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
+/* Fourth Row */
+.fourth-row {
+  position: relative;
+  width: 100%;
+  height: 20%; /* Matches the height of the banner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Logo for the third row */
 .logo-overlay-third {
@@ -165,25 +174,6 @@ display: block; /* Ensure no inline gaps */
   z-index: 10;
 }
 
-/* Fourth Row */
-.fourth-row {
-  position: relative;
-  width: 100%;
-  height: 20%; /* Matches the height of the banner */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Fifth Row */
-.fifth-row {
-  position: relative;
-  width: 100%;
-  height: 20%; /* Matches the height of the banner */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 
 /* Responsive adjustments */
@@ -221,11 +211,11 @@ display: block; /* Ensure no inline gaps */
   }
 
   .logo {
-    height:25px;
+    height: 20px;
   }
 
    .menu a {
-    font-size: 25px;
+    font-size: 10px;
   }
 
   .logo-overlay {
@@ -254,10 +244,32 @@ display: block; /* Ensure no inline gaps */
 
 /* Divider styling */
 .divider {
-  height: 10px; /* Thickness of the dividing line */
-  background-color: white;
-  width: 100%;
+  height: 10px; /* This is the thickness of the divider itself */
+  background-color: white; /* Background color for the divider */
+  width: 100%; /* Full width of the container */
+  position: relative; /* Needed for pseudo-elements to be positioned correctly */
+  margin: 0px 0; /* Adds vertical spacing to the divider */
 }
+
+/* Horizontal line above and below */
+.divider::before, .divider::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px; /* Thickness of the horizontal lines */
+  background-color: #d5d5d5; /* Light grey color */
+}
+
+.divider::before {
+  top: 0; /* Line above the divider */
+}
+
+.divider::after {
+  bottom: 0; /* Line below the divider */
+}
+
+
 
 /* Other rows styling */
 .row {
