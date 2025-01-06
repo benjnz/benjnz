@@ -351,6 +351,22 @@ display: block; /* Ensure no inline gaps */
       max-width: 900px;
     }
 
+.image-row {
+  display: flex;
+  justify-content: center; /* Center images horizontally */
+  gap: 20px; /* Space between images */
+  margin-top: 20px; /* Space above the row */
+}
+
+.image-row img {
+  width: 45%; /* Adjust width of each image */
+  max-width: 300px; /* Optional: Set max width */
+  height: auto; /* Maintain aspect ratio */
+  border: 2px solid #ccc; /* Optional: Add a border */
+  border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
             .body-text {
