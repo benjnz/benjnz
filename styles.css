@@ -292,3 +292,70 @@ display: block; /* Ensure no inline gaps */
 @media (min-width: 1200px) {
 
 }
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .title-image {
+      width: 50%; /* Adjust the width as needed */
+      max-width: 600px; /* Optional: Limit the maximum size */
+      height: auto; /* Maintain aspect ratio */
+      margin-bottom: 10px; /* Space below the image */
+    }
+
+    .body-text {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .gif-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns, 2 rows */
+      gap: 20px; /* Space between gifs */
+      margin-bottom: 30px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gif-container img {
+      width: 100%; /* Ensure each grid item uses full width */
+      height: auto; /* Maintain aspect ratio */
+      border: 2px solid #ccc; /* Optional: add border */
+      border-radius: 5px; /* Optional: rounded corners */
+    }
+
+    .centered-image {
+      margin: 30px auto;
+      width: 75%;
+      max-width: 900px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gif-container {
+        grid-template-columns: repeat(2, 1fr); /* Still 2 by 2 */
+        gap: 15px; /* Reduce gap for smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gif-container {
+        gap: 50px; /* Further reduce gap for very small screens */
+      }
+    }
+    
+  </style>
