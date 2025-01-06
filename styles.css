@@ -301,30 +301,37 @@ display: block; /* Ensure no inline gaps */
       background-color: #f8f8f8;
       color: #333;
       text-align: center;
+      
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
+      
     }
 
-    .title-image {
-      width: 50%; /* Adjust the width as needed */
-      max-width: 600px; /* Optional: Limit the maximum size */
-      height: auto; /* Maintain aspect ratio */
-      margin-bottom: 10px; /* Space below the image */
-    }
+   .title-image {
+  display: block; /* Ensures it behaves like a block element */
+  margin: 0 auto; /* Automatically centers horizontally */
+  width: 50%; /* Adjust the width as needed */
+  max-width: 600px; /* Optional: Limit the maximum size */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Space below the image */
+}
 
-    .body-text {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
+
+.body-text {
+  text-align: center; /* Aligns the text horizontally */
+  font-size: 1.1rem; /* Adjust font size as needed */
+  margin-bottom: 20px; /* Adds space below the text */
+  line-height: 1.5; /* Improves text readability */
+  color: #333; /* Optional: Sets text color */
+}
 
     .gif-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 columns, 2 rows */
+      grid-template-columns: repeat(4, 1fr); /* 2 columns, 2 rows */
       gap: 20px; /* Space between gifs */
       margin-bottom: 30px;
       justify-content: center;
@@ -346,16 +353,18 @@ display: block; /* Ensure no inline gaps */
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
-      .gif-container {
-        grid-template-columns: repeat(2, 1fr); /* Still 2 by 2 */
-        gap: 15px; /* Reduce gap for smaller screens */
-      }
+            .body-text {
+  text-align: center; /* Aligns the text horizontally */
+  font-size: 0.9rem; /* Adjust font size as needed */
+            }
     }
 
     @media (max-width: 480px) {
-      .gif-container {
-        gap: 50px; /* Further reduce gap for very small screens */
-      }
+      .body-text {
+  text-align: center; /* Aligns the text horizontally */
+  font-size: 0.6rem; /* Adjust font size as needed */
     }
+    }
+ 
     
   </style>
