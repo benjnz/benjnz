@@ -56,23 +56,27 @@
       max-width: 900px;
     }
 
+    
+    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .gif-container img {
-        width: 40%; /* Make images smaller for smaller screens */
+      .gif-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 gifs per row */
       }
     }
 
     @media (max-width: 480px) {
-      .gif-container img {
-        width: 70%; /* Stack gifs for very small screens */
+      .gif-container {
+        grid-template-columns: repeat(2, 1fr); /* Still 2 gifs per row for smaller screens */
+        gap: 15px; /* Reduce gap for smaller screens */
       }
     }
+    
   </style>
 </head>
 <body>
   <div class="container">
     <!-- Title Image -->
-    <img src="logos/koth.png" alt="KOTH logo" class="title-image">
+    <img src="logos/kothlogo.png" alt="KOTH logo" class="title-image">
 
     <!-- Body Text -->
     <p class="body-text">
@@ -88,7 +92,7 @@
     </div>
 
     <!-- Centered PNG Image -->
-    <img src="media/kothimage.png" alt="Centered Image" class="centered-image">
+    <img src="media/kothimage.jpg" alt="Centered Image" class="centered-image">
   </div>
 </body>
 </html>
