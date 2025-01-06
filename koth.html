@@ -21,10 +21,11 @@
       padding: 20px;
     }
 
-    .title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
+    .title-image {
+      width: 50%; /* Adjust the width as needed */
+      max-width: 600px; /* Optional: Limit the maximum size */
+      height: auto; /* Maintain aspect ratio */
+      margin-bottom: 10px; /* Space below the image */
     }
 
     .body-text {
@@ -34,17 +35,16 @@
     }
 
     .gif-container {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns, 2 rows */
+      gap: 20px; /* Space between gifs */
       margin-bottom: 30px;
+      justify-content: center;
+      align-items: center;
     }
 
     .gif-container img {
-      width: 22%; /* Adjust to fit 4 gifs per row */
-      max-width: 250px; /* Optional: limit maximum size */
+      width: 100%; /* Ensure each grid item uses full width */
       height: auto; /* Maintain aspect ratio */
       border: 2px solid #ccc; /* Optional: add border */
       border-radius: 5px; /* Optional: rounded corners */
@@ -56,18 +56,17 @@
       max-width: 900px;
     }
 
-    
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .gif-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 gifs per row */
+        grid-template-columns: repeat(2, 1fr); /* Still 2 by 2 */
+        gap: 15px; /* Reduce gap for smaller screens */
       }
     }
 
     @media (max-width: 480px) {
       .gif-container {
-        grid-template-columns: repeat(2, 1fr); /* Still 2 gifs per row for smaller screens */
-        gap: 15px; /* Reduce gap for smaller screens */
+        gap: 10px; /* Further reduce gap for very small screens */
       }
     }
     
