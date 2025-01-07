@@ -481,8 +481,7 @@ display: block; /* Ensure no inline gaps */
 
 .bottom-image {
 margin: 30px auto;
-width: 75%;
-max-width: 1000px;
+width: 100%;
 }
 
 
