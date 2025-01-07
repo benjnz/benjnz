@@ -304,10 +304,10 @@ display: block; /* Ensure no inline gaps */
       
     }
 
-    .container {
-      max-width: 1200px;
+      .container {
+      max-width: 12000px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0px;
       
     }
 
@@ -351,6 +351,7 @@ display: block; /* Ensure no inline gaps */
       max-width: 900px;
     }
 
+/* Styling for the image row */
 .image-row {
   display: flex;
   justify-content: center;
@@ -380,7 +381,8 @@ display: block; /* Ensure no inline gaps */
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  backdrop-filter: blur(10px); /* Blur effect */
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -391,6 +393,19 @@ display: block; /* Ensure no inline gaps */
   max-height: 90%;
   border: 3px solid white;
   border-radius: 10px;
+  animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
     /* Responsive adjustments */
