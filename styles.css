@@ -218,7 +218,7 @@ display: block; /* Ensure no inline gaps */
   align-items: center;
 }
 
-/* Fifth Row */
+/* Sixth Row */
 .sixth-row {
   position: relative;
   width: 100%;
@@ -340,10 +340,6 @@ display: block; /* Ensure no inline gaps */
 }
 
 
-@media (min-width: 1200px) {
-
-}
-
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -390,6 +386,11 @@ display: block; /* Ensure no inline gaps */
   margin: 0 auto 30px; /* Center horizontally and add bottom margin */
   justify-items: center; /* Center items within each grid cell */
   align-items: center;
+
+  border-top: 2px solid #ccc; /* Line above */
+  border-bottom: 2px solid #ccc; /* Line below */
+  padding: 10px 0; /* Optional: Add spacing between the lines and content */
+
 }
 
 
@@ -453,10 +454,10 @@ display: block; /* Ensure no inline gaps */
 }
 
    .bottom-image {
-            max-width: 1000px;  /* Makes the image span the full width */
-            height: auto; /* Keeps the image's aspect ratio */
-         
-   }
+         margin: 30px auto;
+      width: 75%;
+      max-width: 1000px;
+    }
 
 /* Fade-in animation */
 @keyframes fadeIn {
@@ -496,11 +497,16 @@ display: block; /* Ensure no inline gaps */
 
 
   .gif-container, .image-row {
-    width: 48%; /* Both sections will take up 48% of the container width */
+
+    width: 52%; /* Both sections will take up 48% of the container width */
   }
 
   .gif-container {
+    width: 40%;
+    margin-top: 60px; /* Adjust the value to your needs */
     margin-right: 4%; /* Optional: add space between the gif and image sections */
+    
+
   }
 
   .image-row {
@@ -509,6 +515,8 @@ display: block; /* Ensure no inline gaps */
   }
 
   .image-row img {
+    margin-top: -280px; /* Adjust the value as needed */
+    margin-left: 10px; /* Adjust the value as needed */
     width: 48%; /* Images inside the image-row will take up 48% of the width */
   }
 }
