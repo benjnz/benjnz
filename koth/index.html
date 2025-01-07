@@ -75,6 +75,18 @@
   </div>
 </head>
 </style>
+   /* Media query for screens wider than 1200px */
+        @media (min-width: 1200px) {
+            .image-row, .gif-section {
+                width: 48%; /* Makes each section take up 48% of the width, leaving space between */
+            }
+
+            .content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
           .bottom-image {
             max-width: 1000px;  /* Makes the image span the full width */
             height: auto; /* Keeps the image's aspect ratio */
