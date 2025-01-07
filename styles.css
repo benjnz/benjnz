@@ -93,6 +93,23 @@ body {
   transition: opacity 0.1s linear; /* Smooth transition */
 }
 
+/* Ensure the link does not interfere with styling */
+.logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; /* Adjust size as needed */
+  width: auto;
+  overflow: hidden; /* Ensure no overflow from resizing */
+}
+
+.logo-link img {
+   height: 100%; /* Match container height */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+  transition: opacity 0.1s linear; /* Smooth transition */
+}
+
 
 .menu {
   display: flex;
