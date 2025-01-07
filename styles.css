@@ -329,14 +329,19 @@ display: block; /* Ensure no inline gaps */
   color: #333; /* Optional: Sets text color */
 }
 
-    .gif-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 2 columns, 2 rows */
-      gap: 20px; /* Space between gifs */
-      margin-bottom: 30px;
-      justify-content: center;
-      align-items: center;
-    }
+.gif-container {
+  max-width: calc(800px - 60px); /* Subtract 30px for left and right margins */
+  width: 100%; /* Allow the container to shrink on smaller screens */
+  padding: 0 30px; /* Add 30px padding on left and right */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px; /* Space between GIFs */
+  margin: 0 auto 30px; /* Center horizontally and add bottom margin */
+  justify-items: center; /* Center items within each grid cell */
+  align-items: center;
+}
+
+
 
     .gif-container img {
       width: 100%; /* Ensure each grid item uses full width */
@@ -414,12 +419,15 @@ display: block; /* Ensure no inline gaps */
   text-align: center; /* Aligns the text horizontally */
   font-size: 0.9rem; /* Adjust font size as needed */
             }
+      .gif-container {
+  max-width: calc(600px - 60px); /* Subtract 30px for left and right margins */
+      }
     }
 
     @media (max-width: 480px) {
       .body-text {
   text-align: center; /* Aligns the text horizontally */
-  font-size: 0.6rem; /* Adjust font size as needed */
+  font-size: 0.8rem; /* Adjust font size as needed */
     }
 
 
