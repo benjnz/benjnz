@@ -435,6 +435,12 @@ display: block; /* Ensure no inline gaps */
   animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
 }
 
+   .bottom-image {
+            max-width: 1000px;  /* Makes the image span the full width */
+            height: auto; /* Keeps the image's aspect ratio */
+         
+   }
+
 /* Fade-in animation */
 @keyframes fadeIn {
   from {
@@ -466,6 +472,33 @@ display: block; /* Ensure no inline gaps */
 
 
     }
+
+/* Media Query for screens wider than 1200px */
+@media (min-width: 1200px) {
+  .container {
+    display: flex;
+    flex-direction: row; /* Align the items in a row */
+    justify-content: space-between; /* Space between the two sections */
+  }
+
+  .gif-container, .image-row {
+    width: 48%; /* Both sections will take up 48% of the container width */
+  }
+
+  .gif-container {
+    margin-right: 4%; /* Optional: add space between the gif and image sections */
+  }
+
+  .image-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .image-row img {
+    width: 48%; /* Images inside the image-row will take up 48% of the width */
+  }
+}
+
  
     
   </style>
