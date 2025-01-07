@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KOTH</title>
   <link rel="stylesheet" href="../styles.css">
- <!-- Standard favicon -->
+  
+  <!-- Standard favicon -->
   <link rel="icon" href="../favicon.png" type="image/png">
 
   <!-- Apple Touch Icon -->
@@ -17,23 +18,140 @@
   <link rel="icon" sizes="48x48" href="../favicon-48x48.png">
   <link rel="icon" sizes="96x96" href="../favicon-96x96.png">
   <link rel="icon" sizes="192x192" href="../favicon-192x192.png">
-</head>
   
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0; /* Change background color */
+    }
+
+    /* Top Banner */
+    .top-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .logo img {
+      max-width: 150px;
+    }
+
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+
+    .container {
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Title Image */
+    .title-image {
+      width: 80%;
+      max-width: 600px;
+    }
+
+    /* Body Text */
+    .body-text {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+
+    /* GIF Section */
+    .gif-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .gif-container img {
+      width: 100px;
+      height: auto;
+      margin: 0 10px;
+    }
+
+    /* Image Row */
+    .image-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .clickable-image {
+      max-width: 48%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .clickable-image:hover {
+      transform: scale(1.1);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    /* Centered PNG Image */
+    .centered-image {
+      display: block;
+      margin: 30px auto;
+      max-width: 80%;
+      height: auto;
+    }
+
+    /* Media Query for screens wider than 1200px */
+    @media (min-width: 1200px) {
+      .image-row, .gif-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .image-row img, .gif-container img {
+        width: 48%; /* Makes each image take up 48% of the width */
+      }
+    }
+
+    /* Bottom Image */
+    .bottom-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
 <body>
+  <!-- Loading Screen -->
   <div id="loading-screen">
-  <div class="spinner"></div>
-</div>
+    <div class="spinner"></div>
+  </div>
 
   <!-- Top Banner -->
   <div class="top-banner">
     <div class="logo">
-      <img 
-        src="../logos/logo.png" 
-        data-gif="../logos/logo.gif" 
-        data-duration="1520"
-        alt="Logo" 
-        class="logo-img"
-      >
+      <img src="../logos/logo.png" data-gif="../logos/logo.gif" data-duration="1520" alt="Logo" class="logo-img">
     </div>
     <div class="menu">
       <a href="#Connect">Connect</a>
@@ -41,15 +159,12 @@
   </div>
 
   <!-- Page Content -->
-  
   <div class="container">
     <!-- Title Image -->
     <img src="../logos/kothlogo.png" alt="KOTH logo" class="title-image">
 
     <!-- Body Text -->
-    <p class="body-text">
-      A Board Game of Strategy and Skill
-    </p>
+    <p class="body-text">A Board Game of Strategy and Skill</p>
 
     <!-- GIF Section -->
     <div class="gif-container">
@@ -73,31 +188,10 @@
     <!-- Centered PNG Image -->
     <img src="../media/kothimage.jpg" alt="Centered Image" class="centered-image">
   </div>
-</head>
-</style>
-  body {
-   /* Media query for screens wider than 1200px */
-        @media (min-width: 1200px) {
-            .image-row, .gif-section {
-                width: 48%; /* Makes each section take up 48% of the width, leaving space between */
-            }
 
-            .content {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-          .bottom-image {
-            max-width: 1000px;  /* Makes the image span the full width */
-            height: auto; /* Keeps the image's aspect ratio */
-         
-        }
-  }
-    </style>
-  
-    <img src="../media/kothlandscape.png" alt="Bottom Image" class="bottom-image">
+  <!-- Bottom Image -->
+  <img src="../media/kothlandscape.png" alt="Bottom Image" class="bottom-image">
 
-<script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
