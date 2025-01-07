@@ -475,11 +475,8 @@ display: block; /* Ensure no inline gaps */
 
 /* Media Query for screens wider than 1200px */
 @media (min-width: 1200px) {
-  .container {
-    display: flex;
-    flex-direction: row; /* Align the items in a row */
-    justify-content: space-between; /* Space between the two sections */
-  }
+
+
 
   .gif-container, .image-row {
     width: 48%; /* Both sections will take up 48% of the container width */
