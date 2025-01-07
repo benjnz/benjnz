@@ -44,20 +44,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 10000); // 10000 ms = 10 seconds
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const images = document.querySelectorAll(".clickable-image");
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-
-  images.forEach(image => {
-    image.addEventListener("click", () => {
-      lightbox.style.display = "flex"; // Show the lightbox
-      lightboxImg.src = image.src; // Set the lightbox image source
-    });
-  });
-
-  // Close lightbox when clicking outside the image
-  lightbox.addEventListener("click", () => {
-    lightbox.style.display = "none";
-  });
-});
