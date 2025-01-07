@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOTH</title>
+  <link rel="stylesheet" href="../styles.css"> <!-- Updated path -->
+
+  <!-- Standard favicon -->
+  <link rel="icon" href="../favicon.png" type="image/png">
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="../favicon-180x180.png">
+
+  <!-- Optional for higher resolution screens -->
+  <link rel="icon" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="icon" sizes="16x16" href="../favicon-16x16.png">
+  <link rel="icon" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" sizes="96x96" href="../favicon-96x96.png">
+  <link rel="icon" sizes="192x192" href="../favicon-192x192.png">
+</head>
+
+<body>
+  <div id="loading-screen">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <div class="logo">
+      <a href="/">
+        <img 
+          src="../logos/logo.png" 
+          data-gif="../logos/logo.gif" 
+          data-duration="1520"
+          alt="Logo" 
+          class="logo-img">
+      </a>
+    </div>
+    <div class="menu">
+      <a href="#Connect">Connect</a>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Title Image -->
+    <img src="../logos/kothlogo.png" alt="KOTH logo" class="title-image">
+
+    <!-- Body Text -->
+    <p class="body-text">
+      A Board Game of Strategy and Skill
+    </p>
+
+    <!-- GIF Section -->
+    <div class="gif-container">
+      <img src="../media/king.gif" alt="GIF 1">
+      <img src="../media/knight.gif" alt="GIF 2">
+      <img src="../media/wizard.gif" alt="GIF 3">
+      <img src="../media/dragon.gif" alt="GIF 4">
+    </div>
+
+    <!-- Image Row -->
+    <div class="image-row">
+      <img src="../media/kothfront.png" alt="First Side Image" class="clickable-image">
+      <img src="../media/kothback.png" alt="Second Side Image" class="clickable-image">
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <img id="lightbox-img" alt="Enlarged Image">
+    </div>
+
+    <!-- Centered PNG Image -->
+    <img src="../media/kothimage.jpg" alt="Centered Image" class="centered-image">
+  </div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
