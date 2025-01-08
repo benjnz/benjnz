@@ -35,7 +35,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Optional background overlay */
+  background-color: rgb(255 255 255 / 85%); /* Optional background overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ body {
 }
 
 /* Optional: Adjust size of the logo gif */
-.loading-spinner img {
+.loading-screen img {
   max-width: 150px; /* Set your logo size */
   width: auto;
   height: auto;
