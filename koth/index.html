@@ -91,6 +91,25 @@
   </div>
 </div>
 
+  <script>
+  // Select the button and the lightbox container
+  const lightboxButton = document.querySelector('.open-lightbox-btn');
+  const lightbox = document.querySelector('#image-text-lightbox');
+
+  // Open the lightbox when the button is clicked
+  lightboxButton.addEventListener('click', () => {
+    lightbox.style.display = 'flex'; // Show the lightbox
+  });
+
+  // Close the lightbox when clicked anywhere inside the lightbox
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) { // Only close if clicking on the background, not the content
+      lightbox.style.display = 'none'; // Hide the lightbox
+    }
+  });
+</script>
+
+
     <img src="../media/kothlandscape.png" alt="Bottom Image" class="bottom-image">
 
 <script src="main.js"></script>
