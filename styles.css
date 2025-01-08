@@ -732,7 +732,7 @@ width: 100%;
 
 /* Lightbox content container */
 .lightbox-content {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 8px;
   max-width: 90%;
   max-height: 90%;
@@ -795,13 +795,13 @@ width: 100%;
   color: #333;
   text-align: justify;
   margin-bottom: 20px;
-  max-height: 60vh; /* Limit text height */
+  max-height: 600vh; /* Limit text height */
   overflow-y: auto; /* Enable scrolling if text overflows */
 }
 
 /* Close button style */
 .open-lightbox-btn {
-  background-color: #4CAF50;
+  background-color: #e29d00;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -812,7 +812,7 @@ width: 100%;
 }
 
 .open-lightbox-btn:hover {
-  background-color: #45a049;
+  background-color: #ffcb48;
 }
 
 /* Close button inside the lightbox */
@@ -822,13 +822,13 @@ width: 100%;
   right: 10px;
   background-color: transparent;
   border: none;
-  color: white;
+  color: #ffffff;
   font-size: 30px;
   cursor: pointer;
 }
 
 .lightbox-content > .close-btn:hover {
-  color: #ff0000;
+  color: #bf8f22;
 }
 
 
