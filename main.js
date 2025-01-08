@@ -1,17 +1,18 @@
-window.addEventListener('load', function() {
-  // Get the loading screen element by class
+document.addEventListener('DOMContentLoaded', function() {
   const loadingScreen = document.querySelector('.loading-screen');
   
-  // Fade out the loading screen after the page loads
-  loadingScreen.style.opacity = '0'; // Fade out by setting opacity to 0
-  
-  // Wait for the fade-out to complete, then remove the loading screen
-  setTimeout(function() {
-    loadingScreen.style.display = 'none'; // Hide the loading screen completely
-  }, 500); // Time must match the transition time in CSS
+  if (loadingScreen) {
+    // After the page is fully loaded, fade out the loading screen
+    window.addEventListener('load', function() {
+      loadingScreen.style.opacity = '0'; // Fade out by setting opacity to 0
+      setTimeout(function() {
+        loadingScreen.style.display = 'none'; // Hide the loading screen completely
+      }, 500); // Make sure this matches the transition time in CSS
+    });
+  } else {
+    console.error("Loading screen not found.");
+  }
 });
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
