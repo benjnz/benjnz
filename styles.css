@@ -33,7 +33,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 10%;
   height: 100%;
   background-color: white;
   display: flex;
@@ -378,7 +378,7 @@ display: block; /* Ensure no inline gaps */
 
 .gif-container {
   max-width: calc(800px - 60px); /* Subtract 30px for left and right margins */
-  width: 100%; /* Allow the container to shrink on smaller screens */
+  width: 80%; /* Allow the container to shrink on smaller screens */
   padding: 0 30px; /* Add 30px padding on left and right */
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns */
@@ -400,6 +400,7 @@ display: block; /* Ensure no inline gaps */
       height: auto; /* Maintain aspect ratio */
       border: 2px solid #ccc; /* Optional: add border */
       border-radius: 5px; /* Optional: rounded corners */
+      
     }
 
     .centered-image {
@@ -495,7 +496,7 @@ display: block; /* Ensure no inline gaps */
   background-color: #bf8f22; /* Blue background */
   color: #ffffff; /* White text */
   padding: 10px 20px; /* Spacing inside the button */
-  font-size: 3vw;
+  font-size: 4vw;
   border: none;
   border-radius: 5px;
   cursor: pointer;
