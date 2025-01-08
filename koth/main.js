@@ -1,10 +1,15 @@
-window.addEventListener("load", () => {
-    const loadingScreen = document.getElementById("loading-screen");
-    loadingScreen.style.opacity = "0";
-    setTimeout(() => {
-      loadingScreen.style.display = "none";
-    }, 500); // Delay to ensure smooth fade-out
-  });
+window.addEventListener('load', function() {
+  // Get the loading screen element by class
+  const loadingScreen = document.querySelector('.loading-screen');
+  
+  // Fade out the loading screen after the page loads
+  loadingScreen.style.opacity = '0'; // Fade out by setting opacity to 0
+  
+  // Wait for the fade-out to complete, then remove the loading screen
+  setTimeout(function() {
+    loadingScreen.style.display = 'none'; // Hide the loading screen completely
+  }, 500); // Time must match the transition time in CSS
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
