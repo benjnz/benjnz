@@ -106,10 +106,40 @@
 <!-- Lightbox for image and text -->
 <div class="lightbox" id="image-text-lightbox">
   <div class="lightbox-content">
-    <img src="../media/kothcard.png" alt="Lightbox Image">
-    <p class="lightbox-text">King of the Hill is a 2 pl</p>
+    <!-- Container for images and text -->
+    <div class="content-container">
+      <!-- Left side for Images -->
+      <div class="image-container">
+        <!-- First Image (Main Image) -->
+        <img src="../media/kothcard.png" alt="King of the Hill Card" class="lightbox-image">
+        
+        <!-- Second Image (New Image below the first) -->
+        <img src="../media/kothboarddiagram.png" alt="Additional Image" class="lightbox-image">
+      </div>
+      
+     <!-- Right side for Text -->
+<div class="text-container">
+  <!-- First Title and Text -->
+  <p class="lightbox-text">
+    King of the Hill can be played with 2, 3, or 4 players. Each player takes one side of the board, assembling their army in any configuration across 22 tiles (see the red regions in the lower-left-hand image). However, the king MUST sit on the middle diamond tile (see the orange diamonds in the lower-left-hand image). Players should take turns placing their remaining 15 units (5 dragons, 5 knights, and 5 wizards) as they may want to set up tactically to face an opposing army. This red-zone is a safe area, meaning no attacking can take place by any unit; however, opposing units may move into other red-zones. Once all units have been placed, play can begin.
+  </p>
+
+  <!-- New Title and Text Below -->
+  <h2 class="additional-title">Taking Turns and Unit Types</h2>
+  <p class="lightbox-text">
+    Each player takes turns moving one of their units. If a unit can legally attack another piece, the player may choose to do so, removing the opposing unit from the board. The upper-left-hand infographic shows the unit movement and attack ranges, where a dragon may only attack a knight, a knight may only attack a wizard or another knight, and a wizard may only attack a dragon. Additionally, all units may attack the king, and the king can attack all units. The dragon can move 2 tiles in any straight line (except to octagonal ones) but can only attack adjacent knights/kings; the knight may move to any adjacent tile and, only if it is currently on an octagonal tile, to any other octagonal tile along its row (before the hill tile); the wizard may move to any adjacent tile but can attack dragons/kings that are 2 tiles away in any straight line (essentially an inverse dragon). Any unit that attacks another unit shall take its place, unless it is a non-knight unit attacking a knight (i.e., a dragon) on an octagonal tile, in which case the knight is still removed from the board, but the attacking dragon stays on its current tile.
+  </p>
+
+  <!-- Third Title and Text -->
+  <h2 class="additional-title">Endgame</h2>
+  <p class="lightbox-text">
+    The winner of the game is the player whose king reaches the hill (the middle of the board!) OR the player whose king is the last one standing. To defeat a king, it must be "checkmated," much like in a game of chess, where the king has no legal tiles to move to. Like in chess, the king cannot move into a position that is being attacked by at least one opposing unit. If a unit reaches and moves into the red-zone opposite its home red-zone, it may be exchanged for any other unit, as long as there is a spare eliminated unit.
+  </p>
+</div>
+
   </div>
 </div>
+
 
   <script>
   // Select the button and the lightbox container
