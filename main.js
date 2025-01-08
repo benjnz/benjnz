@@ -1,10 +1,9 @@
-// Show loading spinner
-document.querySelector('.loading-spinner').style.display = 'flex';
-
-// Hide loading spinner after content is loaded
+// Wait for the page to fully load
 window.addEventListener('load', function() {
-  document.querySelector('.loading-spinner').style.display = 'none';
+  // Add 'loaded' class to body to hide the loading spinner
+  document.body.classList.add('loaded');
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
