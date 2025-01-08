@@ -370,6 +370,54 @@ display: block; /* Ensure no inline gaps */
   color: #333; /* Optional: Sets text color */
 }
 
+/* Image container for small images */
+.image-container {
+  display: flex;
+  justify-content: center; /* Center images horizontally */
+  gap: 40px; /* Add space between the images */
+  margin: 20px auto; /* Add margin above and below the container */
+  max-width: 90%; /* Limit the width to 90% of the container */
+}
+
+/* Each image and its caption */
+.image-item {
+  text-align: center; /* Aligns the caption below the image */
+  width: 8%; /* Adjust the width of each image item */
+  display: flex;
+  flex-direction: column; /* Stack image and caption vertically */
+  align-items: center; /* Center them horizontally */
+  gap: 10px; /* Adds space between image and caption */
+}
+
+/* Small images styling */
+.small-image {
+  width: 100%; /* Make image fill the container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a slight shadow for effect */
+  transition: transform 0.2s ease-in-out; /* Optional: smooth scaling on hover */
+}
+
+/* Optional hover effect for images */
+.small-image:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Styling for the image captions */
+.image-caption {
+  
+  font-size: 1.1vw; /* Adjust the font size for the captions */
+  color: #333; /* Dark text color for visibility */
+  margin-top: 5px; /* Space between image and caption */
+  font-weight: 500; /* Optional: make the caption text a little bolder */
+  width: 100%; /* Ensure the caption takes full width */
+  display: flex;
+  flex-direction: column; /* Stack image and caption vertically */
+  align-items: center; /* Center them horizontally */
+  gap: 10px; /* Adds space between image and caption */
+  min-width: 150px; /* Ensures images are not too small on very narrow screens */
+  position: relative; /* To manage text overflow better */
+  overflow: hidden; /* Optionally hide text that overflows the container */
+}
+
 .gif-container {
   max-width: calc(800px - 60px); /* Subtract 30px for left and right margins */
   width: 80%; /* Allow the container to shrink on smaller screens */
@@ -387,7 +435,34 @@ display: block; /* Ensure no inline gaps */
 
 }
 
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+  .image-item {
+    width: 12%; /* Make each item take up less space on smaller screens */
+  }
 
+  .image-caption {
+  font-size: 2vw; /* Adjust the font size for the captions */
+
+  }
+}
+
+@media (max-width: 480px) {
+  .image-item {
+    width: 20%; /* Make each item take up more space on very small screens */
+    
+  }
+
+  .image-container{
+gap: 15px;
+    
+  }
+
+  .image-caption{
+
+  font-size: 3vw;
+  }
+}
 
     .gif-container img {
       width: 100%; /* Ensure each grid item uses full width */
