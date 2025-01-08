@@ -134,34 +134,35 @@
   <h2 class="additional-title">Endgame</h2>
   <p class="lightbox-text">
     The winner of the game is the player whose king reaches the hill (the middle of the board!) OR the player whose king is the last one standing. To defeat a king, it must be "checkmated," much like in a game of chess, where the king has no legal tiles to move to. Like in chess, the king cannot move into a position that is being attacked by at least one opposing unit. If a unit reaches and moves into the red-zone opposite its home red-zone, it may be exchanged for any other unit, as long as there is a spare eliminated unit.
-  </p>
-</div>
+ </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  </div>
-</div>
-
-
-  <script>
-  // Select the button and the lightbox container
-  const lightboxButton = document.querySelector('.open-lightbox-btn');
-  const lightbox = document.querySelector('#image-text-lightbox');
-
-  // Open the lightbox when the button is clicked
-  lightboxButton.addEventListener('click', () => {
-    lightbox.style.display = 'flex'; // Show the lightbox
-  });
-
-  // Close the lightbox when clicked anywhere inside the lightbox
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) { // Only close if clicking on the background, not the content
-      lightbox.style.display = 'none'; // Hide the lightbox
-    }
-  });
-</script>
-
-
+    <!-- Bottom Image (Not part of the lightbox) -->
     <img src="../media/kothlandscape.png" alt="Bottom Image" class="bottom-image">
 
-<script src="main.js"></script>
+  </div>
+
+  <script>
+    // Select the button and the lightbox container
+    const lightboxButton = document.querySelector('.open-lightbox-btn');
+    const lightbox = document.querySelector('#image-text-lightbox');
+
+    // Open the lightbox when the button is clicked
+    lightboxButton.addEventListener('click', () => {
+      lightbox.style.display = 'flex'; // Show the lightbox
+    });
+
+    // Close the lightbox when clicked anywhere inside the lightbox
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) { // Only close if clicking on the background, not the content
+        lightbox.style.display = 'none'; // Hide the lightbox
+      }
+    });
+  </script>
+
+  <script src="main.js"></script>
 </body>
 </html>
