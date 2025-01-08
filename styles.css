@@ -258,10 +258,7 @@ display: block; /* Ensure no inline gaps */
     height: auto; /* Adjust height if needed for smaller screens */
   }
 
-  .logo {
-    height: 25px;
-  }
-
+ 
    .menu a {
     font-size: 25px;
   }
@@ -538,21 +535,39 @@ width: 100%;
     @media (max-width: 768px) {
             .body-text {
   text-align: center; /* Aligns the text horizontally */
-  font-size: 0.9rem; /* Adjust font size as needed */
+  font-size: 2.5vw; /* Adjust font size as needed */
             }
       .gif-container {
   max-width: calc(600px - 60px); /* Subtract 30px for left and right margins */
       }
+       .title-image {
+  display: block; /* Ensures it behaves like a block element */
+  margin: 0 auto; /* Automatically centers horizontally */
+  width: 70%; /* Adjust the width as needed */
+  max-width: 600px; /* Optional: Limit the maximum size */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Space below the image */
+}
     }
 
     @media (max-width: 480px) {
       .body-text {
   text-align: center; /* Aligns the text horizontally */
-  font-size: 0.8rem; /* Adjust font size as needed */
+  font-size: 4vw; /* Adjust font size as needed */
     }
 
+      
+   .title-image {
+  display: block; /* Ensures it behaves like a block element */
+  margin: 0 auto; /* Automatically centers horizontally */
+  width: 80%; /* Adjust the width as needed */
+  max-width: 600px; /* Optional: Limit the maximum size */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Space below the image */
+}
 
-    }
+    
+}
 
 /* Media Query for screens wider than 1200px */
 @media (min-width: 1200px) {
