@@ -1,7 +1,12 @@
-// Wait for the page to fully load
 window.addEventListener('load', function() {
-  // Add 'loaded' class to body to hide the loading spinner
-  document.body.classList.add('loaded');
+  // Fade out the loading screen after the page loads
+  const loadingScreen = document.getElementById('loading-screen');
+  loadingScreen.style.opacity = '0'; // Fade out by setting opacity to 0
+
+  // Wait for the fade-out to complete, then remove the loading screen
+  setTimeout(function() {
+    loadingScreen.style.display = 'none'; // Hide the loading screen completely
+  }, 500); // Time must match the transition time in CSS
 });
 
 
