@@ -60,19 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initialImage.addEventListener("click", () => {
         if (!isZoomed) {
-            // Zoom in
+            // Zoom in effect (stay in place)
             initialImage.classList.add("zoomed");
             initialImage.classList.remove("unzoomed");
             setTimeout(() => {
+                // Hide the initial image and show the zoomed image
                 initialImage.classList.add("mesh-hidden");
                 zoomedImage.classList.remove("mesh-hidden");
-                zoomedImage.classList.add("zoomed");
+                zoomedImage.classList.add("unzoomed");
             }, 600); // Matches the transition duration
         } else {
-            // Zoom out
-            zoomedImage.classList.remove("zoomed");
-            zoomedImage.classList.add("unzoomed");
+            // Zoom out effect
+            zoomedImage.classList.add("zoomed");
+            zoomedImage.classList.remove("unzoomed");
             setTimeout(() => {
+                // Hide the zoomed image and show the initial image
                 zoomedImage.classList.add("mesh-hidden");
                 initialImage.classList.remove("mesh-hidden");
                 initialImage.classList.add("unzoomed");
@@ -83,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isZoomed = !isZoomed;
     });
 });
+
 
 
 
