@@ -832,7 +832,7 @@ width: 100%;
 }
 
 /* Global Styles */
-body {
+body.micro {
     margin: 0;
     font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
     background-color: #2A2929;
