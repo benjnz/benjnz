@@ -336,7 +336,7 @@ display: block; /* Ensure no inline gaps */
 
 <style>
     body {
-      font-family: Arial, sans-serif;
+    font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
       margin: 0;
       padding: 0;
       background-color: #f8f8f8;
@@ -830,6 +830,157 @@ width: 100%;
 .lightbox-content > .close-btn:hover {
   color: #bf8f22;
 }
+
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
+    background-color: #2A2929;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Main Container for Left and Right Sections */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+/* Left Section: Text Box */
+.text-box {
+    flex: 1;
+    padding-right: 20px;
+    max-width: 45%;
+}
+
+/* Logo */
+.Micrologo {
+    display: block;
+    margin: 0 auto 20px; /* Centers the logo and adds space below it */
+    width: 80%; /* Adjust the size as needed */
+    max-width: 2000px; /* Set a maximum width for responsiveness */
+}
+
+/* Justify Text */
+.text-content {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+/* Center the Button */
+.read-paper-btn {
+    display: block; /* Makes the button a block element */
+    margin: 20px auto 0; /* Centers the button with margin on top */
+    background-color: #93aacc; /* Green button */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+      border-radius: 120px; /* Rounded corners */
+
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.read-paper-btn:hover {
+    background-color: #45a049;
+}
+
+.read-paper-btn:hover {
+    background-color: #45a049;
+}
+
+
+.read-paper-btn:hover {
+    background-color: #45a049;
+}
+
+/* Right Section: Video */
+.video-box {
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-box iframe {
+    width: 100%;
+    height: 315px; /* Adjust as needed */
+}
+
+/* Timeline Section */
+.timeline {
+    padding: 40px;
+    background-color: #1A1A1A;
+    margin-top: 50px;
+}
+
+.timeline-events {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+}
+
+.timeline-event {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.timeline-event img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.timeline-event p {
+    margin-top: 10px;
+}
+
+/* Video Styles */
+.video {
+    width: 100%;   /* Adjust width as necessary */
+    height: auto;  /* Keeps aspect ratio */
+    object-fit: cover; /* Optional: Makes sure the video covers the container */
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .main-container {
+        font-size:3vw;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-box, .video-box {
+        max-width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: 30px;
+    }
+
+    .video-box iframe {
+        height: 250px; /* Adjust for smaller screens */
+    }
+}
+
 
 
   </style>
