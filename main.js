@@ -52,17 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 10000); // 10000 ms = 10 seconds
 });
 
-initialImage.addEventListener("click", () => {
-    // Apply zoom animation
-    initialImage.classList.add("mesh-zoomed");
+document.addEventListener("DOMContentLoaded", () => {
+    const initialImage = document.getElementById("initial-image");
+    const zoomedImage = document.getElementById("zoomed-image");
 
-    // Swap the images after the zoom animation
-    setTimeout(() => {
-        initialImage.classList.add("mesh-hidden");
-        zoomedImage.classList.remove("mesh-hidden");
-        zoomedImage.style.opacity = "1";
-    }, 300); // Matches the transition duration in CSS
+    initialImage.addEventListener("click", () => {
+        // Apply zoom animation
+        initialImage.classList.add("mesh-zoomed");
+
+        // Swap the images after the zoom animation
+        setTimeout(() => {
+            initialImage.classList.add("mesh-hidden");
+            zoomedImage.classList.remove("mesh-hidden");
+            zoomedImage.style.opacity = "1";
+        }, 300); // Matches the transition duration in CSS
+    });
 });
-
-
 
