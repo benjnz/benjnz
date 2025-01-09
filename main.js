@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 zoomedImage.classList.remove("mesh-hidden");
                 zoomedImage.classList.add("zoomed-in");
                 zoomedImage.classList.remove("unzoomed");
-            }, 100); // Matches the transition duration for zoom effect
+            }, 400); // Matches the transition duration for zoom effect
         }
 
         // Toggle zoom state
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 zoomedImage.classList.add("mesh-hidden");
                 initialImage.classList.remove("mesh-hidden");
                 initialImage.classList.add("unzoomed");
-            }, 100); // Matches the transition duration for zoom effect
+            }, 400); // Matches the transition duration for zoom effect
         }
 
         // Toggle zoom state
