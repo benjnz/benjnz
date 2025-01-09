@@ -52,3 +52,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 10000); // 10000 ms = 10 seconds
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const initialImage = document.getElementById("initial-image");
+    const zoomedImage = document.getElementById("zoomed-image");
+
+    initialImage.addEventListener("click", () => {
+        // Apply zoom animation
+        initialImage.classList.add("zoomed");
+
+        // Swap the images after the zoom animation
+        setTimeout(() => {
+            initialImage.classList.add("hidden");
+            zoomedImage.classList.remove("hidden");
+            zoomedImage.style.opacity = "1";
+        }, 300); // Matches the transition duration in CSS
+    });
+});
+
+
