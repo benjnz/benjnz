@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const initialImage = document.getElementById("initial-image");
+    const zoomedImage = document.getElementById("zoomed-image");
 
     let isZoomed = false;
 
@@ -62,15 +63,26 @@ document.addEventListener("DOMContentLoaded", () => {
             // Zoom in
             initialImage.classList.add("zoomed");
             initialImage.classList.remove("unzoomed");
+            setTimeout(() => {
+                initialImage.classList.add("mesh-hidden");
+                zoomedImage.classList.remove("mesh-hidden");
+                zoomedImage.classList.add("zoomed");
+            }, 600); // Matches the transition duration
         } else {
             // Zoom out
-            initialImage.classList.remove("zoomed");
-            initialImage.classList.add("unzoomed");
+            zoomedImage.classList.remove("zoomed");
+            zoomedImage.classList.add("unzoomed");
+            setTimeout(() => {
+                zoomedImage.classList.add("mesh-hidden");
+                initialImage.classList.remove("mesh-hidden");
+                initialImage.classList.add("unzoomed");
+            }, 600); // Matches the transition duration
         }
 
         // Toggle zoom state
         isZoomed = !isZoomed;
     });
 });
+
 
 
