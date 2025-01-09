@@ -58,34 +58,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let isZoomed = false;
 
+    // Initial Image click handler (Zoom in)
     initialImage.addEventListener("click", () => {
         if (!isZoomed) {
-            // Zoom in effect (stay in place)
-            initialImage.classList.add("zoomed");
+            // Apply zoom-in effect to the initial image
+            initialImage.classList.add("zoomed-in");
             initialImage.classList.remove("unzoomed");
+
+            // Hide the initial image and show the zoomed-in image after zoom-in effect
             setTimeout(() => {
-                // Hide the initial image and show the zoomed image
                 initialImage.classList.add("mesh-hidden");
                 zoomedImage.classList.remove("mesh-hidden");
-                zoomedImage.classList.add("unzoomed");
-            }, 600); // Matches the transition duration
-        } else {
-            // Zoom out effect
-            zoomedImage.classList.add("zoomed");
-            zoomedImage.classList.remove("unzoomed");
+                zoomedImage.classList.add("zoomed-in");
+                zoomedImage.classList.remove("unzoomed");
+            }, 100); // Matches the transition duration for zoom effect
+        }
+
+        // Toggle zoom state
+        isZoomed = !isZoomed;
+    });
+
+    // Zoomed Image click handler (Zoom out)
+    zoomedImage.addEventListener("click", () => {
+        if (isZoomed) {
+            // Apply zoom-out effect (return to original state)
+            zoomedImage.classList.remove("zoomed-in");
+            zoomedImage.classList.add("unzoomed");
+
+            // Hide the zoomed image and show the initial image after zoom-out effect
             setTimeout(() => {
-                // Hide the zoomed image and show the initial image
                 zoomedImage.classList.add("mesh-hidden");
                 initialImage.classList.remove("mesh-hidden");
                 initialImage.classList.add("unzoomed");
-            }, 600); // Matches the transition duration
+            }, 100); // Matches the transition duration for zoom effect
         }
 
         // Toggle zoom state
         isZoomed = !isZoomed;
     });
 });
-
-
 
 
