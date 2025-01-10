@@ -1032,18 +1032,10 @@ p {
     .mesh-content-container {
         flex-direction: row; /* Layout side by side for larger screens */
     }
+
+  
 }
 
-/* Image Container */
-.mesh-image-container {
-    flex: 2; /* Take up 50% of the container */
-    display: flex;
-    flex-direction: column; /* Stack title and image vertically */
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-right: 20px;
-}
 
 /* Title above image for larger displays */
 .mesh-zoom-title {
@@ -1138,6 +1130,46 @@ p {
     text-align: left;
 }
 
+.mesh-image-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.mesh-image {
+    cursor: pointer;
+    transition: opacity 1s ease;
+    width: 100%;
+    max-width: 300px;
+
+}
+
+.mesh-hidden {
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+.mesh-visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0s ease;
+    z-index: 2; /* Ensure images are above the GIF */
+
+}
+
+.mesh-gif {
+    position: absolute;
+    margin-top: 15%;
+    left: 0;
+    width: 100%;
+    max-width: 600px;
+    pointer-events: none; /* Prevent interaction with the GIF */
+    z-index: 3;
+}
 /* Media Queries for Responsiveness */
 @media(max-width: 768px) {
     .mesh-image-container {
