@@ -80,9 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide the zoomed image
         zoomedImage.classList.add("mesh-hidden");
 
-        // Show the initial image and GIF
+        // Show the initial image but not GIF
+        animationGif.classList.add("mesh-hidden");
         initialImage.classList.remove("mesh-hidden");
-        animationGif.classList.remove("mesh-hidden");
+        
 
 });
  
