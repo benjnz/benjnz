@@ -75,13 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
         animationGif.src = animationGif.src;
     });
   
-  // Add a click event listener to the initial image
+  // Add a click event listener to the zoomed image
     zoomedImage.addEventListener("click", () => {
-        // Hide the initial image
+        // Hide the zoomed image
         zoomedImage.classList.add("mesh-hidden");
 
-        // Show the zoomed image and GIF
+        // Show the initial image and GIF
         initialImage.classList.remove("mesh-hidden");
+        animationGif.classList.remove("mesh-hidden");
 
 });
  
