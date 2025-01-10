@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Show the zoomed image and GIF
         initialImage.classList.remove("mesh-hidden");
-        animationGif.classList.remove("mesh-hidden");
 
         // Reload the GIF to start playing from the beginning
         // Reverse the GIF
