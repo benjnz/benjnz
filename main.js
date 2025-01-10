@@ -84,5 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
         initialImage.classList.remove("mesh-hidden");
 
 });
+});
 
 
