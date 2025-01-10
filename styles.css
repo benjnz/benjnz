@@ -965,6 +965,16 @@ p {
     margin-top: 10px;
 }
 
+.fibreflex-link {
+    color: #93aacc;
+    text-decoration: none;
+}
+
+.fibreflex-link:hover {
+    text-decoration: underline;
+}
+
+
 /* Video Styles */
 .video {
     width: 100%;   /* Adjust width as necessary */
