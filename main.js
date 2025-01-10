@@ -78,11 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     initialImage.addEventListener("click", () => {
         if (!isZoomedIn) {
+            // Hide the initial image immediately
+            initialImage.classList.remove("mesh-visible");
+            initialImage.classList.add("mesh-hidden");
+
             // Play the forward GIF and fade in zoomed image
             playGif(false, () => {
                 zoomedImage.classList.remove("mesh-hidden");
                 zoomedImage.classList.add("mesh-visible");
-                initialImage.classList.add("mesh-hidden");
             });
             isZoomedIn = true;
         }
@@ -90,10 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     zoomedImage.addEventListener("click", () => {
         if (isZoomedIn) {
-            // Play the reverse GIF and fade out zoomed image
+            // Fade out zoomed image
             zoomedImage.classList.remove("mesh-visible");
             zoomedImage.classList.add("mesh-hidden");
 
+            // Play the reverse GIF and show initial image
             playGif(true, () => {
                 initialImage.classList.remove("mesh-hidden");
                 initialImage.classList.add("mesh-visible");
@@ -102,5 +106,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-
