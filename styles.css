@@ -952,7 +952,7 @@ p {
     background-color: #333;
     padding: 20px;
     border-radius: 10px;
-    width: 200px;
+    width: 25%;
 }
 
 .timeline-event img {
@@ -1166,6 +1166,41 @@ p {
         text-align: left;
         margin-top: 20px;
     }
+
+  .video-box{
+
+   width: 75%;;
+  }
+
+  .micro p{
+
+    font-size: 3vw;
+  }
+/* Timeline Section */
+.timeline {
+    padding: 40px;
+  
+    background-color: #1A1A1A;
+    margin-top: 50px;
+}
+
+.timeline-events {
+    display: flex;
+  
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 30px; /* Adjust the gap between items */
+    text-align: center;
+}
+
+.timeline-event {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%; /* Adjust width to fit within the parent container */
+    max-width: 400px; /* Optional: Limit the maximum width for better responsiveness */
+}
+
 }
 
 /* Media Queries for Responsiveness */
