@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function openPDF() {
     // Replace 'path/to/your-paper.pdf' with the actual path or URL to your PDF
-    const pdfURL = "/microprintspaper";
+    const pdfURL = "/microprintspaper.pdf";
     window.open(pdfURL, "_blank"); // Opens the PDF in a new tab
 }
 
