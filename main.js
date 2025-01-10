@@ -71,23 +71,25 @@ document.addEventListener("DOMContentLoaded", () => {
         zoomedImage.classList.remove("mesh-hidden");
         animationGif.classList.remove("mesh-hidden");
 
-        // Reload the GIF to play it from the start
+        // Reload the GIF to start playing from the beginning
         animationGif.src = animationGif.src;
     });
 
-    // Add a click event listener to the zoomed image
+   // Add a click event listener to the initial image
     zoomedImage.addEventListener("click", () => {
-        // Hide the zoomed image
+        // Hide the initial image
         zoomedImage.classList.add("mesh-hidden");
 
+        // Show the zoomed image and GIF
+        initialImage.classList.remove("mesh-hidden");
+        animationGif.classList.remove("mesh-hidden");
+
+        // Reload the GIF to start playing from the beginning
         // Reverse the GIF
         reverseGif(animationGif);
+});
 
-        // Show the initial image
-        initialImage.classList.remove("mesh-hidden");
-    });
-
-    // Function to reverse the GIF
+   // Function to reverse the GIF
     function reverseGif(gifElement) {
         // Reload the GIF with a reverse animation, if possible
         // (This assumes a pre-existing reversed GIF is available)
@@ -98,6 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
             gifElement.src = originalSrc.replace("?reverse", ""); // Reset to original
         }
     }
-});
 
+});
 
