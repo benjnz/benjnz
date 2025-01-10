@@ -906,17 +906,22 @@ p {
 }
 
 .read-paper-btn:hover {
-    background-color: #45a049;
+    background-color: #d9d7cb;
 }
 
 .read-paper-btn:hover {
-    background-color: #45a049;
+    background-color: #ffcb79;
 }
 
 
 .read-paper-btn:hover {
-    background-color: #45a049;
+    background-color: #ffcb79;
 }
+
+.read-paper-btn:hover {
+    background-color: #ffcb79; /* Darker blue on hover */
+}
+
 
 /* Right Section: Video */
 .video-box {
@@ -1072,7 +1077,16 @@ p {
     margin-top: 60px;
     top: 0;
     left: 0;
+
 }
+
+/* Prevent blue focus outline for clickable images */
+#initial-image, #zoomed-image {
+    outline: none; /* Removes the focus outline */
+    user-select: none; /* Prevents text selection (optional, for cleaner UI) */
+    -webkit-tap-highlight-color: transparent; /* Removes tap highlight on mobile browsers */
+}
+
 
 /* Hidden image */
 .mesh-hidden {
@@ -1292,13 +1306,14 @@ p {
 .mesh-hidden {
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.1s ease; /* Optional: Add a fade-in effect for smooth appearance */
 }
 
 /* Visible images */
 .mesh-visible {
     opacity: 1;
     visibility: visible;
-    transition: opacity 1s ease;
+    transition: opacity 0.1s ease; /* Optional */
 }
 
 /* Specific styles for the zoomed image */
@@ -1308,10 +1323,9 @@ p {
 
 /* Specific styles for the GIF */
 .mesh-gif {
-    z-index: 3; /* Below the zoomed image */
-    opacity: 100;
-    visibility: visible;
+    z-index: 2; /* Below the zoomed image */
 }
+
 
 /* Ensure consistent sizing and positioning for the GIF across screen sizes */
 @media (max-width: 768px) {
