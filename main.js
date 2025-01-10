@@ -83,22 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Show the zoomed image and GIF
         initialImage.classList.remove("mesh-hidden");
 
-        // Reload the GIF to start playing from the beginning
-        // Reverse the GIF
-        reverseGif(animationGif);
 });
 
-   // Function to reverse the GIF
-    function reverseGif(gifElement) {
-        // Reload the GIF with a reverse animation, if possible
-        // (This assumes a pre-existing reversed GIF is available)
-        const originalSrc = gifElement.src;
-        if (!originalSrc.includes("?reverse")) {
-            gifElement.src = `${originalSrc}?reverse`; // Add a query string to indicate reversed playback
-        } else {
-            gifElement.src = originalSrc.replace("?reverse", ""); // Reset to original
-        }
-    }
-
-});
 
