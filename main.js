@@ -52,50 +52,52 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 10000); // 10000 ms = 10 seconds
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     const initialImage = document.getElementById("initial-image");
     const zoomedImage = document.getElementById("zoomed-image");
+    const animationGif = document.getElementById("animation-gif");
 
-    let isZoomed = false;
+    let isZoomedIn = false;
 
-    // Initial Image click handler (Zoom in)
+    const playGif = (reverse = false) => {
+        animationGif.classList.remove("mesh-hidden");
+        animationGif.classList.add("mesh-visible");
+
+        animationGif.src = reverse
+            ? "../media/meshanimation-reverse.gif" // Reverse GIF file
+            : "../media/meshanimation.gif"; // Forward GIF file
+
+        animationGif.addEventListener(
+            "animationend",
+            () => {
+                animationGif.classList.remove("mesh-visible");
+                animationGif.classList.add("mesh-hidden");
+            },
+            { once: true }
+        );
+    };
+
     initialImage.addEventListener("click", () => {
-        if (!isZoomed) {
-            // Apply zoom-in effect to the initial image
-            initialImage.classList.add("zoomed-in");
-            initialImage.classList.remove("unzoomed");
-
-            // Hide the initial image and show the zoomed-in image after zoom-in effect
-            setTimeout(() => {
-                initialImage.classList.add("mesh-hidden");
-                zoomedImage.classList.remove("mesh-hidden");
-                zoomedImage.classList.add("zoomed-in");
-                zoomedImage.classList.remove("unzoomed");
-            }, 400); // Matches the transition duration for zoom effect
+        if (!isZoomedIn) {
+            playGif(false);
+            zoomedImage.classList.remove("mesh-hidden");
+            zoomedImage.classList.add("mesh-visible");
+            initialImage.classList.add("mesh-hidden");
+            isZoomedIn = true;
         }
-
-        // Toggle zoom state
-        isZoomed = !isZoomed;
     });
 
-    // Zoomed Image click handler (Zoom out)
     zoomedImage.addEventListener("click", () => {
-        if (isZoomed) {
-            // Apply zoom-out effect (return to original state)
-            zoomedImage.classList.remove("zoomed-in");
-            zoomedImage.classList.add("unzoomed");
-
-            // Hide the zoomed image and show the initial image after zoom-out effect
-            setTimeout(() => {
-                zoomedImage.classList.add("mesh-hidden");
-                initialImage.classList.remove("mesh-hidden");
-                initialImage.classList.add("unzoomed");
-            }, 400); // Matches the transition duration for zoom effect
+        if (isZoomedIn) {
+            playGif(true);
+            zoomedImage.classList.remove("mesh-visible");
+            zoomedImage.classList.add("mesh-hidden");
+            initialImage.classList.remove("mesh-hidden");
+            initialImage.classList.add("mesh-visible");
+            isZoomedIn = false;
         }
-
-        // Toggle zoom state
-        isZoomed = !isZoomed;
     });
 });
+
 
 
