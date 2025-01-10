@@ -52,6 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 10000); // 10000 ms = 10 seconds
 });
 
+function openPDF() {
+    // Replace 'path/to/your-paper.pdf' with the actual path or URL to your PDF
+    const pdfURL = "/microprintspaper";
+    window.open(pdfURL, "_blank"); // Opens the PDF in a new tab
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // Select the images
     const initialImage = document.getElementById("initial-image");
