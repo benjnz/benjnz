@@ -63,9 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide the initial image
         initialImage.classList.add("mesh-hidden");
 
-        // Show the zoomed image and the animation GIF
+        // Show the zoomed image
         zoomedImage.classList.remove("mesh-hidden");
+
+        // Show and play the animation GIF
         animationGif.classList.remove("mesh-hidden");
+        animationGif.src = animationGif.src; // Reloads the GIF to play it from the start
     });
 });
+
 
