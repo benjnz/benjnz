@@ -52,57 +52,39 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 10000); // 10000 ms = 10 seconds
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const initialImage = document.getElementById("initial-image");
-    const zoomedImage = document.getElementById("zoomed-image");
-    const animationGif = document.getElementById("animation-gif");
+// Select elements
+const initialImage = document.getElementById("initial-image");
+const zoomedImage = document.getElementById("zoomed-image");
+const animationGif = document.getElementById("animation-gif");
 
-    let isZoomedIn = false;
+// Add event listener for the initial image
+initialImage.addEventListener("click", () => {
+    // Hide the initial image
+    initialImage.classList.add("mesh-hidden");
 
-    const playGif = (reverse = false, callback) => {
-        animationGif.classList.remove("mesh-hidden");
-        animationGif.classList.add("mesh-visible");
+    // Show the GIF
+    animationGif.classList.remove("mesh-hidden");
+    animationGif.classList.add("mesh-visible");
 
-        // Use the appropriate GIF file based on the reverse parameter
-        animationGif.src = reverse
-            ? "../media/meshanimation-reverse.gif" // Reverse GIF file
-            : "../media/meshanimation.gif"; // Forward GIF file
+    // Show the zoomed image after a small delay for better sync
+    setTimeout(() => {
+        zoomedImage.classList.remove("mesh-hidden");
+        zoomedImage.classList.add("mesh-visible");
+    }, 100); // Adjust the delay (in ms) as needed
+});
 
-        // Hide GIF after animation duration
-        setTimeout(() => {
-            animationGif.classList.remove("mesh-visible");
-            animationGif.classList.add("mesh-hidden");
-            if (callback) callback(); // Trigger callback after GIF finishes playing
-        }, 1000); // Adjust to the length of your GIF animation
-    };
+// Add event listener for the zoomed-in image
+zoomedImage.addEventListener("click", () => {
+    // Hide the zoomed image
+    zoomedImage.classList.add("mesh-hidden");
+    zoomedImage.classList.remove("mesh-visible");
 
-    initialImage.addEventListener("click", () => {
-        if (!isZoomedIn) {
-            // Hide the initial image immediately
-            initialImage.classList.remove("mesh-visible");
-            initialImage.classList.add("mesh-hidden");
+    // Reverse the GIF
+    animationGif.classList.remove("mesh-visible");
+    animationGif.classList.add("mesh-hidden");
 
-            // Play the forward GIF and fade in zoomed image
-            playGif(false, () => {
-                zoomedImage.classList.remove("mesh-hidden");
-                zoomedImage.classList.add("mesh-visible");
-            });
-            isZoomedIn = true;
-        }
-    });
-
-    zoomedImage.addEventListener("click", () => {
-        if (isZoomedIn) {
-            // Fade out zoomed image
-            zoomedImage.classList.remove("mesh-visible");
-            zoomedImage.classList.add("mesh-hidden");
-
-            // Play the reverse GIF and show initial image
-            playGif(true, () => {
-                initialImage.classList.remove("mesh-hidden");
-                initialImage.classList.add("mesh-visible");
-            });
-            isZoomedIn = false;
-        }
-    });
+    // Show the initial image after a small delay
+    setTimeout(() => {
+        initialImage.classList.remove("mesh-hidden");
+    }, 100); // Adjust the delay (in ms) as needed
 });
