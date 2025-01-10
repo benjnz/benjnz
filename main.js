@@ -59,45 +59,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let isZoomedIn = false;
 
-    const playGif = (reverse = false) => {
+    const playGif = (reverse = false, callback) => {
         animationGif.classList.remove("mesh-hidden");
         animationGif.classList.add("mesh-visible");
 
+        // Use the appropriate GIF file based on the reverse parameter
         animationGif.src = reverse
             ? "../media/meshanimation-reverse.gif" // Reverse GIF file
             : "../media/meshanimation.gif"; // Forward GIF file
 
-        animationGif.addEventListener(
-            "animationend",
-            () => {
-                animationGif.classList.remove("mesh-visible");
-                animationGif.classList.add("mesh-hidden");
-            },
-            { once: true }
-        );
+        // Hide GIF after animation duration
+        setTimeout(() => {
+            animationGif.classList.remove("mesh-visible");
+            animationGif.classList.add("mesh-hidden");
+            if (callback) callback(); // Trigger callback after GIF finishes playing
+        }, 1000); // Adjust to the length of your GIF animation
     };
 
     initialImage.addEventListener("click", () => {
         if (!isZoomedIn) {
-            playGif(false);
-            zoomedImage.classList.remove("mesh-hidden");
-            zoomedImage.classList.add("mesh-visible");
-            initialImage.classList.add("mesh-hidden");
+            // Play the forward GIF and fade in zoomed image
+            playGif(false, () => {
+                zoomedImage.classList.remove("mesh-hidden");
+                zoomedImage.classList.add("mesh-visible");
+                initialImage.classList.add("mesh-hidden");
+            });
             isZoomedIn = true;
         }
     });
 
     zoomedImage.addEventListener("click", () => {
         if (isZoomedIn) {
-            playGif(true);
+            // Play the reverse GIF and fade out zoomed image
             zoomedImage.classList.remove("mesh-visible");
             zoomedImage.classList.add("mesh-hidden");
-            initialImage.classList.remove("mesh-hidden");
-            initialImage.classList.add("mesh-visible");
+
+            playGif(true, () => {
+                initialImage.classList.remove("mesh-hidden");
+                initialImage.classList.add("mesh-visible");
+            });
             isZoomedIn = false;
         }
     });
 });
-
 
 
