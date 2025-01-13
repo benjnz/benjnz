@@ -376,7 +376,7 @@ display: block; /* Ensure no inline gaps */
 .image-container {
   display: flex;
   justify-content: center; /* Center images horizontally */
-  gap: 40px; /* Add space between the images */
+  gap: 15%; /* Add space between the images */
   margin: 20px auto; /* Add margin above and below the container */
   max-width: 90%; /* Limit the width to 90% of the container */
 }
@@ -384,7 +384,7 @@ display: block; /* Ensure no inline gaps */
 /* Each image and its caption */
 .image-item {
   text-align: center; /* Aligns the caption below the image */
-  width: 8%; /* Adjust the width of each image item */
+  width: 15%; /* Adjust the width of each image item */
   display: flex;
   flex-direction: column; /* Stack image and caption vertically */
   align-items: center; /* Center them horizontally */
