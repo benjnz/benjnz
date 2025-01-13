@@ -335,6 +335,9 @@ display: block; /* Ensure no inline gaps */
   border-left: none; /* Remove border for the first column */
 }
 
+/***************************
+/*********************  KOTH
+/**************************/
 
 <style>
     body {
@@ -839,6 +842,11 @@ width: 100%;
   color: #bf8f22;
 }
 
+
+/***************************
+/************  MICROPRINTING
+/***************************
+
 /* Global Styles */
 body.micro {
     margin: 0;
@@ -1335,6 +1343,30 @@ p {
         height: 500px; /* Larger height for larger screens */
     }
 }
+
+
+/***************************
+/************  ACTIVE AGEING
+/***************************
+
+/* Center the video on the page */
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100%;   /* Full viewport width */
+  margin: 0;     /* Remove any default margins */
+  background-color: #f9f9f9; /* Optional: Background color for contrast */
+}
+
+/* Make the video responsive */
+.video-container iframe {
+  max-width: 100%; /* Make sure it fits on smaller screens */
+  max-height: 100%; /* Prevent overflowing vertically */
+  aspect-ratio: 16 / 9; /* Keep the video in its original aspect ratio */
+}
+
 
 
   </style>
