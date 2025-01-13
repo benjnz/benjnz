@@ -1186,32 +1186,6 @@ p {
 }
 /* Media Queries for Responsiveness */
 @media(max-width: 768px) {
-    .mesh-image-container {
-        align-items: center; /* Center images on small screens */
-    }
-
-    .mesh-text-container {
-        display: flex;
-        flex-direction: column; /* Stack items on small screens */
-        margin: 0 auto;
-        max-width: 1200px;
-        width: 100%;
-        padding: 20px;
-    }
-    
-    /* Ensure consistent font size for both heading and body text */
-    .mesh-text-container h1 {
-        font-size: 4.5vw; /* Scale the heading based on viewport width */
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    .mesh-text-container p {
-        font-size: 3vw; /* Use consistent scaling for body text */
-        line-height: 1.5;
-        text-align: left;
-        margin-top: 20px;
-    }
 
   .video-box{
 
@@ -1257,7 +1231,7 @@ p {
     width: 100%;
     max-width: 500px;
     cursor: pointer;
-    transition: transform 0s ease, opacity 0.1s ease;
+    transition: transform 2s ease, opacity 2s ease;
     transform-origin: center center; /* Zooms from the center of the image */
     display: block;
   align-items:top;
