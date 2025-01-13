@@ -340,7 +340,7 @@ display: block; /* Ensure no inline gaps */
 /**************************/
 
 <style>
-    body {
+    body.koth {
     font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
       margin: 0;
       padding: 0;
@@ -604,10 +604,11 @@ gap: 15px;
   background-color: #bf8f22; /* Blue background */
   color: #ffffff; /* White text */
   padding: 10px 20px; /* Spacing inside the button */
-  font-size: 4vw;
+  font-size: 1.5vw;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Eina Semi Bold", "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
   transition: background-color 0.3s ease, transform 0.2s ease;
   display: block; /* Ensures the button is block-level */
   margin: 0px auto; /* Center the button below the image */
@@ -653,6 +654,12 @@ width: 100%;
             }
       .gif-container {
   max-width: calc(600px - 60px); /* Subtract 30px for left and right margins */
+      }
+
+      .open-lightbox-btn{
+
+      font-size: 4.5vw;
+        
       }
        .title-image {
   display: block; /* Ensures it behaves like a block element */
@@ -903,13 +910,12 @@ p {
     margin: 10% auto 0; /* Centers the button with margin on top */
     background-color: #93aacc; /* Green button */
     color: #2a2929;
-    font-family: "Eina Semi Bold", Arial, sans-serif; /* Always provide fallback fonts */
+    font-family: "Eina Semi Bold", "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
     padding: 10px 20px;
     border: none;
     border-radius: 120px; /* Rounded corners */
-
     cursor: pointer;
-    font-size: 2vw;
+    font-size: 1.5vw;
     transition: background-color 0.3s ease;
 }
 
@@ -1425,7 +1431,7 @@ body.iot {
     margin-bottom: 3vw; /* Adds spacing between the button and the video */
     padding: 1vw 2vw;
     font-size: 2vw;
-    font-family: Arial, sans-serif;
+    font-family: "Eina Semi Bold", "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
     text-decoration: none; /* Removes underline from the link */
     background-color: #007bff;
     color: #000000;
@@ -1447,7 +1453,7 @@ body.iot {
     }
 
     .iot-read-paper-btn {
-        font-size: 3vw; /* Smaller button text size on mobile */
+       font-size: 4.5vw;
         padding: 1vw 2vw;
     }
 }
