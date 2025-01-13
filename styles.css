@@ -1367,6 +1367,89 @@ p {
   aspect-ratio: 16 / 9; /* Keep the video in its original aspect ratio */
 }
 
+body.iot {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
+    background-color: #000000;
+    color: white;
+}
 
+/* Page Container */
+.iot-page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Logo Styling */
+.iot-logo-container {
+    margin-top: 5vw;
+    width: 60%;
+    text-align: center;
+    margin-bottom: 20px; /* Adds spacing below the logo */
+}
+
+.iot-logo {
+    max-width: 100%; /* Ensures logo scales responsively */
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Center the video on the page */
+.iot-video-container {
+    width: 100%; /* Make video container responsive */
+    max-width: 800px; /* Set a maximum width for larger screens */
+    margin: 0 auto;
+    text-align: center;
+}
+
+ video {
+    width: 90%; /* Makes the video stretch to the full width of the container */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes extra space below the video */
+    border: none; /* Optional: Removes any border */
+    margin-left:5%;
+    margin-right:5%;
+}
+
+/* Read Paper Button */
+.iot-read-paper-btn {
+    display: inline-block;
+    margin-top: 3vw; /* Adds space above the button */
+    margin-bottom: 3vw; /* Adds spacing between the button and the video */
+    padding: 1vw 2vw;
+    font-size: 2vw;
+    font-family: Arial, sans-serif;
+    text-decoration: none; /* Removes underline from the link */
+    background-color: #007bff;
+    color: #000000;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+
+
+    .iot-logo-container {
+        width: 75%;
+    }
+
+    .iot-read-paper-btn {
+        font-size: 3vw; /* Smaller button text size on mobile */
+        padding: 1vw 2vw;
+    }
+}
 
   </style>
