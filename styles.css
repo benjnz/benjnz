@@ -424,7 +424,6 @@ display: block; /* Ensure no inline gaps */
 }
 
 .gif-container {
-  max-width: calc(800px - 60px); /* Subtract 30px for left and right margins */
   width: 80%; /* Allow the container to shrink on smaller screens */
   padding: 0 30px; /* Add 30px padding on left and right */
   display: grid;
@@ -474,7 +473,8 @@ gap: 15px;
       height: auto; /* Maintain aspect ratio */
       border: 2px solid #ccc; /* Optional: add border */
       border-radius: 5px; /* Optional: rounded corners */
-      
+      max-width: calc(800px - 60px); /* Subtract 30px for left and right margins */
+
     }
 
     .centered-image {
@@ -581,6 +581,12 @@ gap: 15px;
 
 /* For larger displays (768px and above) */
 @media (min-width: 768px) {
+
+  .gif-container {
+
+  max-width: calc(800px - 60px); /* Subtract 30px for left and right margins */
+
+  }
   .lightbox .firstlightbox-content {
     flex-direction: row; /* Align image and text side by side */
     text-align: left; /* Align text to the left */
@@ -695,15 +701,16 @@ width: 100%;
 
   /* Wrapper for gif-container and image-row */
   .gif-and-image-row-wrapper {
-    max-width: 1800px;
+    width: 80%;
     margin: 0 auto; /* Center the wrapper horizontally */
     display: flex; /* Use flexbox to align content */
     justify-content: center; /* Center the content horizontally */
     align-items: flex-start; /* Align them to the top */
+
   }
 
   .gif-container, .image-row {
-    width: 48%; /* Both sections will take up 48% of the container width */
+    width: 40%; /* Both sections will take up 48% of the container width */
     vertical-align: top;
     margin: 0 1%; /* Adds a small gap between the two sections */
     box-sizing: border-box; /* Ensures padding and margins are included in the width */
@@ -713,14 +720,16 @@ width: 100%;
   .gif-container {
     margin-top: 50px; /* Adjust the value to your needs */
     margin-bottom: -22.5%; /* Adjust the value to your needs */
+    margin-left:50%
   }
 
   /* Image row container adjustments */
   .image-row {
-    display: flex;
+  
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 2%;
+    margin-left: 10%;
   }
 
   /* Adjusting images inside the image-row */
@@ -1455,6 +1464,110 @@ body.iot {
     .iot-read-paper-btn {
        font-size: 4.5vw;
         padding: 1vw 2vw;
+    }
+}
+
+/* Horizontal Line */
+.section-divider {
+    width: 90%;
+    height: 2px;
+    background-color: white; /* White horizontal line */
+    margin: 20px 0; /* Spacing around the line */
+}
+
+/* Title Styling */
+.section-title {
+    font-size: 3vw;
+    font-family: "Eina Semi Bold", Arial, sans-serif;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Image Row Styling */
+.iot-image-row {
+    display: flex;
+    justify-content: center; /* Centers the images */
+    gap: 20px; /* Adds space between images */
+    margin: 20px 0;
+  
+}
+
+.iot-image-row img {
+    max-width: 65%; /* Ensure images are side by side */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners to images */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+    margin-left: 20%; 
+}
+
+.iot-image-caption {
+    font-size: 1vw;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Container for the long image */
+.iot-long-image-container {
+  margin-top: 30px; /* Add spacing above the image container */
+  text-align: center; /* Center-align the image and text */
+  padding: 20px; /* Padding around the container */
+  background-color: #ffffff; /* Optional: light background for the section */
+  border-radius: 10px; /* Rounded corners for the container */
+}
+
+/* Title for the long image */
+.long-image-title {
+  font-size: 24px; /* Adjust size as needed */
+  font-weight: bold;
+  color: #ffffff; /* Dark gray color for the title */
+  margin-bottom: 15px; /* Space between title and image */
+}
+
+/* Styling for the long image */
+.iot-long-image {
+  width: 100%; /* Makes the image responsive, adjust if needed */
+  max-width: 1200px; /* Optional: Set a max-width for large images */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: round the image corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow effect */
+}
+
+/* Caption for the long image */
+.iot-long-image-caption {
+  font-size: 16px;
+  color: #ffffff; /* Lighter gray color for the caption */
+  margin-top: 10px; /* Space between the image and the caption */
+  line-height: 1.5; /* Better line spacing for readability */
+  font-style: italic; /* Optional: make caption italic for distinction */
+}
+
+
+/* Media Query for devices with screen width less than 768px */
+@media screen and (max-width: 768px) {
+    /* Stack the images vertically */
+    .iot-image-row {
+        display: block;
+        text-align: center;
+    }
+
+    .iot-image-row img {
+        max-width: 40%; /* Full width for images */
+        margin-left: 0; /* Remove left margin */
+        margin-bottom: 20px; /* Add space between images */
+    }
+
+    /* Adjust font size for smaller screens */
+    .section-title {
+        font-size: 5vw; /* Smaller font size for mobile */
+      
+    }
+
+    .iot-image-caption {
+        font-size: 3vw; /* Adjust caption size */
+        margin-top: -4vw;
+        margin-bottom: 6vw;
     }
 }
 
