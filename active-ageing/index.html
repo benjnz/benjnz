@@ -90,6 +90,7 @@ to detect movement</p>
 
     
      <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-tip@0.9.1/dist/d3-tip.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -516,17 +517,24 @@ const data = [
             "Hobbies": ["Reading"]
         };
 
-        // Parsing data to group by day
+       // Parsing data to group by day and hour
         const daysData = {};
 
         data.forEach(item => {
             const parts = item.split(", ");
             const day = parts[0]; // Extract the day
-            const event = parts[2]; // Extract the event
+            const timestamp = parts[1]; // Extract timestamp
+            const event = parts[2]; // Extract event name
+
+            const hour = new Date(timestamp).getHours(); // Extract the hour from the timestamp
+
             if (!daysData[day]) {
                 daysData[day] = {};
             }
-            daysData[day][event] = (daysData[day][event] || 0) + 1;
+            if (!daysData[day][hour]) {
+                daysData[day][hour] = {};
+            }
+            daysData[day][hour][event] = (daysData[day][hour][event] || 0) + 1;
         });
 
         const allDays = Object.keys(daysData);
@@ -535,7 +543,7 @@ const data = [
         // Setting up chart size
         const width = 800;
         const height = 400;
-        const barWidth = 100;
+        const barWidth = 20;
 
         // Create the SVG container for the chart
         const svg = d3.select("#chart")
@@ -543,20 +551,31 @@ const data = [
             .attr("width", width)
             .attr("height", height);
 
-        // Tooltip element
-        const tooltip = d3.select("#tooltip");
+        // Create a tooltip using d3-tip
+        const tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function(d) { return `${d.event}: ${d.count}`; });
+
+        svg.call(tip);
 
         // Function to update the chart for a selected day
         function updateChart(day) {
-            const eventCounts = daysData[day];
+            const hourlyData = daysData[day];
 
-            // We need to prepare data for each category and its events
+            // Prepare data for each category and its events
             const categoryData = Object.keys(eventCategories).map(category => {
                 const categoryEvents = eventCategories[category];
-                const eventsData = categoryEvents.map(event => ({
-                    event: event,
-                    count: eventCounts[event] || 0
-                }));
+                const eventsData = [];
+
+                // Loop through each hour of the day (0-23)
+                for (let hour = 0; hour < 24; hour++) {
+                    const eventCounts = categoryEvents.reduce((acc, event) => {
+                        acc[event] = (hourlyData[hour] && hourlyData[hour][event]) || 0;
+                        return acc;
+                    }, {});
+                    eventsData.push({ hour, eventCounts });
+                }
 
                 return {
                     category: category,
@@ -571,52 +590,44 @@ const data = [
             const x = d3.scaleBand()
                 .domain(categoryData.map(d => d.category))
                 .range([0, width])
-                .padding(0.1);
+                .padding(0.3);  // Slightly more padding to separate bars
 
             const y = d3.scaleLinear()
-                .domain([0, d3.max(categoryData.flatMap(d => d.events.map(e => e.count)))])
+                .domain([0, 23]) // Hours of the day (0-23)
                 .nice()
                 .range([height, 0]);
 
             // Add bars for each category's events
             categoryData.forEach((category, i) => {
                 const colorScale = d3.scaleLinear()
-                    .domain([d3.min(category.events, d => d.count), d3.max(category.events, d => d.count)])
+                    .domain([0, d3.max(category.events.flatMap(d => Object.values(d.eventCounts)))])
                     .range(["blue", "red"]);
 
-                const bars = svg.selectAll(`.bar-${category.category}`)
-                    .data(category.events)
-                    .enter()
-                    .append("rect")
-                    .attr("class", `bar-${category.category}`)
-                    .attr("x", d => x(category.category) + (category.events.indexOf(d) * (barWidth + 10)))  // Space bars horizontally
-                    .attr("y", d => y(d.count))
-                    .attr("width", barWidth)
-                    .attr("height", d => height - y(d.count))
-                    .attr("fill", d => colorScale(d.count))
-                    .on("mouseover", function(event, d) {
-                        tooltip.style("visibility", "visible")
-                               .text(`${d.event}: ${d.count}`);
-                    })
-                    .on("mousemove", function(event) {
-                        tooltip.style("top", (event.pageY + 5) + "px")
-                               .style("left", (event.pageX + 5) + "px");
-                    })
-                    .on("mouseout", function() {
-                        tooltip.style("visibility", "hidden");
-                    });
+                category.events.forEach((hourData, hourIndex) => {
+                    const events = hourData.eventCounts;
 
-                // Add labels to each bar
-                svg.selectAll(`.label-${category.category}`)
-                    .data(category.events)
-                    .enter()
-                    .append("text")
-                    .attr("class", `label-${category.category}`)
-                    .attr("x", d => x(category.category) + (category.events.indexOf(d) * (barWidth + 10)) + barWidth / 2)
-                    .attr("y", d => y(d.count) - 5) // Positioning the label slightly above the bar
-                    .attr("text-anchor", "middle")
-                    .attr("fill", "black")
-                    .text(d => d.count); // Label showing the count
+                    // Create bars for each event within a category at a specific hour
+                    Object.keys(events).forEach((event, eventIndex) => {
+                        const count = events[event];
+
+                        svg.append("rect")
+                            .attr("x", x(category.category) + (eventIndex * (barWidth + 5))) // Space bars horizontally within category
+                            .attr("y", y(hourData.hour))
+                            .attr("width", barWidth)
+                            .attr("height", y(hourData.hour + 1) - y(hourData.hour)) // Bar height based on hour
+                            .attr("fill", colorScale(count))
+                            .on('mouseover', tip.show)
+                            .on('mouseout', tip.hide);
+
+                        // Add labels to each bar
+                        svg.append("text")
+                            .attr("x", x(category.category) + (eventIndex * (barWidth + 5)) + barWidth / 2)
+                            .attr("y", y(hourData.hour) - 5) // Position the label slightly above the bar
+                            .attr("text-anchor", "middle")
+                            .attr("fill", "black")
+                            .text(count); // Label showing the count
+                    });
+                });
             });
 
             // Add x-axis
@@ -624,9 +635,9 @@ const data = [
                 .attr("transform", `translate(0, ${height})`)
                 .call(d3.axisBottom(x));
 
-            // Add y-axis
+            // Add y-axis (Time of Day in Hours)
             svg.append("g")
-                .call(d3.axisLeft(y));
+                .call(d3.axisLeft(y).ticks(24));
 
             // Update current day label
             document.getElementById("current-day").textContent = `Day: ${day}`;
