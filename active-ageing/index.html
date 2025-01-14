@@ -94,6 +94,79 @@ to detect movement</p>
     
 </div>
 
+  <div id="chart"></div>
+
+    <script>
+        const eventCategories = {
+            "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
+            "Kitchen Light": ["Kitchen Light"],
+            "Hobbies/Recreation/Socialising": ["Reading", "Front Door"]
+        };
+
+        const categoryMultipliers = {
+            "Cooking/Eating": 2,
+            "Kitchen Light": 10,
+            "Hobbies/Recreation/Socialising": 25
+        };
+
+        const data = [
+            "15-08-2023, 13:52:22, Kitchen Light",
+            "15-08-2023, 15:02:28, Cutlery Cupboard",
+            "15-08-2023, 15:47:53, Cutlery Cupboard",
+            // Add more data entries...
+        ];
+
+        // Aggregating the counts
+        const eventCounts = {};
+
+        data.forEach(item => {
+            const parts = item.split(", ");
+            const event = parts[2]; // Extract the activity
+            eventCounts[event] = (eventCounts[event] || 0) + 1;
+        });
+
+        // Setting up the chart size
+        const width = 800;
+        const height = 400;
+
+        // Create SVG container
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        // Create scales
+        const x = d3.scaleBand()
+            .domain(Object.keys(eventCounts))
+            .range([0, width])
+            .padding(0.1);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(Object.values(eventCounts))])
+            .nice()
+            .range([height, 0]);
+
+        // Add bars to the chart
+        svg.selectAll(".bar")
+            .data(Object.entries(eventCounts))
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", d => x(d[0]))
+            .attr("y", d => y(d[1]))
+            .attr("width", x.bandwidth())
+            .attr("height", d => height - y(d[1]))
+            .attr("fill", "steelblue");
+
+        // Add x-axis
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x));
+
+        // Add y-axis
+        svg.append("g")
+            .call(d3.axisLeft(y));
+    </script>
   
 
 
