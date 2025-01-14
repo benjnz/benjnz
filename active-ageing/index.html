@@ -19,8 +19,6 @@
   <link rel="icon" sizes="192x192" href="../favicon-192x192.png">
 </head>
   
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-
 <body class="iot">
   <div class="loading-screen">
     <img src="../logos/logo.gif" alt="Loading...">
@@ -90,82 +88,163 @@ to detect movement</p>
     </div>
 
      <!-- SVG Container for Heatmap -->
-    <svg class="heatmap"></svg>
-    
-</div>
+     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #chart {
+            margin-bottom: 20px;
+        }
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .arrow {
+            cursor: pointer;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <span class="arrow" id="prev-day">&#8592; Previous Day</span>
+        <span id="current-day">Day: </span>
+        <span class="arrow" id="next-day">Next Day &#8594;</span>
+    </div>
 
-  <div id="chart"></div>
+    <div id="chart"></div>
 
     <script>
-        const eventCategories = {
-            "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
-            "Kitchen Light": ["Kitchen Light"],
-            "Hobbies/Recreation/Socialising": ["Reading", "Front Door"]
-        };
-
-        const categoryMultipliers = {
-            "Cooking/Eating": 2,
-            "Kitchen Light": 10,
-            "Hobbies/Recreation/Socialising": 25
-        };
-
+        // Sample Data
         const data = [
             "15-08-2023, 13:52:22, Kitchen Light",
             "15-08-2023, 15:02:28, Cutlery Cupboard",
             "15-08-2023, 15:47:53, Cutlery Cupboard",
-            // Add more data entries...
+            "16-08-2023, 10:02:00, Fridge",
+            "16-08-2023, 12:30:40, Pan Draw",
+            "17-08-2023, 14:15:22, Kitchen Light",
+            "17-08-2023, 17:22:00, Cutlery Cupboard",
+            "17-08-2023, 18:32:50, Fridge"
         ];
 
-        // Aggregating the counts
-        const eventCounts = {};
+        // Categories for color mapping
+        const eventCategories = {
+            "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
+            "Kitchen Light": ["Kitchen Light"]
+        };
+
+        const categoryMultipliers = {
+            "Cooking/Eating": 2,
+            "Kitchen Light": 10
+        };
+
+        // Parsing data to group by day
+        const daysData = {};
 
         data.forEach(item => {
             const parts = item.split(", ");
-            const event = parts[2]; // Extract the activity
-            eventCounts[event] = (eventCounts[event] || 0) + 1;
+            const day = parts[0]; // Extract the day
+            const event = parts[2]; // Extract the event
+            if (!daysData[day]) {
+                daysData[day] = {};
+            }
+            daysData[day][event] = (daysData[day][event] || 0) + 1;
         });
 
-        // Setting up the chart size
+        const allDays = Object.keys(daysData);
+        let currentDayIndex = 0;
+
+        // Setting up chart size
         const width = 800;
         const height = 400;
 
-        // Create SVG container
+        // Create the SVG container for the chart
         const svg = d3.select("#chart")
             .append("svg")
             .attr("width", width)
             .attr("height", height);
 
-        // Create scales
-        const x = d3.scaleBand()
-            .domain(Object.keys(eventCounts))
-            .range([0, width])
-            .padding(0.1);
+        // Function to update the chart for a selected day
+        function updateChart(day) {
+            const eventCounts = daysData[day];
 
-        const y = d3.scaleLinear()
-            .domain([0, d3.max(Object.values(eventCounts))])
-            .nice()
-            .range([height, 0]);
+            // Find the highest and lowest incidence per category
+            Object.keys(eventCategories).forEach(category => {
+                const categoryEvents = eventCategories[category];
+                const categoryData = categoryEvents.reduce((acc, event) => {
+                    acc[event] = eventCounts[event] || 0;
+                    return acc;
+                }, {});
 
-        // Add bars to the chart
-        svg.selectAll(".bar")
-            .data(Object.entries(eventCounts))
-            .enter()
-            .append("rect")
-            .attr("class", "bar")
-            .attr("x", d => x(d[0]))
-            .attr("y", d => y(d[1]))
-            .attr("width", x.bandwidth())
-            .attr("height", d => height - y(d[1]))
-            .attr("fill", "steelblue");
+                // Find max and min for color scaling
+                const maxIncidence = Math.max(...Object.values(categoryData));
+                const minIncidence = Math.min(...Object.values(categoryData));
 
-        // Add x-axis
-        svg.append("g")
-            .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(x));
+                // Set color scale based on the max and min incidences
+                const colorScale = d3.scaleLinear()
+                    .domain([minIncidence, maxIncidence])
+                    .range(["blue", "red"]);
 
-        // Add y-axis
-        svg.append("g")
-            .call(d3.axisLeft(y));
+                // Draw the bars for this category
+                const x = d3.scaleBand()
+                    .domain(categoryEvents)
+                    .range([0, width])
+                    .padding(0.1);
+
+                const y = d3.scaleLinear()
+                    .domain([0, d3.max(Object.values(categoryData))])
+                    .nice()
+                    .range([height, 0]);
+
+                // Remove old bars and axes
+                svg.selectAll("*").remove();
+
+                // Add bars to the chart with dynamic colors
+                svg.selectAll(".bar")
+                    .data(Object.entries(categoryData))
+                    .enter()
+                    .append("rect")
+                    .attr("class", "bar")
+                    .attr("x", d => x(d[0]))
+                    .attr("y", d => y(d[1]))
+                    .attr("width", x.bandwidth())
+                    .attr("height", d => height - y(d[1]))
+                    .attr("fill", d => colorScale(d[1]));
+
+                // Add x-axis
+                svg.append("g")
+                    .attr("transform", `translate(0, ${height})`)
+                    .call(d3.axisBottom(x));
+
+                // Add y-axis
+                svg.append("g")
+                    .call(d3.axisLeft(y));
+            });
+
+            // Update current day label
+            document.getElementById("current-day").textContent = `Day: ${day}`;
+        }
+
+        // Initial chart update
+        updateChart(allDays[currentDayIndex]);
+
+        // Event listener for previous day arrow
+        document.getElementById("prev-day").addEventListener("click", () => {
+            if (currentDayIndex > 0) {
+                currentDayIndex--;
+                updateChart(allDays[currentDayIndex]);
+            }
+        });
+
+        // Event listener for next day arrow
+        document.getElementById("next-day").addEventListener("click", () => {
+            if (currentDayIndex < allDays.length - 1) {
+                currentDayIndex++;
+                updateChart(allDays[currentDayIndex]);
+            }
+        });
     </script>
   
 
