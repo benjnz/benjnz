@@ -15,6 +15,12 @@ const categoryMultipliers = {
     "Hobbies/Recreation/Socialising": 25
 };
 
+// Function to parse the date correctly
+function parseDate(dateStr) {
+    const [day, month, year] = dateStr.split('-');
+    return new Date(`${month}-${day}-${year}`);
+}
+
 // Sample input data
 const data = [
     // Timestamp, Time, Activity (e.g., "15-08-2024 08:30:00, Reading")
@@ -401,188 +407,44 @@ const data = [
 "28-08-2023, 23:14:30, Cutlery Cupboard",
 "28-08-2023, 23:14:55, Cutlery Cupboard"
 ];
-// Function to categorize activity
-function categorizeActivity(activity) {
-    const eventCategories = {
-        "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
-        "Kitchen Light": ["Kitchen Light"],
-        "Hobbies/Recreation/Socialising": ["Reading", "Front Door"]
-    };
-    
-    for (const [category, activities] of Object.entries(eventCategories)) {
-        if (activities.includes(activity)) {
-            return category;
-        }
-    }
-    return "Other";
+
+// Function to calculate the time difference in minutes
+function calculateTimeDifference(time1, time2) {
+    return (new Date(time2) - new Date(time1)) / (1000 * 60); // in minutes
 }
 
-// Convert string timestamp to JavaScript Date object and categorize activity
-const parsedData = data.map(item => {
-    const [timestamp, activity] = item.split(", ");
+// Process the data and accumulate results
+let lastActivityTime = null;
+let activityCounts = {};
+
+data.forEach(record => {
+    const [dateStr, timeStr, activity] = record.split(', ');
+    const date = parseDate(dateStr);
+    const time = `${dateStr} ${timeStr}`;
     
-    // Split date and time from the string
-    const [day, month, year] = timestamp.split("-"); // Extract day, month, year
-    const [hour, minute, second] = activity.split(" ")[0].split(":"); // Extract hour, minute, second
-    
-    // Create a new date string in valid format (ISO format: YYYY-MM-DDTHH:mm:ss)
-    const dateTimeString = `${year}-${month}-${day}T${hour}:${minute}:${second}`;
-    
-    // Create the Date object
-    const dateTime = new Date(dateTimeString);
-    
-    // Check if the date is valid
-    if (isNaN(dateTime)) {
-        console.error("Invalid date format:", timestamp);  // Log if invalid
-        return null;  // Returning null for invalid dates
+    // Skip if it's the first activity or the category is missing
+    if (!lastActivityTime || !Object.values(eventCategories).some(arr => arr.includes(activity))) {
+        lastActivityTime = time;
+        return;
     }
     
-    // Categorize the activity
-    const category = categorizeActivity(activity);
-    
-    return { timestamp: dateTime, activity, category };
-}).filter(item => item !== null);  // Remove null values from invalid date rows
+    // Calculate time difference
+    const timeDifference = calculateTimeDifference(lastActivityTime, time);
 
-console.log(parsedData);
-
-
-// Categorize activities based on eventCategories
-function categorizeActivity(activity) {
+    // Check for activity category match and calculate multiplier
     for (const [category, activities] of Object.entries(eventCategories)) {
-        if (activities.includes(activity)) {
-            return category;
+        if (activities.indexOf(activity) !== -1) {
+            const multiplier = categoryMultipliers[category];
+            if (!activityCounts[category]) {
+                activityCounts[category] = 0;
+            }
+            activityCounts[category] += timeDifference * multiplier;
+            break;
         }
     }
-    return "Other";  // Default category
-}
 
-// Group activities by day, hour, minute interval, and category
-const intervalData = {};
-
-parsedData.forEach(({ timestamp, activity, category }) => {
-    const date = timestamp.toISOString().split("T")[0];  // Extract just the date
-    const hour = timestamp.getHours();
-    const minute = Math.floor(timestamp.getMinutes() / interval) * interval;
-    
-    // Initialize the data structure if it doesn't exist yet
-    if (!intervalData[date]) intervalData[date] = {};
-    if (!intervalData[date][hour]) intervalData[date][hour] = {};
-    if (!intervalData[date][hour][minute]) intervalData[date][hour][minute] = {};
-
-    if (!intervalData[date][hour][minute][category]) {
-        intervalData[date][hour][minute][category] = 0;
-    }
-
-    intervalData[date][hour][minute][category] += 1;
+    lastActivityTime = time;
 });
 
-// Apply category multipliers
-Object.keys(intervalData).forEach(date => {
-    Object.keys(intervalData[date]).forEach(hour => {
-        Object.keys(intervalData[date][hour]).forEach(minute => {
-            const dataPoint = intervalData[date][hour][minute];
-            Object.keys(dataPoint).forEach(category => {
-                dataPoint[category] *= categoryMultipliers[category] || 1;
-            });
-        });
-    });
-});
-
-// Calculate average counts per time interval (hour, minute)
-const avgCounts = {};
-Object.keys(intervalData).forEach(date => {
-    Object.keys(intervalData[date]).forEach(hour => {
-        Object.keys(intervalData[date][hour]).forEach(minute => {
-            Object.keys(intervalData[date][hour][minute]).forEach(category => {
-                if (!avgCounts[hour]) avgCounts[hour] = {};
-                if (!avgCounts[hour][minute]) avgCounts[hour][minute] = {};
-
-                if (!avgCounts[hour][minute][category]) avgCounts[hour][minute][category] = 0;
-                avgCounts[hour][minute][category] += intervalData[date][hour][minute][category];
-            });
-        });
-    });
-});
-
-// Normalize data
-const normalizedData = {};
-const maxValue = Math.max(...Object.values(avgCounts).flatMap(hour => 
-    Object.values(hour).flatMap(min => 
-        Object.values(min).flatMap(value => value)
-    )
-));
-
-// Normalize values by dividing by the max value
-Object.keys(avgCounts).forEach(hour => {
-    Object.keys(avgCounts[hour]).forEach(minute => {
-        Object.keys(avgCounts[hour][minute]).forEach(category => {
-            normalizedData[hour] = normalizedData[hour] || {};
-            normalizedData[hour][minute] = normalizedData[hour][minute] || {};
-            normalizedData[hour][minute][category] = avgCounts[hour][minute][category] / maxValue;
-        });
-    });
-});
-
-// D3.js Rendering: Render the heatmap
-
-const svg = d3.select("svg.heatmap")
-    .attr("width", 800)
-    .attr("height", 400);
-
-// Define categories and colors
-const categories = Object.keys(categoryMultipliers);
-const colorScale = d3.scaleSequential(d3.interpolateYlGnBu)
-    .domain([0, 1]); // Normalize between 0 and 1
-
-// Render heatmap bars
-let y = d3.scaleBand()
-    .domain(categories)
-    .range([0, 400])
-    .padding(0.1);
-
-let x = d3.scaleBand()
-    .domain(Object.keys(normalizedData))
-    .range([0, 800])
-    .padding(0.05);
-
-svg.selectAll(".yAxis")
-    .data(categories)
-    .enter()
-    .append("g")
-    .attr("class", "yAxis")
-    .attr("transform", d => `translate(0, ${y(d)})`)
-    .call(d3.axisLeft(y));
-
-svg.selectAll(".xAxis")
-    .data(Object.keys(normalizedData))
-    .enter()
-    .append("g")
-    .attr("class", "xAxis")
-    .attr("transform", d => `translate(${x(d)}, 0)`)
-    .call(d3.axisTop(x));
-
-// Create heatmap cells for each category and time interval
-svg.selectAll(".heatmap-cell")
-    .data(Object.entries(normalizedData))
-    .enter()
-    .append("rect")
-    .attr("class", "heatmap-cell")
-    .attr("x", d => x(d[0]))
-    .attr("y", d => y(d[1]?.category))  // Optional chaining to prevent undefined error
-    .attr("width", x.bandwidth())
-    .attr("height", y.bandwidth())
-    .attr("fill", d => colorScale(d[1]?.value))  // Optional chaining for value
-    .append("title")
-    .text(d => {
-        const value = d[1]?.value;
-        const category = d[1]?.category;
-
-        if (value !== undefined && value !== null && !isNaN(value)) {
-            return `${category || 'Unknown'}: ${value.toFixed(2)}`;
-        } else {
-            console.error("Invalid data for category:", category, "Value:", value);
-            return `${category || 'Unknown'}: N/A`;
-        }
-    });
-
+console.log(activityCounts);
 
