@@ -122,6 +122,24 @@ to detect movement</p>
     <div class="tooltip" id="tooltip"></div>
 
     <script>
+
+      // Define interval in minutes
+const interval = 120; // Set your interval here, e.g., 120 minutes
+
+// Define event categories and their multipliers
+const eventCategories = {
+    "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
+    "Kitchen Light": ["Kitchen Light"],
+    "Hobbies/Recreation/Socialising": ["Reading", "Front Door"]
+};
+
+// Define category multipliers
+const categoryMultipliers = {
+    "Cooking/Eating": 2,
+    "Kitchen Light": 10,
+    "Hobbies/Recreation/Socialising": 25
+};
+      
         // Sample input data
 const data = [
     // Timestamp, Time, Activity (e.g., "15-08-2024 08:30:00, Reading")
@@ -509,155 +527,135 @@ const data = [
 "28-08-2023, 23:14:55, Cutlery Cupboard"
 ];
 
-     // Event categories and their multipliers
-const eventCategories = {
-    "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
-    "Kitchen Light": ["Kitchen Light"],
-    "Hobbies/Recreation/Socialising": ["Reading", "Front Door"]
-};
-
-const categoryMultipliers = {
-    "Cooking/Eating": 2,
-    "Kitchen Light": 10,
-    "Hobbies/Recreation/Socialising": 25
-};
-
-// Function to correctly parse the date and time
-function parseTimestamp(dateStr, timeStr) {
-    const [day, month, year] = dateStr.split('-');
-    const [hours, minutes, seconds] = timeStr.split(':');
-    const date = new Date(year, month - 1, day, hours, minutes, seconds); // month is 0-based in JavaScript Date
-    return date;
-}
-
-// Parse the data into a structured format
-const parsedData = data.map(item => {
-    const parts = item.split(", ");
-    const timestamp = parts[0]; // Date
-    const time = parts[1]; // Time
-    const event = parts[2]; // Activity
-    const date = parseTimestamp(timestamp, time);
-
-    return {
-        timestamp: date,
-        event: event,
-        date: date.toISOString().split('T')[0], // Just the date (YYYY-MM-DD)
-        hour: date.getHours(),
-        minute: Math.floor(date.getMinutes() / 120) * 120 // Interval in minutes (120-min intervals)
-    };
+    // Parse data into structured format
+const parsedData = data.map(x => {
+    const [date, time, activity] = x;
+    const timestamp = new Date(`${date} ${time}`);
+    return { timestamp, activity };
 });
 
-// Categorize the activities
-function categorizeActivity(activity) {
+// Categorize the data based on activities
+const categorizeActivity = (activity) => {
     for (let category in eventCategories) {
         if (eventCategories[category].includes(activity)) {
             return category;
         }
     }
     return "Other";
+};
+
+// Add categories to parsed data
+parsedData.forEach(item => {
+    item.category = categorizeActivity(item.activity);
+});
+
+// Group by date, hour, and minute
+const groupedData = parsedData.reduce((acc, item) => {
+    const date = item.timestamp.toLocaleDateString();
+    const hour = item.timestamp.getHours();
+    const minute = Math.floor(item.timestamp.getMinutes() / interval) * interval;
+    const key = `${date}_${hour}:${minute}`;
+    
+    if (!acc[key]) {
+        acc[key] = {};
+    }
+    
+    const category = item.category;
+    acc[key][category] = (acc[key][category] || 0) + 1;
+    
+    return acc;
+}, {});
+
+// Apply multipliers to the counts
+for (let key in groupedData) {
+    for (let category in groupedData[key]) {
+        groupedData[key][category] *= categoryMultipliers[category] || 1;
+    }
 }
 
-parsedData.forEach(item => {
-    item.category = categorizeActivity(item.event);
-});
-
-// Group data by date, hour, and minute using d3.groups
-const groupedData = d3.groups(parsedData, d => d.date, d => d.hour, d => d.minute, d => d.category);
-
-// Initialize counts for categories and time intervals
-const categoryCounts = {};
-Object.keys(categoryMultipliers).forEach(category => {
-    categoryCounts[category] = {};
-    for (let hour = 0; hour < 24; hour++) {
-        for (let minute = 0; minute < 60; minute += 120) {
-            categoryCounts[category][`${hour}:${minute}`] = 0;
-        }
-    }
-});
-
-// Populate counts based on the grouped data
-groupedData.forEach(dateGroup => {
-    dateGroup[1].forEach(hourGroup => {
-        hourGroup[1].forEach(minuteGroup => {
-            minuteGroup[1].forEach(d => {
-                const category = d[0];
-                const count = d[1].length;
-                const timeKey = `${hourGroup[0]}:${minuteGroup[0]}`;
-                categoryCounts[category][timeKey] += count;
-            });
-        });
-    });
-});
-
-// Apply multipliers to the category counts
-Object.keys(categoryCounts).forEach(category => {
-    Object.keys(categoryCounts[category]).forEach(time => {
-        categoryCounts[category][time] *= categoryMultipliers[category];
-    });
-});
-
-// Average out the counts over each time slot
-const averageCounts = {};
-const timeKeys = Object.keys(categoryCounts["Cooking/Eating"]);
-timeKeys.forEach(time => {
-    averageCounts[time] = {};
-    Object.keys(categoryCounts).forEach(category => {
-        averageCounts[time][category] = categoryCounts[category][time] / 1; // For now assuming just one interval
-    });
-});
-
-// Normalize the data
-const maxCount = d3.max(Object.values(averageCounts).map(d => d3.max(Object.values(d))));
-const normalizedData = {};
-Object.keys(averageCounts).forEach(time => {
-    normalizedData[time] = {};
-    Object.keys(averageCounts[time]).forEach(category => {
-        normalizedData[time][category] = averageCounts[time][category] / maxCount;
-    });
-});
-
-// Set up the SVG for the heatmap
-const width = 800;
-const height = 400;
+// Get all unique time intervals and categories
+const timeKeys = Object.keys(groupedData);
 const categories = Object.keys(categoryMultipliers);
-const colorScale = d3.scaleSequential(d3.interpolateYlGnBu)
-    .domain([0, 1]);
 
-const svg = d3.select("#chart")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+// Initialize normalizedData with empty data for each time and category
+const normalizedData = {};
+timeKeys.forEach(time => {
+    normalizedData[time] = {};
+    categories.forEach(category => {
+        // Set to 0 if no data is available, to avoid undefined values
+        normalizedData[time][category] = 0;
+    });
+});
 
-const xScale = d3.scaleBand()
-    .domain(timeKeys)
-    .range([0, width])
-    .padding(0.05);
+// Populate the normalizedData with real data
+const maxCount = Math.max(...Object.values(groupedData).map(obj => Math.max(...Object.values(obj))));  // Get max count for scaling
+timeKeys.forEach(time => {
+    categories.forEach(category => {
+        if (groupedData[time] && groupedData[time][category] !== undefined) {
+            normalizedData[time][category] = groupedData[time][category] / maxCount;
+        }
+    });
+});
 
-const yScale = d3.scaleBand()
-    .domain(categories)
-    .range([0, height])
-    .padding(0.05);
+// Set up SVG for rendering the heatmap
+const width = 800, height = 400;
+const svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
 
-// Draw the heatmap cells
-Object.keys(normalizedData).forEach((time, i) => {
+// Define scales
+const xScale = d3.scaleBand().domain(timeKeys).range([0, width]).padding(0.05);
+const yScale = d3.scaleBand().domain(categories).range([0, height]).padding(0.1);
+const colorScale = d3.scaleSequential(d3.interpolateYlGnBu).domain([0, 1]);
+
+// Render the heatmap
+timeKeys.forEach((time, i) => {
     categories.forEach((category, j) => {
+        const value = normalizedData[time] && normalizedData[time][category] !== undefined
+            ? normalizedData[time][category]
+            : 0; // Default to 0 if the value is undefined
+
         svg.append("rect")
             .attr("x", xScale(time))
             .attr("y", yScale(category))
             .attr("width", xScale.bandwidth())
             .attr("height", yScale.bandwidth())
-            .attr("fill", colorScale(normalizedData[time][category]));
+            .attr("fill", colorScale(value));
     });
 });
 
-// Add labels to the axes
+// Add x-axis and y-axis labels
 svg.append("g")
-    .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(xScale));
+    .selectAll("text")
+    .data(timeKeys)
+    .enter().append("text")
+    .attr("x", (d, i) => xScale(d) + xScale.bandwidth() / 2)
+    .attr("y", height + 20)
+    .attr("text-anchor", "middle")
+    .text(d => d.split('_')[0]); // Display the date
 
 svg.append("g")
-    .call(d3.axisLeft(yScale));
+    .selectAll("text")
+    .data(categories)
+    .enter().append("text")
+    .attr("x", -10)
+    .attr("y", (d, i) => yScale(d) + yScale.bandwidth() / 2)
+    .attr("text-anchor", "end")
+    .attr("dy", ".35em")
+    .text(d => d);
 
+// Optional: Add tooltips
+const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
+
+svg.selectAll("rect")
+    .on("mouseover", function(event, d) {
+        tooltip.transition().duration(200).style("opacity", .9);
+        tooltip.html(d3.select(this).data()[0])
+            .style("left", (event.pageX + 5) + "px")
+            .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", function() {
+        tooltip.transition().duration(500).style("opacity", 0);
+    });
+      
 </script>
   
   <script src="../main.js"></script>
