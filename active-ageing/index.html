@@ -19,6 +19,8 @@
   <link rel="icon" sizes="192x192" href="../favicon-192x192.png">
 </head>
   
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
 <body class="iot">
   <div class="loading-screen">
     <img src="../logos/logo.gif" alt="Loading...">
@@ -86,10 +88,17 @@
 to detect movement</p>
         </div>
     </div>
+
+     <!-- SVG Container for Heatmap -->
+    <svg class="heatmap"></svg>
+    
 </div>
+
+  
 
 
   <!-- Include the JavaScript file at the end of the body -->
+  <script src="heatmap.js"></script>
   <script src="../main.js"></script>
 </body>
 </html>
