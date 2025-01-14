@@ -573,4 +573,14 @@ svg.selectAll(".heatmap-cell")
     .attr("height", y.bandwidth())
     .attr("fill", d => colorScale(d[1].value))
     .append("title")
-    .text(d => `${d[1].category}: ${d[1].value.toFixed(2)}`);
+    .text(d => {
+        // Check if d[1].value is a valid number
+        const value = d[1].value;
+        if (value !== undefined && value !== null && !isNaN(value)) {
+            return `${d[1].category}: ${value.toFixed(2)}`;
+        } else {
+            console.error("Invalid value for category:", d[1].category, "Value:", value);
+            return `${d[1].category}: N/A`; // Fallback if value is invalid
+        }
+    });
+
