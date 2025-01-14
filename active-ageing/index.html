@@ -509,8 +509,7 @@ const data = [
 "28-08-2023, 23:14:55, Cutlery Cupboard"
 ];
 
-     
-       // Event categories and their multipliers
+     // Event categories and their multipliers
 const eventCategories = {
     "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
     "Kitchen Light": ["Kitchen Light"],
@@ -562,14 +561,8 @@ parsedData.forEach(item => {
     item.category = categorizeActivity(item.event);
 });
 
-// Group data by date, hour, and minute
-const groupedData = d3.nest()
-    .key(d => d.date)
-    .key(d => d.hour)
-    .key(d => d.minute)
-    .key(d => d.category)
-    .rollup(leaves => leaves.length)
-    .entries(parsedData);
+// Group data by date, hour, and minute using d3.groups
+const groupedData = d3.groups(parsedData, d => d.date, d => d.hour, d => d.minute, d => d.category);
 
 // Initialize counts for categories and time intervals
 const categoryCounts = {};
@@ -584,12 +577,12 @@ Object.keys(categoryMultipliers).forEach(category => {
 
 // Populate counts based on the grouped data
 groupedData.forEach(dateGroup => {
-    dateGroup.values.forEach(hourGroup => {
-        hourGroup.values.forEach(minuteGroup => {
-            minuteGroup.values.forEach(d => {
-                const category = d.key;
-                const count = d.value;
-                const timeKey = `${hourGroup.key}:${minuteGroup.key}`;
+    dateGroup[1].forEach(hourGroup => {
+        hourGroup[1].forEach(minuteGroup => {
+            minuteGroup[1].forEach(d => {
+                const category = d[0];
+                const count = d[1].length;
+                const timeKey = `${hourGroup[0]}:${minuteGroup[0]}`;
                 categoryCounts[category][timeKey] += count;
             });
         });
