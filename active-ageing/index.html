@@ -505,7 +505,8 @@ const data = [
 "28-08-2023, 23:14:55, Cutlery Cupboard"
 ];
 
-       // Categories for color mapping
+     
+        // Categories for color mapping
         const eventCategories = {
             "Cooking": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
             "Chores": ["Front Door", "Kitchen Light"],
@@ -577,7 +578,7 @@ const data = [
                     .domain([d3.min(category.events, d => d.count), d3.max(category.events, d => d.count)])
                     .range(["blue", "red"]);
 
-                svg.selectAll(`.bar-${category.category}`)
+                const bars = svg.selectAll(`.bar-${category.category}`)
                     .data(category.events)
                     .enter()
                     .append("rect")
@@ -587,6 +588,21 @@ const data = [
                     .attr("width", barWidth)
                     .attr("height", d => height - y(d.count))
                     .attr("fill", d => colorScale(d.count));
+
+                // Add labels to each bar
+                bars.append("title")  // Tooltip on hover (optional)
+                    .text(d => `${d.event}: ${d.count}`);
+
+                svg.selectAll(`.label-${category.category}`)
+                    .data(category.events)
+                    .enter()
+                    .append("text")
+                    .attr("class", `label-${category.category}`)
+                    .attr("x", d => x(category.category) + (category.events.indexOf(d) * (barWidth + 10)) + barWidth / 2)
+                    .attr("y", d => y(d.count) - 5) // Positioning the label slightly above the bar
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "black")
+                    .text(d => d.count); // Label showing the count
             });
 
             // Add x-axis
