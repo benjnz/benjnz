@@ -18,7 +18,7 @@ const categoryMultipliers = {
 // Sample input data
 const data = [
     // Timestamp, Time, Activity (e.g., "15-08-2024 08:30:00, Reading")
-    "15-08-2023, 13:52:22, Kitchen Light",
+"15-08-2023, 13:52:22, Kitchen Light",
 "15-08-2023, 15:02:28, Cutlery Cupboard",
 "15-08-2023, 15:47:53, Cutlery Cupboard",
 "15-08-2023, 16:45:27, Kitchen Light",
@@ -31,7 +31,6 @@ const data = [
 "15-08-2023, 19:27:00, Cutlery Cupboard",
 "15-08-2023, 19:27:34, Cutlery Cupboard",
 "15-08-2023, 22:55:03, Kitchen Light",
-
 "16-08-2023, 08:13:31, Kitchen Light",
 "16-08-2023, 08:31:43, Cutlery Cupboard",
 "16-08-2023, 08:32:21, Cutlery Cupboard",
@@ -65,7 +64,6 @@ const data = [
 "16-08-2023, 23:47:42, Kitchen Light",
 "16-08-2023, 23:56:59, Cutlery Cupboard",
 "16-08-2023, 23:57:06, Cutlery Cupboard",
-
 "17-08-2023, 09:31:28, Kitchen Light",
 "17-08-2023, 09:39:40, Pan Draw",
 "17-08-2023, 09:39:54, Pan Draw",
@@ -83,7 +81,6 @@ const data = [
 "17-08-2023, 19:15:27, Cutlery Cupboard",
 "17-08-2023, 19:15:28, Cutlery Cupboard",
 "17-08-2023, 20:57:35, Kitchen Light",
-
 "18-08-2023, 00:15:43, Kitchen Light",
 "18-08-2023, 00:26:40, Cutlery Cupboard",
 "18-08-2023, 00:26:45, Cutlery Cupboard",
@@ -138,7 +135,6 @@ const data = [
 "18-08-2023, 23:15:15, Pan Draw",
 "18-08-2023, 23:30:34, Cutlery Cupboard",
 "18-08-2023, 23:30:54, Cutlery Cupboard",
-
 "19-08-2023, 06:10:03, Kitchen Light",
 "19-08-2023, 08:43:00, Kitchen Light",
 "19-08-2023, 08:48:47, Cutlery Cupboard",
@@ -154,7 +150,6 @@ const data = [
 "19-08-2023, 22:44:14, Kitchen Light",
 "19-08-2023, 22:53:34, Cutlery Cupboard",
 "19-08-2023, 22:53:37, Cutlery Cupboard",
-
 "20-08-2023, 09:15:01, Cutlery Cupboard",
 "20-08-2023, 09:15:12, Cutlery Cupboard",
 "20-08-2023, 09:20:25, Kitchen Light",
@@ -190,7 +185,6 @@ const data = [
 "20-08-2023, 22:57:13, Kitchen Light",
 "20-08-2023, 23:00:56, Cutlery Cupboard",
 "20-08-2023, 23:00:59, Cutlery Cupboard",
-
 "21-08-2023, 09:57:57, Kitchen Light",
 "21-08-2023, 10:00:27, Cutlery Cupboard",
 "21-08-2023, 10:25:24, Cutlery Cupboard",
@@ -210,7 +204,6 @@ const data = [
 "21-08-2023, 23:07:14, Kitchen Light",
 "21-08-2023, 23:26:36, Cutlery Cupboard",
 "21-08-2023, 23:26:41, Cutlery Cupboard",
-
 "22-08-2023, 08:50:27, Kitchen Light",
 "22-08-2023, 09:08:46, Cutlery Cupboard",
 "22-08-2023, 09:18:24, Cutlery Cupboard",
@@ -248,7 +241,6 @@ const data = [
 "22-08-2023, 22:46:30, Kitchen Light",
 "22-08-2023, 22:52:40, Cutlery Cupboard",
 "22-08-2023, 22:52:48, Cutlery Cupboard",
-
 "23-08-2023, 08:40:24, Kitchen Light",
 "23-08-2023, 08:41:33, Pan Draw",
 "23-08-2023, 08:42:18, Pan Draw",
@@ -278,7 +270,6 @@ const data = [
 "23-08-2023, 22:49:28, Kitchen Light",
 "23-08-2023, 22:50:50, Cutlery Cupboard",
 "23-08-2023, 22:50:56, Cutlery Cupboard",
-
 "24-08-2023, 09:54:20, Kitchen Light",
 "24-08-2023, 10:11:34, Cutlery Cupboard",
 "24-08-2023, 10:11:53, Cutlery Cupboard",
@@ -313,7 +304,6 @@ const data = [
 "24-08-2023, 23:10:35, Kitchen Light",
 "24-08-2023, 23:16:59, Cutlery Cupboard",
 "24-08-2023, 23:17:03, Cutlery Cupboard",
-
 "25-08-2023, 08:45:30, Kitchen Light",
 "25-08-2023, 09:23:56, Cutlery Cupboard",
 "25-08-2023, 09:24:00, Cutlery Cupboard",
@@ -338,7 +328,6 @@ const data = [
 "25-08-2023, 22:48:57, Kitchen Light",
 "25-08-2023, 22:57:09, Cutlery Cupboard",
 "25-08-2023, 22:57:12, Cutlery Cupboard",
-
 "26-08-2023, 09:26:37, Kitchen Light",
 "26-08-2023, 13:38:35, Kitchen Light",
 "26-08-2023, 15:46:18, Kitchen Light",
@@ -358,7 +347,6 @@ const data = [
 "26-08-2023, 19:21:32, Cutlery Cupboard",
 "26-08-2023, 19:21:37, Cutlery Cupboard",
 "26-08-2023, 22:26:56, Kitchen Light",
-
 "27-08-2023, 08:58:43, Kitchen Light",
 "27-08-2023, 09:05:09, Cutlery Cupboard",
 "27-08-2023, 09:05:40, Cutlery Cupboard",
@@ -380,7 +368,6 @@ const data = [
 "27-08-2023, 23:26:20, Cutlery Cupboard",
 "27-08-2023, 23:26:24, Cutlery Cupboard",
 "27-08-2023, 23:53:02, Kitchen Light",
-
 "28-08-2023, 08:35:24, Kitchen Light",
 "28-08-2023, 11:20:43, Cutlery Cupboard",
 "28-08-2023, 11:20:48, Cutlery Cupboard",
@@ -415,15 +402,40 @@ const data = [
 "28-08-2023, 23:14:55, Cutlery Cupboard"
 ];
 
+// Function to categorize activity
+function categorizeActivity(activity) {
+    const eventCategories = {
+        "Cooking/Eating": ["Pan Draw", "Cutlery Cupboard", "Fridge"],
+        "Kitchen Light": ["Kitchen Light"],
+        "Hobbies/Recreation/Socialising": ["Reading", "Front Door"]
+    };
+    
+    for (const [category, activities] of Object.entries(eventCategories)) {
+        if (activities.includes(activity)) {
+            return category;
+        }
+    }
+    return "Other";
+}
+
 // Convert string timestamp to JavaScript Date object and categorize activity
 const parsedData = data.map(item => {
-    const [timestamp, activity] = item.split(", ");
-    const dateTime = new Date(timestamp.split(" ")[0] + 'T' + timestamp.split(" ")[1]);
+    const [datePart, timePart, activity] = item.split(", ");
     
+    // Reformat date to YYYY-MM-DD format and create Date object
+    const [day, month, year] = datePart.split("-").reverse();  // Reversing to [YYYY, MM, DD]
+    const formattedDate = `${year}-${month}-${day}T${timePart}`;
+    
+    // Create Date object
+    const dateTime = new Date(formattedDate);
+    
+    // Get category of activity
     const category = categorizeActivity(activity);
     
     return { timestamp: dateTime, activity, category };
 });
+
+console.log(parsedData);
 
 // Categorize activities based on eventCategories
 function categorizeActivity(activity) {
