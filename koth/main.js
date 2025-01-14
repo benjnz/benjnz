@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+const gifs = document.querySelectorAll('.gif-container img');
+  
+  gifs.forEach(gif => {
+    gif.addEventListener('load', function() {
+      // Force reload on GIF after it finishes playing
+      this.src = this.src;
+    });
+  });
 
 document.addEventListener("DOMContentLoaded", () => {
   const logo = document.querySelector(".logo-img");
