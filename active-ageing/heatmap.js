@@ -420,25 +420,29 @@ function categorizeActivity(activity) {
 
 // Convert string timestamp to JavaScript Date object and categorize activity
 const parsedData = data.map(item => {
-    const [datePart, timePart, activity] = item.split(", ");
+    const [timestamp, activity] = item.split(", ");
     
-    // Reformat date to YYYY-MM-DD format and create Date object
-    const [day, month, year] = datePart.split("-").reverse();  // Reversing to [YYYY, MM, DD]
-    const formattedDate = `${year}-${month}-${day}T${timePart}`;
+    // Split date and time from the string
+    const [day, month, year] = timestamp.split("-"); // Extract day, month, year
+    const [hour, minute, second] = activity.split(" ")[0].split(":"); // Extract hour, minute, second
     
-    // Create Date object
-    const dateTime = new Date(formattedDate);
+    // Create a new date string in valid format (ISO format: YYYY-MM-DDTHH:mm:ss)
+    const dateTimeString = `${year}-${month}-${day}T${hour}:${minute}:${second}`;
     
-    // Validate if the dateTime is a valid Date object
+    // Create the Date object
+    const dateTime = new Date(dateTimeString);
+    
+    // Check if the date is valid
     if (isNaN(dateTime)) {
-        console.error(`Invalid date format for: ${item}`);
-        return null;  // Handle invalid date case
+        console.error("Invalid date format:", timestamp);  // Log if invalid
     }
-
-    // Get category of activity
+    
+    // Categorize the activity
     const category = categorizeActivity(activity);
     
     return { timestamp: dateTime, activity, category };
+});
+
 }).filter(item => item !== null);  // Remove null values from invalid date rows
 
 console.log(parsedData);
