@@ -1502,7 +1502,9 @@ body.iot {
 }
 
 .iot-image-caption {
-    font-size: 1vw;
+    width:75%;
+    margin-left: 12.5%;
+    font-size: 1.5vw;
     color: white;
     text-align: center;
     margin-top: 10px;
@@ -1513,21 +1515,21 @@ body.iot {
   margin-top: 30px; /* Add spacing above the image container */
   text-align: center; /* Center-align the image and text */
   padding: 20px; /* Padding around the container */
-  background-color: #ffffff; /* Optional: light background for the section */
+  background-color: #ffffff21; /* Optional: light background for the section */
   border-radius: 10px; /* Rounded corners for the container */
 }
 
 /* Title for the long image */
 .long-image-title {
-  font-size: 24px; /* Adjust size as needed */
-  font-weight: bold;
+  font-size: 3vw;
+  font-family: "Eina Semi Bold", Arial, sans-serif;
   color: #ffffff; /* Dark gray color for the title */
   margin-bottom: 15px; /* Space between title and image */
 }
 
 /* Styling for the long image */
 .iot-long-image {
-  width: 100%; /* Makes the image responsive, adjust if needed */
+  width: 80%; /* Makes the image responsive, adjust if needed */
   max-width: 1200px; /* Optional: Set a max-width for large images */
   height: auto; /* Maintain aspect ratio */
   border-radius: 8px; /* Optional: round the image corners */
@@ -1536,39 +1538,52 @@ body.iot {
 
 /* Caption for the long image */
 .iot-long-image-caption {
-  font-size: 16px;
+
+  font-size: 1.5vw;
   color: #ffffff; /* Lighter gray color for the caption */
   margin-top: 10px; /* Space between the image and the caption */
   line-height: 1.5; /* Better line spacing for readability */
-  font-style: italic; /* Optional: make caption italic for distinction */
 }
 
 
 /* Media Query for devices with screen width less than 768px */
 @media screen and (max-width: 768px) {
-    /* Stack the images vertically */
+    /* Layout for images: 2 by 2 */
     .iot-image-row {
-        display: block;
-        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        gap: 10px; /* Adjust spacing between the images */
+    }
+
+    .iot-image-row div {
+        flex-basis: 100%; /* Ensures each item in the grid takes full width of the column */
     }
 
     .iot-image-row img {
-        max-width: 40%; /* Full width for images */
-        margin-left: 0; /* Remove left margin */
-        margin-bottom: 20px; /* Add space between images */
+        width: 100%; /* Images will take full width of their container */
+        margin-bottom: 15px; /* Space between images in smaller layouts */
     }
 
     /* Adjust font size for smaller screens */
     .section-title {
-        font-size: 5vw; /* Smaller font size for mobile */
-      
+        font-size: 4.5vw; /* Smaller font size for mobile */
     }
 
     .iot-image-caption {
-        font-size: 3vw; /* Adjust caption size */
-        margin-top: -4vw;
-        margin-bottom: 6vw;
+        font-size: 3vw; /* Adjust caption size for readability */
+        margin-top: 5px; /* Some space between image and caption */
+        margin-bottom: 10px; /* Space after caption */
+        margin-left: 10%;
+        width: 80%; /* Ensure the caption wraps within the image container */
+        word-wrap: break-word; /* Prevent long words from breaking the layout */
+        overflow: hidden; /* Ensures text does not overflow */
+        text-overflow: ellipsis; /* Adds an ellipsis if text overflows */
+        white-space: normal; /* Allows text to wrap */
     }
+  .iot-long-image-caption {
+
+  font-size: 3vw;
+  }
 }
 
   </style>
