@@ -568,19 +568,21 @@ svg.selectAll(".heatmap-cell")
     .append("rect")
     .attr("class", "heatmap-cell")
     .attr("x", d => x(d[0]))
-    .attr("y", d => y(d[1].category))
+    .attr("y", d => y(d[1]?.category))  // Optional chaining to prevent undefined error
     .attr("width", x.bandwidth())
     .attr("height", y.bandwidth())
-    .attr("fill", d => colorScale(d[1].value))
+    .attr("fill", d => colorScale(d[1]?.value))  // Optional chaining for value
     .append("title")
     .text(d => {
-        // Check if d[1].value is a valid number
-        const value = d[1].value;
+        const value = d[1]?.value;
+        const category = d[1]?.category;
+
         if (value !== undefined && value !== null && !isNaN(value)) {
-            return `${d[1].category}: ${value.toFixed(2)}`;
+            return `${category || 'Unknown'}: ${value.toFixed(2)}`;
         } else {
-            console.error("Invalid value for category:", d[1].category, "Value:", value);
-            return `${d[1].category}: N/A`; // Fallback if value is invalid
+            console.error("Invalid data for category:", category, "Value:", value);
+            return `${category || 'Unknown'}: N/A`;
         }
     });
+
 
