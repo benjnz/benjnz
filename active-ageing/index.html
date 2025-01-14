@@ -510,11 +510,6 @@ const data = [
             "Kitchen Light": ["Kitchen Light"]
         };
 
-        const categoryMultipliers = {
-            "Cooking/Eating": 2,
-            "Kitchen Light": 10
-        };
-
         // Parsing data to group by day
         const daysData = {};
 
@@ -534,6 +529,7 @@ const data = [
         // Setting up chart size
         const width = 800;
         const height = 400;
+        const barWidth = 100;
 
         // Create the SVG container for the chart
         const svg = d3.select("#chart")
@@ -545,58 +541,60 @@ const data = [
         function updateChart(day) {
             const eventCounts = daysData[day];
 
-            // Find the highest and lowest incidence per category
-            Object.keys(eventCategories).forEach(category => {
+            // We need to prepare data for each category and its events
+            const categoryData = Object.keys(eventCategories).map(category => {
                 const categoryEvents = eventCategories[category];
-                const categoryData = categoryEvents.reduce((acc, event) => {
-                    acc[event] = eventCounts[event] || 0;
-                    return acc;
-                }, {});
+                const eventsData = categoryEvents.map(event => ({
+                    event: event,
+                    count: eventCounts[event] || 0
+                }));
 
-                // Find max and min for color scaling
-                const maxIncidence = Math.max(...Object.values(categoryData));
-                const minIncidence = Math.min(...Object.values(categoryData));
+                return {
+                    category: category,
+                    events: eventsData
+                };
+            });
 
-                // Set color scale based on the max and min incidences
+            // Remove any existing elements from the chart
+            svg.selectAll("*").remove();
+
+            // Set up x and y scales
+            const x = d3.scaleBand()
+                .domain(categoryData.map(d => d.category))
+                .range([0, width])
+                .padding(0.1);
+
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(categoryData.flatMap(d => d.events.map(e => e.count)))])
+                .nice()
+                .range([height, 0]);
+
+            // Add bars for each category's events
+            categoryData.forEach((category, i) => {
                 const colorScale = d3.scaleLinear()
-                    .domain([minIncidence, maxIncidence])
+                    .domain([d3.min(category.events, d => d.count), d3.max(category.events, d => d.count)])
                     .range(["blue", "red"]);
 
-                // Draw the bars for this category
-                const x = d3.scaleBand()
-                    .domain(categoryEvents)
-                    .range([0, width])
-                    .padding(0.1);
-
-                const y = d3.scaleLinear()
-                    .domain([0, d3.max(Object.values(categoryData))])
-                    .nice()
-                    .range([height, 0]);
-
-                // Remove old bars and axes
-                svg.selectAll("*").remove();
-
-                // Add bars to the chart with dynamic colors
-                svg.selectAll(".bar")
-                    .data(Object.entries(categoryData))
+                svg.selectAll(`.bar-${category.category}`)
+                    .data(category.events)
                     .enter()
                     .append("rect")
-                    .attr("class", "bar")
-                    .attr("x", d => x(d[0]))
-                    .attr("y", d => y(d[1]))
-                    .attr("width", x.bandwidth())
-                    .attr("height", d => height - y(d[1]))
-                    .attr("fill", d => colorScale(d[1]));
-
-                // Add x-axis
-                svg.append("g")
-                    .attr("transform", `translate(0, ${height})`)
-                    .call(d3.axisBottom(x));
-
-                // Add y-axis
-                svg.append("g")
-                    .call(d3.axisLeft(y));
+                    .attr("class", `bar-${category.category}`)
+                    .attr("x", d => x(category.category) + (category.events.indexOf(d) * (barWidth + 10)))  // Space bars horizontally
+                    .attr("y", d => y(d.count))
+                    .attr("width", barWidth)
+                    .attr("height", d => height - y(d.count))
+                    .attr("fill", d => colorScale(d.count));
             });
+
+            // Add x-axis
+            svg.append("g")
+                .attr("transform", `translate(0, ${height})`)
+                .call(d3.axisBottom(x));
+
+            // Add y-axis
+            svg.append("g")
+                .call(d3.axisLeft(y));
 
             // Update current day label
             document.getElementById("current-day").textContent = `Day: ${day}`;
