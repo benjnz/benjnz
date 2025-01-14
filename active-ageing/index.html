@@ -90,7 +90,7 @@ to detect movement</p>
 
     
      <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/d3-tip@0.9.1/dist/d3-tip.min.js"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -517,7 +517,7 @@ const data = [
             "Hobbies": ["Reading"]
         };
 
-       // Parsing data to group by day and hour
+        // Parsing data to group by day and hour
         const daysData = {};
 
         data.forEach(item => {
@@ -551,13 +551,8 @@ const data = [
             .attr("width", width)
             .attr("height", height);
 
-        // Create a tooltip using d3-tip
-        const tip = d3.tip()
-            .attr('class', 'd3-tip')
-            .offset([-10, 0])
-            .html(function(d) { return `${d.event}: ${d.count}`; });
-
-        svg.call(tip);
+        // Select the tooltip element
+        const tooltip = d3.select("#tooltip");
 
         // Function to update the chart for a selected day
         function updateChart(day) {
@@ -616,8 +611,15 @@ const data = [
                             .attr("width", barWidth)
                             .attr("height", y(hourData.hour + 1) - y(hourData.hour)) // Bar height based on hour
                             .attr("fill", colorScale(count))
-                            .on('mouseover', tip.show)
-                            .on('mouseout', tip.hide);
+                            .on('mouseover', function(event, d) {
+                                tooltip.style("visibility", "visible")
+                                    .html(`${event}: ${count}`)
+                                    .style("top", `${d3.event.pageY - 10}px`)
+                                    .style("left", `${d3.event.pageX + 10}px`);
+                            })
+                            .on('mouseout', function() {
+                                tooltip.style("visibility", "hidden");
+                            });
 
                         // Add labels to each bar
                         svg.append("text")
