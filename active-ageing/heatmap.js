@@ -401,7 +401,6 @@ const data = [
 "28-08-2023, 23:14:30, Cutlery Cupboard",
 "28-08-2023, 23:14:55, Cutlery Cupboard"
 ];
-
 // Function to categorize activity
 function categorizeActivity(activity) {
     const eventCategories = {
@@ -435,17 +434,17 @@ const parsedData = data.map(item => {
     // Check if the date is valid
     if (isNaN(dateTime)) {
         console.error("Invalid date format:", timestamp);  // Log if invalid
+        return null;  // Returning null for invalid dates
     }
     
     // Categorize the activity
     const category = categorizeActivity(activity);
     
     return { timestamp: dateTime, activity, category };
-});
-
 }).filter(item => item !== null);  // Remove null values from invalid date rows
 
 console.log(parsedData);
+
 
 // Categorize activities based on eventCategories
 function categorizeActivity(activity) {
