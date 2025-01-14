@@ -429,11 +429,17 @@ const parsedData = data.map(item => {
     // Create Date object
     const dateTime = new Date(formattedDate);
     
+    // Validate if the dateTime is a valid Date object
+    if (isNaN(dateTime)) {
+        console.error(`Invalid date format for: ${item}`);
+        return null;  // Handle invalid date case
+    }
+
     // Get category of activity
     const category = categorizeActivity(activity);
     
     return { timestamp: dateTime, activity, category };
-});
+}).filter(item => item !== null);  // Remove null values from invalid date rows
 
 console.log(parsedData);
 
