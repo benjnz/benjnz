@@ -435,9 +435,9 @@ function categorizeActivity(activity) {
     return "Other";  // Default category
 }
 
+// Group activities by day, hour, minute interval, and category
 const intervalData = {};
 
-// Group activities by day, hour, minute interval, and category
 parsedData.forEach(({ timestamp, activity, category }) => {
     const date = timestamp.toISOString().split("T")[0];  // Extract just the date
     const hour = timestamp.getHours();
@@ -501,38 +501,55 @@ Object.keys(avgCounts).forEach(hour => {
         });
     });
 });
-// Calculate average counts per time interval (hour, minute)
-const avgCounts = {};
-Object.keys(intervalData).forEach(date => {
-    Object.keys(intervalData[date]).forEach(hour => {
-        Object.keys(intervalData[date][hour]).forEach(minute => {
-            Object.keys(intervalData[date][hour][minute]).forEach(category => {
-                if (!avgCounts[hour]) avgCounts[hour] = {};
-                if (!avgCounts[hour][minute]) avgCounts[hour][minute] = {};
 
-                if (!avgCounts[hour][minute][category]) avgCounts[hour][minute][category] = 0;
-                avgCounts[hour][minute][category] += intervalData[date][hour][minute][category];
-            });
-        });
-    });
-});
+// D3.js Rendering: Render the heatmap
 
-// Normalize data
-const normalizedData = {};
-const maxValue = Math.max(...Object.values(avgCounts).flatMap(hour => 
-    Object.values(hour).flatMap(min => 
-        Object.values(min).flatMap(value => value)
-    )
-));
+const svg = d3.select("svg.heatmap")
+    .attr("width", 800)
+    .attr("height", 400);
 
-// Normalize values by dividing by the max value
-Object.keys(avgCounts).forEach(hour => {
-    Object.keys(avgCounts[hour]).forEach(minute => {
-        Object.keys(avgCounts[hour][minute]).forEach(category => {
-            normalizedData[hour] = normalizedData[hour] || {};
-            normalizedData[hour][minute] = normalizedData[hour][minute] || {};
-            normalizedData[hour][minute][category] = avgCounts[hour][minute][category] / maxValue;
-        });
-    });
-});
+// Define categories and colors
+const categories = Object.keys(categoryMultipliers);
+const colorScale = d3.scaleSequential(d3.interpolateYlGnBu)
+    .domain([0, 1]); // Normalize between 0 and 1
 
+// Render heatmap bars
+let y = d3.scaleBand()
+    .domain(categories)
+    .range([0, 400])
+    .padding(0.1);
+
+let x = d3.scaleBand()
+    .domain(Object.keys(normalizedData))
+    .range([0, 800])
+    .padding(0.05);
+
+svg.selectAll(".yAxis")
+    .data(categories)
+    .enter()
+    .append("g")
+    .attr("class", "yAxis")
+    .attr("transform", d => `translate(0, ${y(d)})`)
+    .call(d3.axisLeft(y));
+
+svg.selectAll(".xAxis")
+    .data(Object.keys(normalizedData))
+    .enter()
+    .append("g")
+    .attr("class", "xAxis")
+    .attr("transform", d => `translate(${x(d)}, 0)`)
+    .call(d3.axisTop(x));
+
+// Create heatmap cells for each category and time interval
+svg.selectAll(".heatmap-cell")
+    .data(Object.entries(normalizedData))
+    .enter()
+    .append("rect")
+    .attr("class", "heatmap-cell")
+    .attr("x", d => x(d[0]))
+    .attr("y", d => y(d[1].category))
+    .attr("width", x.bandwidth())
+    .attr("height", y.bandwidth())
+    .attr("fill", d => colorScale(d[1].value))
+    .append("title")
+    .text(d => `${d[1].category}: ${d[1].value.toFixed(2)}`);
