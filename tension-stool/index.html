@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tension Stool</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Optional favicon -->
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+
+
+<body>
+  <!-- Page Content -->
+  <div class="tension-content-container">
+    <!-- First Long Image -->
+    <div class="tension-image-container">
+      <h2 class="tension-image-title">First Long Image</h2>
+      <img src="tensiontitle.png" alt="First Long Image" class="tension-long-image">
+      <p class="tension-image-caption">This is the caption for the first long image. It provides context and information about the image above.</p>
+    </div>
+
+    <!-- Second Long Image -->
+    <div class="tension-image-container">
+      <h2 class="tension-image-title">Second Long Image</h2>
+      <img src="tensiondrafts.png" alt="Second Long Image" class="tension-long-image">
+      <p class="tension-image-caption">This is the caption for the second long image. It complements the narrative of the first image.</p>
+    </div>
+
+    <!-- Interactive 3D Model -->
+    <div class="tension-model-container">
+      <h2 class="tension-model-title">Interactive 3D Model</h2>
+      <!-- Placeholder for the 3D model -->
+      <model-viewer src="model.glb" alt="Interactive 3D Model" auto-rotate camera-controls ar>
+      </model-viewer>
+      <p class="tension-model-caption">Explore this interactive 3D model by rotating and zooming it.</p>
+    </div>
+  </div>
+
+  <!-- Add the script for the model-viewer library -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</body>
+</html>
