@@ -1591,4 +1591,124 @@ body.iot {
   }
 }
 
+
+/******************/
+/* Tension Stool */
+/******************/
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+.tension-content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tension-image-container {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.tension-image-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.tension-long-image {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.tension-image-caption {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Container for the 3D model section */
+.tension-model-container {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+/* Title Styling */
+.tension-model-title {
+  font-size: 3vw;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Wrapper for model and image */
+.model-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align elements to the top */
+  flex-wrap: nowrap; /* Ensures side-by-side layout for wider screens */
+  gap: 20px; /* Adds space between the model and the image */
+  margin-bottom: 20px;
+}
+
+/* Model Viewer Styling */
+.model-item model-viewer {
+  width: 200%; /* Model takes half the container width */
+  height: auto;
+  max-width: 600px;
+  aspect-ratio: 1 / 1; /* Ensures a square shape */
+
+  border-radius: 8px;
+}
+
+/* Image Styling */
+.model-image {
+  width: 50%; /* Image takes the remaining space */
+  max-width: 600px;
+  aspect-ratio: 1 / 1; /* Ensures a square shape */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Caption Styling */
+.tension-model-caption {
+  font-size: 1.3vw;
+  color: #666;
+  margin-top: 10px;
+  text-align: left; /* Align caption text to the left */
+}
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  .model-wrapper {
+    flex-direction: column; /* Stack elements vertically */
+    gap: 20px; /* Space between stacked elements */
+  }
+
+  .model-item model-viewer,
+  .model-image {
+    width: 100%; /* Full width for both elements */
+    max-width: none; /* Remove max-width for smaller screens */
+  }
+
+  .model-item model-viewer{
+    width: 190%;
+      border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hide caption below model for small screens */
+  .tension-model-caption {
+    font-size: 3vw; /* Larger, more readable text for smaller screens */
+    text-align: center; /* Center-align caption for small screens */
+  }
+  
+}
+
+
   </style>
