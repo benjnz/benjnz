@@ -20,6 +20,11 @@
     font-style: normal;
 }
 
+/* Remove the outline for all elements when clicked with a mouse */
+* {
+    outline: none;
+}
+
 body {
     font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
     background-color: #ffffff;
