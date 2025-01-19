@@ -1756,11 +1756,17 @@ body {
 
   .main-content,
   .side-image-container {
-    max-width: 100%; /* Full width for smaller screens */
+    margin-left:10px;
+    margin-right:10px;
+    max-width: 110%; /* Full width for smaller screens */
   }
 
   .side-image-container {
     margin-top: 20px; /* Add spacing above the side image */
+  }
+   .portrait-stool-image{
+    width:90%;
+    margin-left: 5%;
   }
 }
 
