@@ -57,7 +57,7 @@
       <p class="tension-image-caption">By employing fundamental structural laws under the prentense of a design challenge - to make a functional stool from any one tool and single material (and nothing else) - a suprisingly strong stool can be made. The simplified iterative process is visualised above.</p>
     </div>
 
-  <!-- Interactive 3D Model Section -->
+    <!-- Interactive 3D Model Section -->
 <div class="tension-model-container">
   <!-- Title above both elements -->
   <h2 class="tension-model-title">The Design:</h2>
@@ -66,8 +66,18 @@
   <div class="model-wrapper">
     <!-- 3D Model -->
     <div class="model-item">
-      <model-viewer src="../media/model.glb" alt="Interactive 3D Model" auto-rotate camera-controls ar>
+      <model-viewer 
+        id="interactive-model" 
+        src="../media/model.glb" 
+        alt="Interactive 3D Model" 
+        auto-rotate="false" 
+        camera-controls 
+        ar>
       </model-viewer>
+      <!-- Rotate Icon -->
+      <button id="rotate-icon" class="rotate-icon" aria-label="Rotate Model">
+        <img src="../media/rotate-icon.svg" alt="Rotate Icon">
+      </button>
       <!-- Caption for 3D Model (wide displays only) -->
       <p class="tension-model-caption">An interactive 3D model of the stool ↑</p>
     </div>
@@ -77,7 +87,21 @@
   </div>
 </div>
 
+<script>
+  // JavaScript to handle rotation via the rotate icon
+  document.addEventListener("DOMContentLoaded", () => {
+    const modelViewer = document.getElementById("interactive-model");
+    const rotateIcon = document.getElementById("rotate-icon");
 
+    rotateIcon.addEventListener("click", () => {
+      let currentRotation = modelViewer.getAttribute("rotation") || "0 0 0"; // Get current rotation
+      let [x, y, z] = currentRotation.split(" ").map(parseFloat); // Parse rotation values
+
+      y += 45; // Rotate 45 degrees on the Y-axis
+      modelViewer.setAttribute("rotation", `${x} ${y} ${z}`); // Update rotation
+    });
+  });
+</script>
 
   <!-- Add the script for the model-viewer library -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
