@@ -1696,8 +1696,8 @@ body {
     max-width: none; /* Remove max-width for smaller screens */
   }
 
-  .model-item model-viewer{
-    width: 190%;
+  .model-item{
+    width: 100%;
       border: 1px solid #ccc;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
