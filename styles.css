@@ -1614,10 +1614,6 @@ body {
   text-align: center;
 }
 
-.tension-image-title {
-  font-size: 24px;
-  margin-bottom: 15px;
-}
 
 .tension-long-image {
   width: 100%;
@@ -1627,7 +1623,9 @@ body {
 }
 
 .tension-image-caption {
-  font-size: 16px;
+  font-size: 1.3vw;
+  max-width: 75%;
+  margin-left: 15%;
   color: #666;
   margin-top: 10px;
 }
@@ -1651,24 +1649,26 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start; /* Align elements to the top */
-  flex-wrap: nowrap; /* Ensures side-by-side layout for wider screens */
+  flex-wrap: nowrap; /* Ensures side-by-side layout for wider screens */ 
   gap: 20px; /* Adds space between the model and the image */
   margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  max-width: 1200px;
 }
 
 /* Model Viewer Styling */
 .model-item model-viewer {
-  width: 200%; /* Model takes half the container width */
+  width: 136.5%; /* Model takes half the container width */
   height: auto;
   max-width: 600px;
   aspect-ratio: 1 / 1; /* Ensures a square shape */
-
   border-radius: 8px;
 }
 
 /* Image Styling */
 .model-image {
-  width: 50%; /* Image takes the remaining space */
+  width: 45%; /* Image takes the remaining space */
   max-width: 600px;
   aspect-ratio: 1 / 1; /* Ensures a square shape */
   border-radius: 8px;
@@ -1708,7 +1708,74 @@ body {
     text-align: center; /* Center-align caption for small screens */
   }
   
+  
 }
 
+/* Page Container - Flexbox Layout */
+.tension-page-container {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout for wide screens */
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Spacing between the columns */
+}
+
+.model-image {
+
+  10%;
+}
+.main-content {
+  flex: 3; /* Takes up 75% of the width */
+  max-width: 60%;
+}
+
+.side-image-container {
+  flex: 1; /* Takes up 25% of the width */
+  max-width: 40%;
+}
+
+.portrait-stool-image {
+  width: 100%; /* Ensure the image fills the side container */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-right: 2%;
+  margin-left: 2%;
+
+}
+
+/* Responsive Layout for Smaller Screens */
+@media screen and (max-width: 768px) {
+  .tension-page-container {
+    flex-direction: column; /* Stack the layout */
+  }
+
+  .tension-image-caption {
+
+  font-size: 3vw;
+  }
+
+  .main-content,
+  .side-image-container {
+    max-width: 100%; /* Full width for smaller screens */
+  }
+
+  .side-image-container {
+    margin-top: 20px; /* Add spacing above the side image */
+  }
+}
+
+@media screen and (min-width: 768px) {
+.tension-page-container {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout for wide screens */
+  align-items: center; /* Center items vertically */
+  gap: 5px; /* Spacing between the columns */
+}
+
+  .portrait-stool-image{
+
+    width:80%;
+  }
+}
 
   </style>
