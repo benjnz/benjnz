@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gingerbread Construction</title>
+  <link rel="stylesheet" href="../styles.css">
+ <!-- Standard favicon -->
+  <link rel="icon" href="../favicon.png" type="image/png">
 
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="../favicon-180x180.png">
+
+  <!-- Optional for higher resolution screens -->
+  <link rel="icon" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="icon" sizes="16x16" href="../favicon-16x16.png">
+  <link rel="icon" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="icon" sizes="96x96" href="../favicon-96x96.png">
+  <link rel="icon" sizes="192x192" href="../favicon-192x192.png">
+</head>
+  
+<body class="koth">
+  <div class="loading-screen">
+    <img src="../logos/logo.gif" alt="Loading...">
+</div>
+
+ <!-- Top Banner -->
+<div class="top-banner">
+  <div class="logo">
+    <a href="/" class="logo-link">
+      <img 
+        src="../logos/logo.png" 
+        data-gif="../logos/logo.gif" 
+        data-duration="1520"
+        alt="Logo" 
+        class="logo-img"
+      >
+    </a>
+  </div>
+  <div class="menu">
+    <a href="#Connect">Connect</a>
+  </div>
+</div>
+
+
+  <!-- Page Content -->
+  <!-- Link to a slider library, e.g., Swiper -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+  <!-- Full-Width Image -->
+  <div class="full-width-image-container">
+    <img src="../media/gingerbreadtitle.webp" alt="Full Width Image" class="full-width-image">
+  </div>
+
+  <!-- Body Text -->
+  <div class="body-text-container">
+    <p class="body-text">Some gingerbread designs from over the years:</p>
+  </div>
+
+  <!-- Slider Section -->
+  <div class="slider-container">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <h2 class="year-title">2024 - Tower Bridge</h2>
+          <div class="vertical-images">
+            <img src="../media/bridgeparts.webp" alt="Slide 1 Image 1">
+            <img src="../media/towerbridge.webp" alt="Slide 1 Image 2">
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <h2 class="year-title">2023 - The Eiffel Tower</h2>
+          <div class="horizontal-images">
+            <img src="../media/eiffel.gif" alt="Slide 2 Image 1">
+            <img src="../media/eiffel.webp" alt="Slide 2 Image 2">
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <h2 class="year-title">2022 - St Pauls Cathedral</h2>
+          <div class="horizontal-images">
+            <img src="../media/stpauls1.webp" alt="Slide 3 Image 1">
+            <img src="../media/stpauls.webp" alt="Slide 3 Image 2">
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <h2 class="year-title">2021 - Durham Cathedral</h2>
+          <div class="horizontal-images">
+            <img src="../media/cathedral.webp" alt="Slide 4 Image 1">
+            <img src="../media/lightcathedral.webp" alt="Slide 4 Image 2">
+          </div>
+        </div>
+      </div>
+      <!-- Navigation Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize Swiper
+    const swiper = new Swiper('.swiper', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      loop: true,
+    });
+  </script>
+</body>
+</html>
