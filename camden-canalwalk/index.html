@@ -19,7 +19,8 @@
 
     .camden-title {
       position: absolute; 
-      /* Add any styling for your titles here */
+      transform: rotate(-90deg); /* Rotate the title text back */
+      /* Add any other styling for your titles here */
     }
 
     /* Lightbox Styles */
@@ -32,15 +33,16 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.8);
       z-index: 1000;
+      overflow: hidden; 
     }
 
     .camden-lightbox-content {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 80%;
-      max-height: 80%;
+      transform: translate(-50%, -50%) rotate(-90deg); 
+      max-width: 80vh; 
+      max-height: 80vw;
       background-color: #fff;
     }
 
@@ -59,6 +61,7 @@
       right: 10px;
       font-size: 20px;
       cursor: pointer;
+      transform: rotate(-90deg); 
     }
   </style>
 </head>
@@ -99,7 +102,6 @@
     <button class="camden-lightbox-close">&times;</button>
   </div>
 
-
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     // JavaScript (script.js)
@@ -108,11 +110,11 @@
       zoomControl: false,      
       dragging: false,         
       scrollWheelZoom: false    
-    }).setView([51.5415, -0.1424], 18); // Increased zoom level to 18
+    }).setView([51.5415, -0.1424], 19); // Increased zoom level 
 
-    // Define the bounds (Oval Road Bridge to Kentish Town Bridge)
-    const southWest = L.latLng(51.5395, -0.1485); 
-    const northEast = L.latLng(51.5445, -0.1365); 
+    // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
+    const southWest = L.latLng(51.5405, -0.1460);  
+    const northEast = L.latLng(51.5435, -0.1390);  
     const bounds = L.latLngBounds(southWest, northEast);
 
     map.fitBounds(bounds);
@@ -126,21 +128,21 @@
     // Add titles with rotated icons
     const title1 = L.marker([51.5410, -0.1420], {
       icon: L.divIcon({
-        html: '<div class="camden-title" style="transform: rotate(-90deg)">Title 1</div>' 
+        html: '<div class="camden-title">Title 1</div>' 
       })
     }).addTo(map)
       .bindPopup('<a href="#" data-lightbox="lightbox1">Title 1</a>'); 
 
     const title2 = L.marker([51.5418, -0.1430], {
       icon: L.divIcon({
-        html: '<div class="camden-title" style="transform: rotate(-90deg)">Title 2</div>'
+        html: '<div class="camden-title">Title 2</div>' 
       })
     }).addTo(map)
       .bindPopup('<a href="#" data-lightbox="lightbox2">Title 2</a>'); 
 
     const title3 = L.marker([51.5405, -0.1415], {
       icon: L.divIcon({
-        html: '<div class="camden-title" style="transform: rotate(-90deg)">Title 3</div>'
+        html: '<div class="camden-title">Title 3</div>' 
       })
     }).addTo(map)
       .bindPopup('<a href="#" data-lightbox="lightbox3">Title 3</a>'); 
