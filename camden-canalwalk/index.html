@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Overlay with Lightbox</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../camden-lightbox.css">
+</head>
+<body>
+<!-- Full-Width Static Background Image -->
+  <div class="camden-background-image-container" style="background: url('../media/camdenmap.webp') no-repeat center center fixed; background-size: cover; height: 100vh; position: relative;">
+    <!-- Titles overlay -->
+    <div class="camden-overlay">
+      <a href="#" class="camden-title" data-lightbox="lightbox1" style="top: 20%; left: 15%;">Title 1</a>
+      <a href="#" class="camden-title" data-lightbox="lightbox2" style="top: 50%; left: 50%;">Title 2</a>
+      <a href="#" class="camden-title" data-lightbox="lightbox3" style="top: 80%; left: 30%;">Title 3</a>
+    </div>
+  </div>
+  
+  <!-- Lightbox 1 -->
+  <div class="camden-lightbox" id="camden-lightbox-1">
+    <div class="camden-lightbox-content">
+      <img src="../media/lightbox1-image.webp" alt="Lightbox 1 Image">
+      <div class="camden-text-content">
+        <h2>Title 1</h2>
+        <p>This is the body text for Title 1. Here you can describe more details about this part of the image and its significance.</p>
+      </div>
+      <button class="camden-close-btn" data-close>×</button>
+    </div>
+  </div>
 
+  <!-- Lightbox 2 -->
+  <div class="camden-lightbox" id="camden-lightbox-2">
+    <div class="camden-lightbox-content">
+      <img src="../media/lightbox2-image.webp" alt="Lightbox 2 Image">
+      <div class="camden-text-content">
+        <h2>Title 2</h2>
+        <p>This is the body text for Title 2. You can include more details about this part of the image.</p>
+      </div>
+      <button class="camden-close-btn" data-close>×</button>
+    </div>
+  </div>
+
+  <!-- Lightbox 3 -->
+  <div class="camden-lightbox" id="camden-lightbox-3">
+    <div class="camden-lightbox-content">
+      <img src="../media/lightbox3-image.webp" alt="Lightbox 3 Image">
+      <div class="camden-text-content">
+        <h2>Title 3</h2>
+        <p>This is the body text for Title 3. Highlight any interesting details here.</p>
+      </div>
+      <button class="camden-close-btn" data-close>×</button>
+    </div>
+  </div>
+
+  <script src="../main.js"></script>
+</body>
+</html>
