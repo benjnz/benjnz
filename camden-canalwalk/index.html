@@ -14,7 +14,7 @@
 
     .leaflet-control-attribution,
     .leaflet-control-zoom { 
-      display: none; /* Hide attribution and zoom controls */
+      display: none; 
     }
 
     .camden-title {
@@ -99,39 +99,50 @@
     <button class="camden-lightbox-close">&times;</button>
   </div>
 
+
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     // JavaScript (script.js)
     const map = L.map('map', {
-      attributionControl: false, // Disable attribution control
-      zoomControl: false,      // Disable zoom control
-      dragging: false,         // Disable dragging
-      scrollWheelZoom: false    // Disable zoom on scroll
-    }).setView([51.5415, -0.1424], 16); // Centered on Camden Lock (adjust as needed)
+      attributionControl: false, 
+      zoomControl: false,      
+      dragging: false,         
+      scrollWheelZoom: false    
+    }).setView([51.5415, -0.1424], 18); // Increased zoom level to 18
 
     // Define the bounds (Oval Road Bridge to Kentish Town Bridge)
-    const southWest = L.latLng(51.5395, -0.1485); // Adjust coordinates as needed
-    const northEast = L.latLng(51.5445, -0.1365); // Adjust coordinates as needed
+    const southWest = L.latLng(51.5395, -0.1485); 
+    const northEast = L.latLng(51.5445, -0.1365); 
     const bounds = L.latLngBounds(southWest, northEast);
 
-    // Set the map view to the defined bounds
     map.fitBounds(bounds);
 
-    // Add a tile layer without labels
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
       maxZoom: 19
     }).addTo(map);
 
-    // Add titles (replace with your actual coordinates and content)
-    const title1 = L.marker([51.5410, -0.1420]).addTo(map)
+    // Add titles with rotated icons
+    const title1 = L.marker([51.5410, -0.1420], {
+      icon: L.divIcon({
+        html: '<div class="camden-title" style="transform: rotate(-90deg)">Title 1</div>' 
+      })
+    }).addTo(map)
       .bindPopup('<a href="#" data-lightbox="lightbox1">Title 1</a>'); 
 
-    const title2 = L.marker([51.5418, -0.1430]).addTo(map)
+    const title2 = L.marker([51.5418, -0.1430], {
+      icon: L.divIcon({
+        html: '<div class="camden-title" style="transform: rotate(-90deg)">Title 2</div>'
+      })
+    }).addTo(map)
       .bindPopup('<a href="#" data-lightbox="lightbox2">Title 2</a>'); 
 
-    const title3 = L.marker([51.5405, -0.1415]).addTo(map)
+    const title3 = L.marker([51.5405, -0.1415], {
+      icon: L.divIcon({
+        html: '<div class="camden-title" style="transform: rotate(-90deg)">Title 3</div>'
+      })
+    }).addTo(map)
       .bindPopup('<a href="#" data-lightbox="lightbox3">Title 3</a>'); 
 
     // Lightbox functionality 
