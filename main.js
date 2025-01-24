@@ -103,6 +103,31 @@ document.addEventListener("DOMContentLoaded", () => {
  
 });
 
+// Initialize the map
+const map = L.map('map').setView([51.5415, -0.1424], 16); // Centered on Camden Lock
+
+// Add a tile layer (using OpenStreetMap)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Add titles (replace with your actual coordinates and content)
+const title1 = L.marker([51.5410, -0.1420]).addTo(map) 
+  .bindPopup('<a href="#" data-lightbox="lightbox1">Title 1</a>'); 
+
+const title2 = L.marker([51.5418, -0.1430]).addTo(map)
+  .bindPopup('<a href="#" data-lightbox="lightbox2">Title 2</a>'); 
+
+const title3 = L.marker([51.5405, -0.1415]).addTo(map)
+  .bindPopup('<a href="#" data-lightbox="lightbox3">Title 3</a>'); 
+
+// Lightbox functionality (same as before)
+const lightboxes = document.querySelectorAll('.camden-lightbox');
+const triggers = document.querySelectorAll('.camden-title'); // This might need adjustment
+const closeButtons = document.querySelectorAll('.camden-lightbox-close');
+
+// ... (rest of your lightbox code) ...
+
 // Open Lightbox
 document.querySelectorAll('.camden-overlay-title').forEach(title => {
   title.addEventListener('click', () => {
