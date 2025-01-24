@@ -8,12 +8,12 @@
     /* CSS styles.css */
     .camden-background-image-container {
       background: url('../media/camdenmap.webp') no-repeat center top;
-      background-size: 100% auto; 
+      background-size: auto 100%; 
       background-attachment: scroll; 
       min-height: 100vh; 
       position: relative;
-      overflow-y: auto; 
-      width: 100%;
+      overflow-x: auto; 
+      width: auto;
     }
 
     .camden-overlay {
@@ -25,7 +25,7 @@
     }
 
     .camden-title {
-      position: absolute;
+      position: fixed; /* Fixed positioning for titles */
     }
 
     /* Example: Title 1 mapped to (650px, 250px) */
