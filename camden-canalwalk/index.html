@@ -4,29 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Overlay with Lightbox</title>
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="../camden-lightbox.css">
+  <style>
+    /* CSS styles.css */
+    .camden-background-image-container {
+      background: url('../media/camdenmap.webp') no-repeat center center;
+      background-size: contain; 
+      background-attachment: scroll; 
+      min-height: 100vh; 
+      position: relative;
+      overflow-y: auto; 
+      width: 100%; /* Ensure the container takes full width */
+    }
+
+    .camden-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .camden-title {
+      position: absolute;
+    }
+
+    /* Example: Title 1 mapped to (650px, 250px) */
+    #title1 {
+      top: 250px;
+      left: 650px;
+    }
+
+    /* Example: Title 2 mapped to (960px, 540px) */
+    #title2 {
+      top: 540px;
+      left: 960px;
+    }
+
+    /* Example: Title 3 mapped to (576px, 864px) */
+    #title3 {
+      top: 864px;
+      left: 576px;
+    }
+
+    /* Lightbox Styles (You can customize these) */
+    .camden-lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    .camden-lightbox-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      max-height: 80%;
+      background-color: #fff;
+    }
+
+    .camden-lightbox-image {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .camden-lightbox-text {
+      padding: 20px;
+    }
+
+    .camden-lightbox-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<!-- Full-Width Static Background Image -->
-  <div class="camden-background-image-container" style="background: url('../media/camdenmap.webp') no-repeat center center fixed; background-size: cover; height: 100vh; position: relative;">
-     <!-- Titles overlay -->
+
+  <div class="camden-background-image-container">
     <div class="camden-overlay">
-      <!-- Title 1 mapped to (650px, 250px) -->
-      <a href="#" 
-         class="camden-title" 
-         data-lightbox="lightbox1" 
-         style="position: absolute; top: calc(250px / 1080 * 100%); left: calc(650px / 1920 * 100%);">
+      <a href="#" id="title1" class="camden-title" data-lightbox="lightbox1">
         Title 1
       </a>
-
-      <!-- Example additional titles -->
-      <a href="#" class="camden-title" data-lightbox="lightbox2" style="top: 50%; left: 50%;">Title 2</a>
-      <a href="#" class="camden-title" data-lightbox="lightbox3" style="top: 80%; left: 30%;">Title 3</a>
+      <a href="#" id="title2" class="camden-title" data-lightbox="lightbox2">
+        Title 2
+      </a>
+      <a href="#" id="title3" class="camden-title" data-lightbox="lightbox3">
+        Title 3
+      </a>
     </div>
   </div>
 
-  <!-- Lightboxes -->
   <div id="lightbox1" class="camden-lightbox">
     <div class="camden-lightbox-content">
       <img src="../media/image1.webp" alt="Lightbox Image 1" class="camden-lightbox-image">
@@ -60,6 +135,27 @@
     <button class="camden-lightbox-close">&times;</button>
   </div>
 
-  <script src="camden-lightbox.js"></script>
+  <script>
+    // JavaScript (camden-lightbox.js)
+    const lightboxes = document.querySelectorAll('.camden-lightbox');
+    const triggers = document.querySelectorAll('.camden-title');
+    const closeButtons = document.querySelectorAll('.camden-lightbox-close');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const lightboxId = trigger.dataset.lightbox;
+        const lightbox = document.getElementById(lightboxId);
+        lightbox.style.display = 'block';
+      });
+    });
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const lightbox = button.closest('.camden-lightbox');
+        lightbox.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>
