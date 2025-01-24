@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Map with Titles</title>
+  <title>Camden Canal Walk</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     /* CSS styles.css */
@@ -19,7 +19,6 @@
 
     .camden-title {
       position: absolute; 
-      transform: rotate(-90deg); /* Rotate the title text back */
       /* Add any other styling for your titles here */
     }
 
@@ -40,7 +39,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(-90deg); 
+      transform: translate(-50%, -50%); 
       max-width: 80vh; 
       max-height: 80vw;
       background-color: #fff;
@@ -60,8 +59,7 @@
       top: 10px;
       right: 10px;
       font-size: 20px;
-      cursor: pointer;
-      transform: rotate(-90deg); 
+      cursor: pointer; 
     }
   </style>
 </head>
@@ -109,8 +107,9 @@
       attributionControl: false, 
       zoomControl: false,      
       dragging: false,         
-      scrollWheelZoom: false    
-    }).setView([51.5415, -0.1424], 20); // Increased zoom level 
+      scrollWheelZoom: false,
+      doubleClickZoom: false
+    }).setView([51.541120, -0.145793], 20); // Increased zoom level 
 
     // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
     const southWest = L.latLng(51.540350, -0.149730);  
