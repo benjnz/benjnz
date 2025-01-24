@@ -103,4 +103,27 @@ document.addEventListener("DOMContentLoaded", () => {
  
 });
 
+// Open Lightbox
+document.querySelectorAll('.camden-overlay-title').forEach(title => {
+  title.addEventListener('click', () => {
+    const lightboxId = title.dataset.lightbox;
+    document.getElementById(`camden-lightbox-${lightboxId}`).style.display = 'flex';
+  });
+});
+
+// Close Lightbox
+document.querySelectorAll('.camden-close-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    button.closest('.camden-lightbox').style.display = 'none';
+  });
+});
+
+// Close Lightbox on Background Click
+document.querySelectorAll('.camden-lightbox').forEach(lightbox => {
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  });
+});
 
