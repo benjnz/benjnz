@@ -7,11 +7,22 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <style>
+
+        html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0; /* Remove any default margins */
+      overflow: hidden; /* Prevent scrollbars */
+    }
+    
     /* CSS styles.css */
      #map {
       height: 100vh; /* Make the map take up full viewport height */
       width: 100vw;  /* Make the map take up full viewport width */
       transform: rotate(90deg);
+      touch-action: none;
+      margin: 0; /* Remove any default margins */
+
     }
 
     .leaflet-control-attribution,
