@@ -109,7 +109,8 @@
       zoomControl: false,
       dragging: false,
       scrollWheelZoom: false,
-      doubleClickZoom: false
+      doubleClickZoom: false,
+      tap: false // Prevent tap to zoom on mobile
     }).setView([51.541120, -0.145793], 19); // Increased zoom level
 
     // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
@@ -125,19 +126,40 @@
       maxZoom: 19
     }).addTo(map);
 
+    // Add invisible markers
+    const title1 = L.marker([51.5406, -0.1480], {
+      icon: L.divIcon({
+        html: '', // No content in the icon
+        iconSize: [0, 0] // Make the icon invisible
+      })
+    }).addTo(map);
+
+    const title2 = L.marker([51.5409, -0.1468], {
+      icon: L.divIcon({
+        html: '',
+        iconSize: [0, 0]
+      })
+    }).addTo(map);
+
+    const title3 = L.marker([51.5409, -0.1461], {
+      icon: L.divIcon({
+        html: '',
+        iconSize: [0, 0]
+      })
+    }).addTo(map);
+
     // Lightbox functionality
     const lightboxes = document.querySelectorAll('.camden-lightbox');
     const closeButtons = document.querySelectorAll('.camden-lightbox-close');
 
-    map.on('popupopen', function(e) {
-      const popup = e.popup;
-      const trigger = popup.getElement().querySelector('a');
-      trigger.addEventListener('click', (event) => {
+    // Event listeners for opening lightboxes directly
+    document.addEventListener('click', (event) => {
+      if (event.target.matches('[data-lightbox]')) {
         event.preventDefault();
-        const lightboxId = trigger.dataset.lightbox;
+        const lightboxId = event.target.dataset.lightbox;
         const lightbox = document.getElementById(lightboxId);
         lightbox.style.display = 'block';
-      });
+      }
     });
 
     closeButtons.forEach(button => {
