@@ -78,11 +78,35 @@
       font-size: 20px;
       cursor: pointer;
     }
+
+     /* Styles for the GIF and webp image */
+    .top-left-corner {
+      position: absolute;
+      top: 20px; /* Adjust top margin as needed */
+      left: 20px; /* Adjust left margin as needed */
+      z-index: 1001; /* Ensure it's above the map and lightboxes */
+    }
+
+    .webp-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000; /* Ensure it's below the GIF */
+    }
   </style>
 </head>
 <body>
 
+  <img src="../media/CamdenBackground.webp" alt="Background Image" class="webp-image">
+
+  <div class="top-left-corner">
+    <img src="../media/CamdenCanalWalk.gif" alt="GIF Image">
+  </div>
+
   <div id="map"></div>
+
 
   <div id="lightbox1" class="camden-lightbox">
     <div class="camden-lightbox-content">
