@@ -7,18 +7,18 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     /* CSS styles.css */
-    #map { 
-      height: 100vh; 
-      transform: rotate(90deg); 
+    #map {
+      height: 100vh;
+      transform: rotate(90deg);
     }
 
     .leaflet-control-attribution,
-    .leaflet-control-zoom { 
-      display: none; 
+    .leaflet-control-zoom {
+      display: none;
     }
 
     .camden-title {
-      position: absolute; 
+      position: absolute;
       transform: rotate(-90deg); /* Rotate the title text back */
       /* Add any other styling for your titles here */
     }
@@ -33,15 +33,15 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.8);
       z-index: 1000;
-      overflow: hidden; 
+      overflow: hidden;
     }
 
     .camden-lightbox-content {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); 
-      max-width: 80vh; 
+      transform: translate(-50%, -50%);
+      max-width: 80vh;
       max-height: 80vw;
       background-color: #fff;
     }
@@ -60,13 +60,13 @@
       top: 10px;
       right: 10px;
       font-size: 20px;
-      cursor: pointer; 
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <div id="map"></div> 
+  <div id="map"></div>
 
   <div id="lightbox1" class="camden-lightbox">
     <div class="camden-lightbox-content">
@@ -105,16 +105,16 @@
   <script>
     // JavaScript (script.js)
     const map = L.map('map', {
-      attributionControl: false, 
-      zoomControl: false,      
-      dragging: false,         
+      attributionControl: false,
+      zoomControl: false,
+      dragging: false,
       scrollWheelZoom: false,
       doubleClickZoom: false
-    }).setView([51.541120, -0.145793], 19); // Increased zoom level 
+    }).setView([51.541120, -0.145793], 19); // Increased zoom level
 
     // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
-    const southWest = L.latLng(51.540350, -0.149730);  
-    const northEast = L.latLng(51.542182, -0.141018);  
+    const southWest = L.latLng(51.540350, -0.149730);
+    const northEast = L.latLng(51.542182, -0.141018);
     const bounds = L.latLngBounds(southWest, northEast);
 
     map.fitBounds(bounds);
@@ -128,32 +128,32 @@
     // Add titles with rotated icons
     const title1 = L.marker([51.5406, -0.1480], {
       icon: L.divIcon({
-        html: '<div class="camden-title">Title 1</div>' 
+        html: '<div class="camden-title">Title 1</div>'
       })
     }).addTo(map)
-      .bindPopup('<a href="#" data-lightbox="lightbox1">Title 1</a>'); 
+      .bindPopup('<a href="#" data-lightbox="lightbox1">Title 1</a>');
 
     const title2 = L.marker([51.5409, -0.1468], {
       icon: L.divIcon({
-        html: '<div class="camden-title">Title 2</div>' 
+        html: '<div class="camden-title">Title 2</div>'
       })
     }).addTo(map)
-      .bindPopup('<a href="#" data-lightbox="lightbox2">Title 2</a>'); 
+      .bindPopup('<a href="#" data-lightbox="lightbox2">Title 2</a>');
 
     const title3 = L.marker([51.5409, -0.1461], {
       icon: L.divIcon({
-        html: '<div class="camden-title">Title 3</div>' 
+        html: '<div class="camden-title">Title 3</div>'
       })
     }).addTo(map)
-      .bindPopup('<a href="#" data-lightbox="lightbox3">Title 3</a>'); 
+      .bindPopup('<a href="#" data-lightbox="lightbox3">Title 3</a>');
 
-    // Lightbox functionality 
+    // Lightbox functionality
     const lightboxes = document.querySelectorAll('.camden-lightbox');
     const closeButtons = document.querySelectorAll('.camden-lightbox-close');
 
     map.on('popupopen', function(e) {
       const popup = e.popup;
-      const trigger = popup.getElement().querySelector('a'); 
+      const trigger = popup.getElement().querySelector('a');
       trigger.addEventListener('click', (event) => {
         event.preventDefault();
         const lightboxId = trigger.dataset.lightbox;
