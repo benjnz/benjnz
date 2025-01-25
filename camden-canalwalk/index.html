@@ -57,21 +57,21 @@
 
       <script>
         // JavaScript (script.js)
-        const map = L.map('map', {
-          attributionControl: false,
-          zoomControl: false,
-          dragging: false,
-          scrollWheelZoom: false,
-          doubleClickZoom: false,
-          tap: false // Prevent tap to zoom on mobile
-        }).setView([51.541120, -0.145793], 19); // Increased zoom level
+const map = L.map('map', {
+  attributionControl: false,
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  tap: false
+}).setView([51.541120, -0.145793], 18); // Adjust zoom level if needed
 
-        // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
-        const southWest = L.latLng(51.540350, -0.149730);
-        const northEast = L.latLng(51.542182, -0.141018);
-        const bounds = L.latLngBounds(southWest, northEast);
+// Define the bounds - Adjust coordinates as needed
+const southWest = L.latLng(51.540545, -0.148663);
+const northEast = L.latLng(51.541383, -0.141410);
+const bounds = L.latLngBounds(southWest, northEast);
 
-        map.fitBounds(bounds);
+map.fitBounds(bounds);
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
