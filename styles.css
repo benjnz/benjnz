@@ -1784,4 +1784,25 @@ body {
   }
 }
 
+.top-left-corner {
+      position: absolute;
+      top: 20px; /* Adjust top margin as needed */
+      left: 20px; /* Adjust left margin as needed */
+      z-index: 1001; /* Ensure it's above the map and lightboxes */
+    }
+
+    .webp-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 1001; /* Ensure it's below the GIF */
+    }
+
+.camden-gif{
+  width: 15%;
+  
+}
+
   </style>
