@@ -8,16 +8,19 @@
   <style>
     /* CSS styles.css */
     #map {
-      background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center; /* Optional: center the image */
-  height: 100vh;
-  transform: rotate(90deg);
-}
+      height: 100vh;
+      transform: rotate(90deg);
+    }
 
     .leaflet-control-attribution,
     .leaflet-control-zoom {
       display: none;
+    }
+
+    .camden-title {
+      position: absolute;
+      transform: rotate(-90deg); /* Rotate the title text back */
+      /* Add any other styling for your titles here */
     }
 
     /* Lightbox Styles */
@@ -100,15 +103,16 @@
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
+    // JavaScript (script.js)
     const map = L.map('map', {
       attributionControl: false,
       zoomControl: false,
       dragging: false,
       scrollWheelZoom: false,
-      doubleClickZoom: false,
-      tap: false
-    }).setView([51.541120, -0.145793], 19);
+      doubleClickZoom: false
+    }).setView([51.541120, -0.145793], 19); // Increased zoom level
 
+    // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
     const southWest = L.latLng(51.540350, -0.149730);
     const northEast = L.latLng(51.542182, -0.141018);
     const bounds = L.latLngBounds(southWest, northEast);
@@ -121,40 +125,19 @@
       maxZoom: 19
     }).addTo(map);
 
-    // Add invisible markers
-    const title1 = L.marker([51.5406, -0.1480], {
-      icon: L.divIcon({
-        html: '', // No content in the icon
-        iconSize: [0, 0] // Make the icon invisible
-      })
-    }).addTo(map);
-
-    const title2 = L.marker([51.5409, -0.1468], {
-      icon: L.divIcon({
-        html: '',
-        iconSize: [0, 0]
-      })
-    }).addTo(map);
-
-    const title3 = L.marker([51.5409, -0.1461], {
-      icon: L.divIcon({
-        html: '',
-        iconSize: [0, 0]
-      })
-    }).addTo(map);
-
     // Lightbox functionality
     const lightboxes = document.querySelectorAll('.camden-lightbox');
     const closeButtons = document.querySelectorAll('.camden-lightbox-close');
 
-    // Event listeners for opening lightboxes directly
-    document.addEventListener('click', (event) => {
-      if (event.target.matches('[data-lightbox]')) {
+    map.on('popupopen', function(e) {
+      const popup = e.popup;
+      const trigger = popup.getElement().querySelector('a');
+      trigger.addEventListener('click', (event) => {
         event.preventDefault();
-        const lightboxId = event.target.dataset.lightbox;
+        const lightboxId = trigger.dataset.lightbox;
         const lightbox = document.getElementById(lightboxId);
         lightbox.style.display = 'block';
-      }
+      });
     });
 
     closeButtons.forEach(button => {
