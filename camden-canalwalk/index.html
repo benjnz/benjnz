@@ -21,6 +21,9 @@
       position: absolute;
       transform: rotate(-90deg); /* Rotate the title text back */
       /* Add any other styling for your titles here */
+      font-size: 16px; /* Example styling */
+      font-weight: bold;
+      color: #333; /* Dark gray color */
     }
 
     /* Lightbox Styles */
@@ -126,25 +129,22 @@
       maxZoom: 19
     }).addTo(map);
 
-    // Add invisible markers
+    // Add titles with rotated icons
     const title1 = L.marker([51.5406, -0.1480], {
       icon: L.divIcon({
-        html: '', // No content in the icon
-        iconSize: [0, 0] // Make the icon invisible
+        html: '<div class="camden-title" data-lightbox="lightbox1">Title 1</div>' // Add data-lightbox attribute
       })
     }).addTo(map);
 
     const title2 = L.marker([51.5409, -0.1468], {
       icon: L.divIcon({
-        html: '',
-        iconSize: [0, 0]
+        html: '<div class="camden-title" data-lightbox="lightbox2">Title 2</div>'
       })
     }).addTo(map);
 
     const title3 = L.marker([51.5409, -0.1461], {
       icon: L.divIcon({
-        html: '',
-        iconSize: [0, 0]
+        html: '<div class="camden-title" data-lightbox="lightbox3">Title 3</div>'
       })
     }).addTo(map);
 
