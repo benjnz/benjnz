@@ -8,31 +8,31 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <style>
 
-        html, body {
+    html, body {
       height: 100%;
       width: 100%;
-      margin: 0; /* Remove any default margins */
-      overflow: hidden; /* Prevent scrollbars */
+      margin: 0;
+      overflow: hidden;
     }
-    
+   
     /* CSS styles.css */
     #map {
-  width: 100%;
-  height: 0; /* Height is determined by padding */
-  padding-top: 50%; /* Adjust this value based on your desired aspect ratio */
-  position: relative;
-  transform: rotate(90deg);
-  touch-action: none;
-  margin: 0;
-}
+      width: 100%;
+      height: 0;
+      padding-top: 50%; /* Adjust this value based on your desired aspect ratio */
+      position: relative;
+      transform: rotate(90deg);
+      touch-action: none;
+      margin: 0;
+    }
 
-.map-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+    .map-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     .leaflet-control-attribution,
     .leaflet-control-zoom {
@@ -94,116 +94,111 @@
   <img src="../media/CamdenBackground.webp" alt="Background Image" class="webp-image">
 
   <div class="camden-top-menu-bar">
-  <div class="top-left-corner">
-    <img src="../media/CamdenCanalWalk.gif" alt="GIF Image" class="camden-gif">
-  </div>
-  
-</div>
-  </div>
-
- <div id="map">
-  <div class="map-content">
-    <script>
-
-
-  <div id="lightbox1" class="camden-lightbox">
-    <div class="camden-lightbox-content">
-      <img src="../media/image1.webp" alt="Lightbox Image 1" class="camden-lightbox-image">
-      <div class="camden-lightbox-text">
-        <h2>Title 1</h2>
-        <p>This is the description for Title 1.</p>
-      </div>
+    <div class="top-left-corner">
+      <img src="../media/CamdenCanalWalk.gif" alt="GIF Image" class="camden-gif">
     </div>
-    <button class="camden-lightbox-close">&times;</button>
   </div>
 
-  <div id="lightbox2" class="camden-lightbox">
-    <div class="camden-lightbox-content">
-      <img src="../media/image2.webp" alt="Lightbox Image 2" class="camden-lightbox-image">
-      <div class="camden-lightbox-text">
-        <h2>Title 2</h2>
-        <p>This is the description for Title 2.</p>
+  <div id="map">
+    <div class="map-content">
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <div id="lightbox1" class="camden-lightbox">
+        <div class="camden-lightbox-content">
+          <img src="../media/image1.webp" alt="Lightbox Image 1" class="camden-lightbox-image">
+          <div class="camden-lightbox-text">
+            <h2>Title 1</h2>
+            <p>This is the description for Title 1.</p>
+          </div>
+        </div>
+        <button class="camden-lightbox-close">&times;</button>
       </div>
-    </div>
-    <button class="camden-lightbox-close">&times;</button>
-  </div>
 
-  <div id="lightbox3" class="camden-lightbox">
-    <div class="camden-lightbox-content">
-      <img src="../media/image3.webp" alt="Lightbox Image 3" class="camden-lightbox-image">
-      <div class="camden-lightbox-text">
-        <h2>Title 3</h2>
-        <p>This is the description for Title 3.</p>
+      <div id="lightbox2" class="camden-lightbox">
+        <div class="camden-lightbox-content">
+          <img src="../media/image2.webp" alt="Lightbox Image 2" class="camden-lightbox-image">
+          <div class="camden-lightbox-text">
+            <h2>Title 2</h2>
+            <p>This is the description for Title 2.</p>
+          </div>
+        </div>
+        <button class="camden-lightbox-close">&times;</button>
       </div>
+
+      <div id="lightbox3" class="camden-lightbox">
+        <div class="camden-lightbox-content">
+          <img src="../media/image3.webp" alt="Lightbox Image 3" class="camden-lightbox-image">
+          <div class="camden-lightbox-text">
+            <h2>Title 3</h2>
+            <p>This is the description for Title 3.</p>
+          </div>
+        </div>
+        <button class="camden-lightbox-close">&times;</button>
+      </div>
+
+      <script>
+        // JavaScript (script.js)
+        const map = L.map('map', {
+          attributionControl: false,
+          zoomControl: false,
+          dragging: false,
+          scrollWheelZoom: false,
+          doubleClickZoom: false,
+          tap: false // Prevent tap to zoom on mobile
+        }).setView([51.541120, -0.145793], 19); // Increased zoom level
+
+        // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
+        const southWest = L.latLng(51.540350, -0.149730);
+        const northEast = L.latLng(51.542182, -0.141018);
+        const bounds = L.latLngBounds(southWest, northEast);
+
+        map.fitBounds(bounds);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: 'abcd',
+          maxZoom: 19
+        }).addTo(map);
+
+        // Add titles with rotated icons
+        const title1 = L.marker([51.5406, -0.1480], {
+          icon: L.divIcon({
+            html: '<div class="camden-title" data-lightbox="lightbox1">Title 1</div>' // Add data-lightbox attribute
+          })
+        }).addTo(map);
+
+        const title2 = L.marker([51.5409, -0.1468], {
+          icon: L.divIcon({
+            html: '<div class="camden-title" data-lightbox="lightbox2">Title 2</div>'
+          })
+        }).addTo(map);
+
+        const title3 = L.marker([51.5409, -0.1461], {
+          icon: L.divIcon({
+            html: '<div class="camden-title" data-lightbox="lightbox3">Title 3</div>'
+          })
+        }).addTo(map);
+
+        // Lightbox functionality
+        const lightboxes = document.querySelectorAll('.camden-lightbox');
+        const closeButtons = document.querySelectorAll('.camden-lightbox-close');
+
+        // Event listeners for opening lightboxes directly
+        document.addEventListener('click', (event) => {
+          if (event.target.matches('[data-lightbox]')) {
+            event.preventDefault();
+            const lightboxId = event.target.dataset.lightbox;
+            const lightbox = document.getElementById(lightboxId);
+            lightbox.style.display = 'block';
+          }
+        });
+
+        closeButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const lightbox = button.closest('.camden-lightbox');
+            lightbox.style.display = 'none';
+          });
+        });
+      </script>
     </div>
-    <button class="camden-lightbox-close">&times;</button>
   </div>
-
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    // JavaScript (script.js)
-    const map = L.map('map', {
-      attributionControl: false,
-      zoomControl: false,
-      dragging: false,
-      scrollWheelZoom: false,
-      doubleClickZoom: false,
-      tap: false // Prevent tap to zoom on mobile
-    }).setView([51.541120, -0.145793], 19); // Increased zoom level
-
-    // Define the bounds (Oval Road Bridge to Kentish Town Bridge) - Adjust coordinates
-    const southWest = L.latLng(51.540350, -0.149730);
-    const northEast = L.latLng(51.542182, -0.141018);
-    const bounds = L.latLngBounds(southWest, northEast);
-
-    map.fitBounds(bounds);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(map);
-
-    // Add titles with rotated icons
-    const title1 = L.marker([51.5406, -0.1480], {
-      icon: L.divIcon({
-        html: '<div class="camden-title" data-lightbox="lightbox1">Title 1</div>' // Add data-lightbox attribute
-      })
-    }).addTo(map);
-
-    const title2 = L.marker([51.5409, -0.1468], {
-      icon: L.divIcon({
-        html: '<div class="camden-title" data-lightbox="lightbox2">Title 2</div>'
-      })
-    }).addTo(map);
-
-    const title3 = L.marker([51.5409, -0.1461], {
-      icon: L.divIcon({
-        html: '<div class="camden-title" data-lightbox="lightbox3">Title 3</div>'
-      })
-    }).addTo(map);
-
-    // Lightbox functionality
-    const lightboxes = document.querySelectorAll('.camden-lightbox');
-    const closeButtons = document.querySelectorAll('.camden-lightbox-close');
-
-    // Event listeners for opening lightboxes directly
-    document.addEventListener('click', (event) => {
-      if (event.target.matches('[data-lightbox]')) {
-        event.preventDefault();
-        const lightboxId = event.target.dataset.lightbox;
-        const lightbox = document.getElementById(lightboxId);
-        lightbox.style.display = 'block';
-      }
-    });
-
-    closeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const lightbox = button.closest('.camden-lightbox');
-        lightbox.style.display = 'none';
-      });
-    });
-  </script>
-</div>
 </body>
 </html>
