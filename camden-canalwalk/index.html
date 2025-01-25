@@ -16,14 +16,23 @@
     }
     
     /* CSS styles.css */
-     #map {
-      height: 100vh; /* Make the map take up full viewport height */
-      width: 100vw;  /* Make the map take up full viewport width */
-      transform: rotate(90deg);
-      touch-action: none;
-      margin: 0; /* Remove any default margins */
+    #map {
+  width: 100%;
+  height: 0; /* Height is determined by padding */
+  padding-top: 50%; /* Adjust this value based on your desired aspect ratio */
+  position: relative;
+  transform: rotate(90deg);
+  touch-action: none;
+  margin: 0;
+}
 
-    }
+.map-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
     .leaflet-control-attribution,
     .leaflet-control-zoom {
@@ -92,7 +101,9 @@
 </div>
   </div>
 
-  <div id="map"></div>
+ <div id="map">
+  <div class="map-content">
+    <script>
 
 
   <div id="lightbox1" class="camden-lightbox">
@@ -193,5 +204,6 @@
       });
     });
   </script>
+</div>
 </body>
 </html>
