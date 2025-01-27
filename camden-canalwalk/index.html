@@ -115,6 +115,15 @@ const map = L.map('map', {
             lightbox.style.display = 'none';
           });
         });
+
+    // Event listener for closing lightboxes by clicking outside
+    lightboxes.forEach(lightbox => {
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) { // Check if the lightbox itself was clicked
+          lightbox.style.display = 'none';
+        }
+      });
+    });
       </script>
     </div>
   </div>
