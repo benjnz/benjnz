@@ -57,14 +57,15 @@
 
       <script>
         // JavaScript (script.js)
-const map = L.map('map', {
+
+        const map = L.map('map', {
   attributionControl: false,
   zoomControl: false,
   dragging: false,
   scrollWheelZoom: false,
   doubleClickZoom: false,
   tap: false
-}).setView([51.541120, -0.145793], 18); // Adjust zoom level if needed
+}).fitBounds(bounds, [0, 0]); // Center the map within the bounds
 
 // Define the bounds - Adjust coordinates as needed
 const southWest = L.latLng(51.540545, -0.148663);
