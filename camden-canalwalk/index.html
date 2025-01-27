@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iframe Navigation</title>
+  <style>
+    /* Style the arrow buttons */
+    .arrow-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1;
+    }
+
+    /* Style the left arrow button */
+    .arrow-left {
+      left: 0;
+    }
+
+    /* Style the right arrow button */
+    .arrow-right {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/CiHFlTdKbxalkntSEuZGi5/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+
+  <div class="arrow-button arrow-left">←</div>
+  <div class="arrow-button arrow-right">→</div>
+
+  <script>
+    const iframes = document.querySelectorAll('iframe');
+    let currentIndex = 0;
+
+    // Function to show the next iframe
+    function showNextIframe() {
+      currentIndex++;
+      if (currentIndex >= iframes.length) {
+        currentIndex = 0;
+      }
+      iframes[currentIndex].style.display = 'block';
+    }
+
+    // Function to show the previous iframe
+    function showPreviousIframe() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = iframes.length - 1;
+      }
+      iframes[currentIndex].style.display = 'block';
+    }
+
+    // Add event listeners to the arrow buttons
+    document.querySelector('.arrow-left').addEventListener('click', showPreviousIframe);
+    document.querySelector('.arrow-right').addEventListener('click', showNextIframe);
+
+    // Initially hide all iframes except the first one
+    for (let i = 1; i < iframes.length; i++) {
+      iframes[i].style.display = 'none';
+    }
+  </script>
+</body>
+</html>
