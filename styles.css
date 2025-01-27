@@ -1804,5 +1804,118 @@ body {
   width: 15%;
   
 }
+ /* CSS styles.css */
+#map {
+  position: absolute;
+  top: 10vw;
+  left: 0;
+  transform: rotate(90deg);
+  touch-action: none;
+  margin: 0;
+  z-index: 1000;
+  width: 1000vw;
+  max-width: 100vw;
+  max-height: 100vw; /* Limit the maximum height to the viewport width */
+  height: min(calc(100vh - 80px), 80vw); /* Use min() to limit height to 1000px */
+  /* width: auto;  Allow width to adjust freely */ 
+  padding-top: 0; /* Remove padding-top */
+}
+
+    .leaflet-control-attribution,
+    .leaflet-control-zoom {
+      display: none;
+    }
+
+    .camden-title {
+      position: absolute;
+      transform: rotate(-90deg); /* Rotate the title text back */
+      /* Add any other styling for your titles here */
+      font-size: 16px; /* Example styling */
+      font-weight: bold;
+      color: #0000008a; /* Dark gray color */
+    }
+
+    /* Lightbox Styles */
+    .camden-lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .camden-lightbox-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80vh;
+      max-height: 80vw;
+      transform: rotate(-90deg);
+      background-color: #fff;
+    }
+
+    .camden-lightbox-image {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .camden-lightbox-text {
+      padding: 20px;
+    }
+
+    .camden-lightbox-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+
+.top-left-corner {
+      position: absolute;
+      top: 2vw; /* Adjust top margin as needed */
+      left: 2vw; /* Adjust left margin as needed */
+      z-index: 1001; /* Ensure it's above the map and lightboxes */
+    }
+
+    .webp-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 1001; /* Ensure it's below the GIF */
+    }
+
+.camden-gif{
+  width: 10%;
+  
+}
+
+/* Responsive Layout for Smaller Screens */
+@media screen and (max-width: 1200px) {
+ #map {
+  position: absolute;
+  top: 50vw;
+  left: 0;
+  transform: rotate(90deg);
+  touch-action: none;
+  margin: 0;
+  z-index: 1000;
+  width: 200vw;
+  margin-left: -50vw;
+  max-width: 200vw;
+  max-height: 100vw; /* Limit the maximum height to the viewport width */
+  height: min(calc(100vh - 80px), 800vw); /* Use min() to limit height to 1000px */
+  /* width: auto;  Allow width to adjust freely */ 
+  padding-top: 0; /* Remove padding-top */
+}
+
 
   </style>
