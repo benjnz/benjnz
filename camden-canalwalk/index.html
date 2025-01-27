@@ -1,1 +1,168 @@
-<!DOCTYPE html><html><head><link href="./css/main.css" rel="stylesheet" /><title>Document</title></head><body><div class="v1_2013"><div class="name"></div><div class="name"></div><div class="name"></div></div></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Full Page Slider</title>
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+}.slider-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}.slide.active {
+  display: block;
+  opacity: 1;
+}.slide-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}.slide-title {
+  font-size: 3em;
+  margin-bottom: 10px;
+}.slide-subtitle {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}.slide-image {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+}.mini-title {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}.mini-subtitle {
+  font-size: 1em;
+  margin-bottom: 20px;
+}.info-boxes {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}.info-box {
+  text-align: left;
+  width: 30%;
+}.info-box i {
+  margin-right: 5px;
+}.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+}.prev {
+  left: 20px;
+}.next {
+  right: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="slider-container">
+
+  <div class="slide active">
+    <div class="slide-content">
+      <h2 class="slide-title">Slide 1 Title</h2>
+      <p class="slide-subtitle">Slide 1 Subtitle</p>
+      <img class="slide-image" src="graffitinightlight.webp" alt="Slide 1 Image">
+      <h3 class="mini-title">Mini Title 1</h3>
+      <p class="mini-subtitle">Mini Subtitle 1</p>
+      <div class="info-boxes">
+        <div class="info-box">
+          <p>Info Box 1 <i class="fas fa-info-circle"></i></p>
+        </div>
+        <div class="info-box">
+          <p>Info Box 2 <i class="fas fa-info-circle"></i></p>
+        </div>
+        <div class="info-box">
+          <p>Info Box 3 <i class="fas fa-info-circle"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-content">
+      <h2 class="slide-title">Slide 2 Title</h2>
+      <p class="slide-subtitle">Slide 2 Subtitle</p>
+      <img class="slide-image" src="image2.jpg" alt="Slide 2 Image">
+      <h3 class="mini-title">Mini Title 2</h3>
+      <p class="mini-subtitle">Mini Subtitle 2</p>
+      <div class="info-boxes">
+        <div class="info-box">
+          <p>Info Box 1 <i class="fas fa-info-circle"></i></p>
+        </div>
+        <div class="info-box">
+          <p>Info Box 2 <i class="fas fa-info-circle"></i></p>
+        </div>
+        <div class="info-box">
+          <p>Info Box 3 <i class="fas fa-info-circle"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="slide-content">
+      <h2 class="slide-title">Slide 3 Title</h2>
+      <p class="slide-subtitle">Slide 3 Subtitle</p>
+      <img class="slide-image" src="image3.jpg" alt="Slide 3 Image">
+      <h3 class="mini-title">Mini Title 3</h3>
+      <p class="mini-subtitle">Mini Subtitle 3</p>
+      <div class="info-boxes">
+        <div class="info-box">
+          <p>Info Box 1 <i class="fas fa-info-circle"></i></p>
+        </div>
+        <div class="info-box">
+          <p>Info Box 2 <i class="fas fa-info-circle"></i></p>
+        </div>
+        <div class="info-box">
+          <p>Info Box 3 <i class="fas fa-info-circle"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="prev arrow" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="next arrow" onclick="changeSlide(1)">&#10095;</a>
+
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function changeSlide(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].classList.remove("active");
+  }
+  slideIndex = (slideIndex + slides.length) % slides.length;
+  slides[slideIndex].classList.add("active");
+}
+</script>
+
+</body>
+</html>
