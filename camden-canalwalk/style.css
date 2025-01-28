@@ -160,17 +160,17 @@ body {
     font-family: "Eina Semi Bold", Arial, sans-serif;
     font-weight:800;
     margin-bottom: -1vw;
-        font-size: 1.5em;
+        font-size: 2em;
 }
 
 .mini-subtitle {
-    font-size: 1.2em;
+    font-size: 1.8em;
     margin-top: -0.5vw;
 }
 .info-boxes {
     justify-content: center; /* Horizontally center the boxes */
     align-items: center; /* Optional: Vertically center (if required) */
-font-size: 1.2em;
+font-size: 1.5em;
     text-align: left;
     width: 60%; /* Default for larger screens */
     margin-bottom: 20px; /* Add spacing between boxes */
