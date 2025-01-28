@@ -5,7 +5,6 @@
     font-style: normal;
 }
 
-
 @font-face {
     font-family: "Eina Semi Bold";
     src: url("/fonts/eina-01-semibold.ttf") format("truetype");
@@ -13,86 +12,136 @@
     font-style: normal;
 }
 
-/* Remove the outline for all elements when clicked with a mouse */
+/* Global Styles */
 * {
     outline: none;
+
+    box-sizing: border-box; /* Include padding/borders in element size */
 }
 
-  body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: "Eina Regular", Arial, sans-serif;
-  overflow-y: auto; /* Add vertical scroll to the body */
-    
-}.slider-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}.slide {
-  display: none;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}.slide.active {
-  display: block;
-  opacity: 1;
-}.slide-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-align: center;
-  padding: 20px;
-}.slide-title {
-  font-size: 3em;
-  margin-bottom: 10px;
-}.slide-subtitle {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-}.slide-image {
-  max-width: 60%;
-  height: auto;
-  margin-bottom: 20px;
-}.mini-title {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-}.mini-subtitle {
-  font-size: 1em;
-  margin-bottom: 20px;
-}.info-boxes {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
-  justify-content: space-around;
-  width: 80%;
-}.info-box {
-  text-align: left;
-  width: 100%; /* Full width on smaller screens */
-  margin-bottom: 20px;
+html, body {
+    min-height: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    font-family: "Eina Regular", Arial, sans-serif;
 }
 
-@media (min-width: 768px) {
-.info-box {
-    width: 30%; /* 30% width on larger screens */
-  }
-}.info-box i {
-  margin-right: 5px;
-}.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px 15px;
-  cursor: pointer;
-}.prev {
-  left: 20px;
-}.next {
-  right: 20px;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full-page layout */
 }
+
+.slider-container {
+    flex-grow: 1;
+    position: relative;
+    min-height: 100vh; /* Ensure full height of the viewport */
+}
+
+.slide {
+    display: none; /* Initially hide all slides */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 4vw 2vw;
+    box-sizing: border-box;
+}
+
+.slide-title {
+    font-size: 3em;
+    margin-bottom: -1vw;
+}
+
+.slide-subtitle {
+    font-size: 1.5em;
+    margin-bottom: 1vw;
+}
+
+.slide-image {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 2vw;
+}
+
+.mini-title {
+    font-family: "Eina Semi Bold", Arial, sans-serif;
+    font-weight:800;
+    margin-bottom: -1vw;
+}
+
+.mini-subtitle {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+.info-boxes {
+    justify-content: center; /* Horizontally center the boxes */
+    align-items: center; /* Optional: Vertically center (if required) */
+
+    text-align: left;
+    width: 30%; /* Default for larger screens */
+    margin-bottom: 20px; /* Add spacing between boxes */
+}
+
+.fas.fa-info-circle {
+    margin-right: 1vw;
+}
+
+
+/* Styles for screens larger than 1200px */
+@media (min-width: 1200px) {
+    .info-boxes {
+        display: flex;
+       flex-wrap: wrap; /* Allow wrapping */
+        width: 80%; /* Reduce container width on large screens */
+    }
+
+    .info-box {
+        width: 30%; /* Retain horizontal layout */
+    }
+
+    .slide-content {
+        padding: 60px 40px; /* Add padding for large screens */
+    }
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 80px 20px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+@media (max-width: 1000px) {
+.slide-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 2vw;
+}
+ 
