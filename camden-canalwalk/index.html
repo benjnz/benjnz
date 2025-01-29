@@ -88,21 +88,30 @@
 </div>
 
 <script>
-let slideIndex = 0;
-showSlides();
+let slideIndex = getSlideFromURL() || 0;
+showSlides(slideIndex);
 
 function changeSlide(n) {
-  showSlides(slideIndex += n);
+    slideIndex = (slideIndex + n + document.getElementsByClassName("slide").length) % document.getElementsByClassName("slide").length;
+    updateURL(slideIndex);
+    showSlides(slideIndex);
 }
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("slide");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].classList.remove("active");
-  }
-  slideIndex = (slideIndex + slides.length) % slides.length;
-  slides[slideIndex].classList.add("active");
+function showSlides(n) {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+    }
+    slides[n].classList.add("active");
+}
+
+function updateURL(index) {
+    history.pushState(null, null, "?slide=" + index);
+}
+
+function getSlideFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.has("slide") ? parseInt(params.get("slide")) : null;
 }
 </script>
 
