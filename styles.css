@@ -138,12 +138,23 @@ body {
   flex-direction: column; /* Stack rows vertically */
 }
 
+/* Zero row styling */
+.zero-row {
+  position: relative;
+  width: 100%; /* Full width of the page */
+  height: 20%; /* Set height of the row */
+  background-color: #ffe4d1; /* White background */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
 /* First row styling */
 .first-row {
   position: relative;
   width: 100%; /* Full width of the page */
   height: 20%; /* Set height of the row */
-  background-color: white; /* White background */
+  background-color: #ffffff; /* White background */
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
