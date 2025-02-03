@@ -20,10 +20,14 @@
     font-style: normal;
 }
 
-/* Remove the outline for all elements when clicked with a mouse */
-* {
-    outline: none;
+*:focus {
+    outline: none; /* Remove outline when clicked */
 }
+
+*:focus-visible {
+    outline: 2px solid #000; /* Keep visible focus for keyboard users */
+}
+
 
 body {
     font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
