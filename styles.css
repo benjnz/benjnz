@@ -167,7 +167,7 @@ body {
 .banner {
   height: 20%; /* Fit the row’s height */
   width: 100%; /* Maintain aspect ratio */
-  max-width: 1200px; /* Prevent image overflow horizontally */
+  max-width: 900px; /* Prevent image overflow horizontally */
 display: block; /* Ensure no inline gaps */
 }
 
