@@ -149,13 +149,3 @@ document.querySelectorAll('.camden-lightbox').forEach(lightbox => {
     }
   });
 });
-
-const swiper = new Swiper('.swiper', {
-  slidesPerView: 1, // Show only ONE slide at a time
-  spaceBetween: 20, // Adds spacing between slides
-  loop: true, // Enables infinite scrolling
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
