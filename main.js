@@ -126,8 +126,6 @@ const lightboxes = document.querySelectorAll('.camden-lightbox');
 const triggers = document.querySelectorAll('.camden-title'); // This might need adjustment
 const closeButtons = document.querySelectorAll('.camden-lightbox-close');
 
-// ... (rest of your lightbox code) ...
-
 // Open Lightbox
 document.querySelectorAll('.camden-overlay-title').forEach(title => {
   title.addEventListener('click', () => {
@@ -152,3 +150,12 @@ document.querySelectorAll('.camden-lightbox').forEach(lightbox => {
   });
 });
 
+const swiper = new Swiper('.swiper', {
+  slidesPerView: 1, // Show only ONE slide at a time
+  spaceBetween: 20, // Adds spacing between slides
+  loop: true, // Enables infinite scrolling
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
