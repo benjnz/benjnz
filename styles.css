@@ -2072,6 +2072,12 @@ h2 {
         width: 80%; /* Ensure same width when stacked */
         height: auto; /* Maintain aspect ratio */
     }
+
+  .vertical-images img{
+    margin: 15%;
+    width: 90%;
+    height: auto;
+  }
 }
 
 
