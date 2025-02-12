@@ -117,3 +117,19 @@ body {
   cursor: pointer;
   transition: opacity 0.1s linear; /* Smooth transition */
 }
+
+.menu {
+  display: flex;
+  gap: 20px; /* Spacing between menu items */
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #000000; /* Apple’s signature blue for links */
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
