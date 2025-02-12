@@ -1,0 +1,119 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Eina Regular";
+    src: url("/fonts/eina-01-regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Eina Semi Bold";
+    src: url("/fonts/eina-01-semibold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+*:focus {
+    outline: none; /* Remove outline when clicked */
+}
+
+*:focus-visible {
+    outline: 2px solid #000; /* Keep visible focus for keyboard users */
+}
+
+
+body {
+    font-family: "Eina Regular", Arial, sans-serif; /* Always provide fallback fonts */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    min-height: 100vh;
+    overflow-x: hidden;
+  
+}
+
+/* Loading Spinner Style */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255 255 255 / 85%); /* Optional background overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Optional: Adjust size of the logo gif */
+.loading-screen img {
+  max-width: 150px; /* Set your logo size */
+  width: auto;
+  height: auto;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Top banner styling */
+.top-banner {
+  width: 100%; /* Full width of the page */
+  background-color: #f8f8f8; /* Light grey like Apple.com */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between; /* Space between logo and menu */
+  align-items: center; /* Center vertically */
+  position: sticky; /* Stick to the top of the page */
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #dcdcdc; /* Subtle border for separation */
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; /* Adjust size as needed */
+  width: auto;
+  overflow: hidden; /* Ensure no overflow from resizing */
+}
+
+.logo-img {
+  height: 100%; /* Match container height */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+  transition: opacity 0.1s linear; /* Smooth transition */
+}
+
+/* Ensure the link does not interfere with styling */
+.logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; /* Adjust size as needed */
+  width: auto;
+  overflow: hidden; /* Ensure no overflow from resizing */
+}
+
+.logo-link img {
+   height: 100%; /* Match container height */
+  width: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+  transition: opacity 0.1s linear; /* Smooth transition */
+}
