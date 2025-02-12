@@ -89,7 +89,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px; /* Adjust size as needed */
+  height:60px; /* Adjust size as needed */
   width: auto;
   overflow: hidden; /* Ensure no overflow from resizing */
 }
@@ -106,7 +106,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px; /* Adjust size as needed */
+  height: 60px; /* Adjust size as needed */
   width: auto;
   overflow: hidden; /* Ensure no overflow from resizing */
 }
