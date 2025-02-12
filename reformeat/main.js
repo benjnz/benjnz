@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (logo.classList.contains("playing")) return;
 
     const gifSrc = logo.getAttribute("data-gif");
-    const duration = parseInt(logo.getAttribute("data-duration"), 10) || 1400;
+    const duration = parseInt(logo.getAttribute("data-duration"), 10) || 1000;
     const staticSrc = logo.src;
 
     logo.src = `${gifSrc}?t=${new Date().getTime()}`;
