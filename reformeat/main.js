@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', function() {
   const loadingScreen = document.querySelector('.loading-screen');
   
@@ -13,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error("Loading screen not found.");
   }
 });
+
+*/
 
   const gifs = document.querySelectorAll('.gif-container img');
   
@@ -31,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (logo.classList.contains("playing")) return;
 
     const gifSrc = logo.getAttribute("data-gif");
-    const duration = parseInt(logo.getAttribute("data-duration"), 10);
+    const duration = parseInt(logo.getAttribute("data-duration"), 10) || 1520;
     const staticSrc = logo.src;
 
     logo.src = `${gifSrc}?t=${new Date().getTime()}`;
