@@ -2085,4 +2085,63 @@ h2 {
     background-color: #fff2e8 !important;
 }
 
+.footer {
+  background-color: #ffffff;  /* Dark background */
+  color: #000000;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Centers content */
+  align-items: center;
+  gap: 15px; /* Space between GIF & text */
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+.footer-gif {
+  width: 15vw; /* Adjust size */
+  height: auto;
+  margin-right: 10vw;
+}
+
+.footer-text {
+  text-align: left;
+}
+
+.footer a {
+  color: #00008b;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+
+.footer p {
+  
+  font-size: 1.5vw;
+
+  
+}
+
+@media (max-width: 768px) {
+  .footer a {
+  color: #00008b;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+.footer p {
+  
+  font-size: 3vw;
+
+  
+}
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
   </style>
