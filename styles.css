@@ -2115,12 +2115,12 @@ h2 {
   color: #00008b;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.5vw;
+  font-size: 20px;
 }
 
 .footer p {
   
-  font-size: 1.5vw;
+  font-size: 20px;
 
   
 }
@@ -2139,6 +2139,13 @@ h2 {
 
   
 }
+  
+.footer-gif {
+  width: 25vw; /* Adjust size */
+  height: auto;
+  margin-right: 10vw;
+}
+
 }
 .footer a:hover {
   text-decoration: underline;
