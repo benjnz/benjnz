@@ -152,27 +152,21 @@ document.querySelectorAll('.camden-lightbox').forEach(lightbox => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const gif = document.getElementById("footer-gif");
-  let isFooterVisible = false; // Track visibility
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        if (!isFooterVisible) { // Only restart if it's re-entering
-          isFooterVisible = true;
-          restartGif();
-        }
-      } else {
-        isFooterVisible = false; // Mark as hidden when out of view
+        restartGif(); // Restart GIF whenever it becomes visible
       }
     });
-  }, { threshold: 0.1 }); // Trigger when at least 10% of the footer is visible
+  }, { threshold: 0.1 }); // Detect when at least 10% of the footer is visible
 
   function restartGif() {
     const gifSrc = gif.src;
-    gif.src = ""; // Temporarily remove the src
+    gif.src = ""; // Clear the src
     setTimeout(() => {
-      gif.src = gifSrc; // Restore src to restart GIF
-    }, 50); // Small delay ensures browser refreshes the image
+      gif.src = gifSrc; // Restore the src to restart GIF
+    }, 100); // Small delay ensures a proper reset
   }
 
   observer.observe(document.getElementById("footer"));
