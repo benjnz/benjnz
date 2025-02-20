@@ -1942,7 +1942,7 @@ body {
 
 
 /* Centering the title image */
-.full-width-image-container {
+.gingerbread-full-width-image-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1951,13 +1951,13 @@ body {
     margin-bottom: 5%;
 }
 
-.full-width-image {
+.gingerbread-full-width-image {
     max-width: 1200px;
     width: 80%;
     height: auto;
 }
 
-.body-text-container {
+.gingerbread-body-text-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1965,7 +1965,7 @@ body {
 }
 
 /* Body text styling */
-.body-text {
+.gingerbread-body-text {
     display: flex;
     font-family: "Eina Semi Bold", Arial, sans-serif; /* Always provide fallback fonts */
     background: rgba(204, 113, 47, 0.22);
@@ -2000,7 +2000,7 @@ h2 {
 
 /* Make sure slides look clean on smaller screens */
 @media (max-width: 768px) {
-    .horizontal-images {
+    .gingerbread-horizontal-images {
         flex-direction: column; /* Stack images vertically on smaller screens */
     }
     
@@ -2015,14 +2015,14 @@ h2 {
     }
 
   /* Body text styling */
-.body-text {
+.gingerbread-body-text {
     font-size: 3vw;
 }
 
 }
 
   /* Ensure the slider container does not overflow */
-.slider-container {
+.gingerbread-slider-container {
     overflow: hidden; /* Prevent multiple slides from appearing */
     max-width: 100%; /* Ensures it fits within the page */
 }
@@ -2035,20 +2035,20 @@ h2 {
 
 
 /* 2024 - Stack images vertically with same width */
-.vertical-images {
+.gingerbread-vertical-images {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%; /* Ensure it stretches fully */
 }
 
-.vertical-images img {
+.gingerbread-vertical-images img {
     width: 65vw; /* Same width for stacked images */
     height: auto; /* Maintain aspect ratio */
 }
 
 /* 2023, 2022, 2021 - Images side by side with same height */
-.horizontal-images {
+.gingerbread-horizontal-images {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -2056,7 +2056,7 @@ h2 {
     gap: 15px; /* Spacing between images */
 }
 
-.horizontal-images img {
+.gingerbread-horizontal-images img {
     height: 50vw; /* Set a fixed height */
     width: auto; /* Maintain aspect ratio */
     max-height: 80vh; /* Prevent images from getting too big */
@@ -2064,16 +2064,16 @@ h2 {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .horizontal-images {
+    .gingerbread-horizontal-images {
         flex-direction: column; /* Stack images on small screens */
     }
 
-    .horizontal-images img {
+    .gingerbread-horizontal-images img {
         width: 80%; /* Ensure same width when stacked */
         height: auto; /* Maintain aspect ratio */
     }
 
-  .vertical-images img{
+  .gingerbread-vertical-images img{
     margin: 15%;
     width: 90%;
     height: auto;
@@ -2084,6 +2084,11 @@ h2 {
 .gingerbead {
     background-color: #fff2e8 !important;
 }
+
+
+/*****
+FOOTER
+*****/
 
 .footer {
   background-color: #ffffff;  /* Dark background */
@@ -2150,6 +2155,11 @@ h2 {
 .footer a:hover {
   text-decoration: underline;
 }
+
+
+/****
+ABOUT
+****/
 
 .about-me {
   background-color: #f9f9f9;
