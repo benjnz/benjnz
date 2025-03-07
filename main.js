@@ -173,28 +173,46 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const drawingThumbnails = document.querySelectorAll('.civil-drawing-thumbnail');
-    const body = document.body;
+(function() {
+    function setupFullscreenImages() {
+        const drawingThumbnails = document.querySelectorAll('.civil-drawing-thumbnail');
+        const body = document.body;
 
-    drawingThumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const fullscreenImg = document.createElement('img');
-            fullscreenImg.src = this.src;
-            fullscreenImg.className = 'civil-fullscreen-image';
-            
-            const overlay = document.createElement('div');
-            overlay.className = 'civil-fullscreen-overlay';
-            overlay.appendChild(fullscreenImg);
-            
-            body.appendChild(overlay);
-            
-            overlay.addEventListener('click', function() {
-                body.removeChild(overlay);
+        drawingThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+
+                const fullscreenImg = document.createElement('img');
+                fullscreenImg.src = this.src;
+                fullscreenImg.className = 'civil-fullscreen-image';
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'civil-fullscreen-overlay';
+                overlay.appendChild(fullscreenImg);
+                
+                body.appendChild(overlay);
+                
+                overlay.onclick = function() {
+                    body.removeChild(overlay);
+                };
+
+                console.log('Fullscreen image created');
             });
         });
-    });
+
+        console.log('Fullscreen setup complete');
+    }
+
+    // Run the setup immediately
+    setupFullscreenImages();
+
+    // Also run it when the DOM is fully loaded (in case the script runs too early)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupFullscreenImages);
+    }
+})();
+
 });
 
 
