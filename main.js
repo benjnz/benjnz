@@ -172,3 +172,26 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(document.getElementById("footer"));
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const drawingThumbnails = document.querySelectorAll('.drawing-thumbnail');
+    const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+    const fullscreenImage = document.getElementById('fullscreen-image');
+    const closeFullscreenButton = document.getElementById('close-fullscreen');
+
+    drawingThumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            fullscreenImage.src = this.src;
+            fullscreenOverlay.classList.remove('hidden');
+        });
+    });
+
+    closeFullscreenButton.addEventListener('click', function() {
+        fullscreenOverlay.classList.add('hidden');
+    });
+
+    fullscreenOverlay.addEventListener('click', function(e) {
+        if (e.target === fullscreenOverlay) {
+            fullscreenOverlay.classList.add('hidden');
+        }
+    });
+});
