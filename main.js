@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const drawingThumbnails = document.querySelectorAll('.drawing-thumbnail');
+    const drawingThumbnails = document.querySelectorAll('.civil-drawing-thumbnail');
     const fullscreenOverlay = document.getElementById('fullscreen-overlay');
     const fullscreenImage = document.getElementById('fullscreen-image');
     const closeFullscreenButton = document.getElementById('close-fullscreen');
