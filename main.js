@@ -129,25 +129,31 @@ document.querySelectorAll('.camden-lightbox').forEach(lightbox => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const gif = document.getElementById("footer-gif");
+  let isRestarting = false;
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        restartGif(); // Restart GIF whenever it becomes visible
+      if (entry.isIntersecting && !isRestarting) {
+        restartGif();
       }
     });
-  }, { threshold: 0.1 }); // Detect when at least 10% of the footer is visible
+  }, { threshold: 0.1 });
 
   function restartGif() {
-    const gifSrc = gif.src;
-    gif.src = ""; // Clear the src
-    setTimeout(() => {
-      gif.src = gifSrc; // Restore the src to restart GIF
-    }, 100); // Small delay ensures a proper reset
+    if (isRestarting) return;
+    isRestarting = true;
+
+    const newGif = new Image();
+    newGif.onload = () => {
+      gif.src = newGif.src;
+      isRestarting = false;
+    };
+    newGif.src = gif.src + '?t=' + Date.now(); // Force reload by adding timestamp
   }
 
   observer.observe(document.getElementById("footer"));
 });
+
 
 
 (function() {
