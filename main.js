@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(document.getElementById("footer"));
 });
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const drawingThumbnails = document.querySelectorAll('.civil-drawing-thumbnail');
     const fullscreenOverlay = document.getElementById('civil-fullscreen-overlay');
@@ -187,17 +188,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Close fullscreen when the close button is clicked
-    closeFullscreenButton.addEventListener('click', function () {
-        fullscreenOverlay.classList.add('civil-hidden'); // Hide the overlay
-        fullscreenImage.src = ''; // Clear the image source
-    });
+    closeFullscreenButton.addEventListener('click', closeFullscreen);
 
     // Close fullscreen when clicking outside the image
     fullscreenOverlay.addEventListener('click', function (e) {
         if (e.target === fullscreenOverlay) { // Ensure only clicks outside the image close it
-            fullscreenOverlay.classList.add('civil-hidden'); // Hide the overlay
-            fullscreenImage.src = ''; // Clear the image source
+            closeFullscreen();
         }
     });
+
+    function closeFullscreen() {
+        fullscreenOverlay.classList.add('civil-hidden'); // Hide the overlay
+        fullscreenImage.src = ''; // Clear the image source
+    }
 });
 
