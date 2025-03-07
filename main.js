@@ -175,31 +175,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener('DOMContentLoaded', function () {
     const drawingThumbnails = document.querySelectorAll('.civil-drawing-thumbnail');
-    const fullscreenOverlay = document.getElementById('civil-fullscreen-overlay');
-    const fullscreenImage = document.getElementById('civil-fullscreen-image');
-    const closeFullscreenButton = document.getElementById('civil-close-fullscreen');
+    const body = document.body;
 
-    // Open fullscreen when a drawing is clicked
     drawingThumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function () {
-            fullscreenImage.src = this.src; // Set the source of the fullscreen image
-            fullscreenOverlay.classList.remove('civil-hidden'); // Show the overlay
+        thumbnail.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const fullscreenImg = document.createElement('img');
+            fullscreenImg.src = this.src;
+            fullscreenImg.className = 'civil-fullscreen-image';
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'civil-fullscreen-overlay';
+            overlay.appendChild(fullscreenImg);
+            
+            body.appendChild(overlay);
+            
+            overlay.addEventListener('click', function() {
+                body.removeChild(overlay);
+            });
         });
     });
-
-    // Close fullscreen when the close button is clicked
-    closeFullscreenButton.addEventListener('click', closeFullscreen);
-
-    // Close fullscreen when clicking outside the image
-    fullscreenOverlay.addEventListener('click', function (e) {
-        if (e.target === fullscreenOverlay) { // Ensure only clicks outside the image close it
-            closeFullscreen();
-        }
-    });
-
-    function closeFullscreen() {
-        fullscreenOverlay.classList.add('civil-hidden'); // Hide the overlay
-        fullscreenImage.src = ''; // Clear the image source
-    }
 });
+
 
