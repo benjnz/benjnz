@@ -172,26 +172,32 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(document.getElementById("footer"));
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const drawingThumbnails = document.querySelectorAll('.civil-drawing-thumbnail');
     const fullscreenOverlay = document.getElementById('fullscreen-overlay');
     const fullscreenImage = document.getElementById('fullscreen-image');
     const closeFullscreenButton = document.getElementById('close-fullscreen');
 
+    // Open fullscreen when a drawing is clicked
     drawingThumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            fullscreenImage.src = this.src;
-            fullscreenOverlay.classList.remove('hidden');
+        thumbnail.addEventListener('click', function () {
+            fullscreenImage.src = this.src; // Set the source of the fullscreen image
+            fullscreenOverlay.classList.remove('hidden'); // Show the overlay
         });
     });
 
-    closeFullscreenButton.addEventListener('click', function() {
-        fullscreenOverlay.classList.add('hidden');
+    // Close fullscreen when the close button is clicked
+    closeFullscreenButton.addEventListener('click', function () {
+        fullscreenOverlay.classList.add('hidden'); // Hide the overlay
+        fullscreenImage.src = ''; // Clear the image source
     });
 
-    fullscreenOverlay.addEventListener('click', function(e) {
-        if (e.target === fullscreenOverlay) {
-            fullscreenOverlay.classList.add('hidden');
+    // Close fullscreen when clicking outside the image
+    fullscreenOverlay.addEventListener('click', function (e) {
+        if (e.target === fullscreenOverlay) { // Ensure only clicks outside the image close it
+            fullscreenOverlay.classList.add('hidden'); // Hide the overlay
+            fullscreenImage.src = ''; // Clear the image source
         }
     });
 });
+
