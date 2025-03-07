@@ -2086,6 +2086,162 @@ h2 {
 }
 
 
+/***********
+CIVIL DESIGN
+***********/
+
+
+body.civil {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c9c9c9;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.civil-title-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.subheading {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 10px;
+}
+
+.civil-pdf-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.civil-pdf-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.civil-pdf-thumbnail {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.civil-read-button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.civil-pdf-caption {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Specific styles for the first PDF box with drawings */
+.civil-pdf-box:first-child {
+    max-width: 600px;
+}
+
+.civil-pdf-box:first-child .civil-drawings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.civil-drawing-thumbnail {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.civil-drawing-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .civil-pdf-box:first-child {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .civil-pdf-box:first-child .civil-pdf-content {
+        flex: 0 0 auto;
+        margin-right: 20px;
+        max-width: 300px;
+    }
+
+    .civil-pdf-box:first-child .civil-drawings-container {
+        flex: 1;
+        max-width: 300px;
+        margin-top: 0;
+    }
+}
+
+
+
+#civil-fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+
+.civil-hidden {
+    display: none;
+}
+
+.civil-fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.civil-fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+
 /*****
 FOOTER
 *****/
