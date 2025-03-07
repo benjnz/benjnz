@@ -174,28 +174,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener('DOMContentLoaded', function () {
     const drawingThumbnails = document.querySelectorAll('.civil-drawing-thumbnail');
-    const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-    const fullscreenImage = document.getElementById('fullscreen-image');
-    const closeFullscreenButton = document.getElementById('close-fullscreen');
+    const fullscreenOverlay = document.getElementById('civil-fullscreen-overlay');
+    const fullscreenImage = document.getElementById('civil-fullscreen-image');
+    const closeFullscreenButton = document.getElementById('civil-close-fullscreen');
 
     // Open fullscreen when a drawing is clicked
     drawingThumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', function () {
             fullscreenImage.src = this.src; // Set the source of the fullscreen image
-            fullscreenOverlay.classList.remove('hidden'); // Show the overlay
+            fullscreenOverlay.classList.remove('civil-hidden'); // Show the overlay
         });
     });
 
     // Close fullscreen when the close button is clicked
     closeFullscreenButton.addEventListener('click', function () {
-        fullscreenOverlay.classList.add('hidden'); // Hide the overlay
+        fullscreenOverlay.classList.add('civil-hidden'); // Hide the overlay
         fullscreenImage.src = ''; // Clear the image source
     });
 
     // Close fullscreen when clicking outside the image
     fullscreenOverlay.addEventListener('click', function (e) {
         if (e.target === fullscreenOverlay) { // Ensure only clicks outside the image close it
-            fullscreenOverlay.classList.add('hidden'); // Hide the overlay
+            fullscreenOverlay.classList.add('civil-hidden'); // Hide the overlay
             fullscreenImage.src = ''; // Clear the image source
         }
     });
