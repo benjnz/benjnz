@@ -170,8 +170,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 body.appendChild(overlay);
                 
-                overlay.onclick = function() {
-                    body.removeChild(overlay);
+                overlay.onclick = function(event) {
+                    if (event.target === overlay) {
+                        body.removeChild(overlay);
+                    }
+                };
+
+                fullscreenImg.onclick = function(event) {
+                    event.stopPropagation();
                 };
 
                 console.log('Fullscreen image created');
@@ -189,5 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener('DOMContentLoaded', setupFullscreenImages);
     }
 })();
+
 
 
