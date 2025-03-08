@@ -44,30 +44,38 @@
       display: block;
     }
 
-    /* Arrow Styles */
-    .arrow {
+    /* Slider Dots Styles */
+    .slider-dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #bbb;
+      margin: 0 5px;
       cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      margin-top: -22px;
-      padding: 16px;
-      color: white;
-      font-weight: bold;
-      font-size: 24px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-      background-color: rgba(0, 0, 0, 0.5);
     }
 
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
+    .dot.active {
+      background-color: #717171;
     }
 
-    .arrow:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+    /* Basic Slider Styling */
+    .slide {
+      display: none; /* Initially hide all slides */
+    }
+
+    .slide.active {
+      display: block; /* Display the active slide */
+    }
+
+    .slider-container {
+      position: relative;
+      overflow: hidden; /* Ensure content doesn't overflow */
     }
   </style>
 </head>
@@ -207,10 +215,9 @@
       </div>
     </div>
 
-    <a class="prev arrow" onclick="changeSlide(-1)">&#10094;</a>
-    <a class="next arrow" onclick="changeSlide(1)">&#10095;</a>
-
   </div>
+
+  <div class="slider-dots"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
@@ -219,33 +226,63 @@
         $(this).parent().toggleClass('active');
         $(this).siblings('.info-text').slideToggle();
       });
-    });
 
-    let slideIndex = getSlideFromURL() || 0;
-    showSlides(slideIndex);
+      const $slider = $('.slider-container');
+      const $dots = $('.slider-dots');
+      let slideIndex = getSlideFromURL() || 0;
+      const slideCount = $('.slide').length;
 
-    function changeSlide(n) {
-      slideIndex = (slideIndex + n + document.getElementsByClassName("slide").length) % document.getElementsByClassName("slide").length;
-      updateURL(slideIndex);
-      showSlides(slideIndex);
-    }
-
-    function showSlides(n) {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("active");
+      // Create dots
+      for (let i = 0; i < slideCount; i++) {
+        $dots.append('<span class="dot"></span>');
       }
-      slides[n].classList.add("active");
-    }
 
-    function updateURL(index) {
-      history.pushState(null, null, "?slide=" + index);
-    }
+      // Initialize first slide and dot
+      updateSlider(slideIndex); // Pass slideIndex here
 
-    function getSlideFromURL() {
-      const params = new URLSearchParams(window.location.search);
-      return params.has("slide") ? parseInt(params.get("slide")) : null;
-    }
+      // Handle touch events for swiping
+      let startX;
+      $slider.on('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+      });
+
+      $slider.on('touchend', function(e) {
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+          if (diff > 0 && slideIndex < slideCount - 1) {
+            slideIndex++;
+          } else if (diff < 0 && slideIndex > 0) {
+            slideIndex--;
+          }
+          updateURL(slideIndex);
+          updateSlider(slideIndex); // Pass slideIndex here
+        }
+      });
+
+      // Handle dot clicks
+      $('.dot').on('click', function() {
+        slideIndex = $(this).index();
+        updateURL(slideIndex);
+        updateSlider(slideIndex); // Pass slideIndex here
+      });
+
+      function updateSlider(index) {
+        $('.slide').removeClass('active');
+        $('.slide').eq(index).addClass('active');
+        $('.dot').removeClass('active');
+        $('.dot').eq(index).addClass('active');
+      }
+
+      function updateURL(index) {
+        history.pushState(null, null, "?slide=" + index);
+      }
+
+      function getSlideFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.has("slide") ? parseInt(params.get("slide")) : null;
+      }
+    });
   </script>
   <script src="../main.js"></script>
 </body>
