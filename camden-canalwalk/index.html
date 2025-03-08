@@ -6,7 +6,7 @@
   <title>Active Ageing</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
- <!-- Standard favicon -->
+  <!-- Standard favicon -->
   <link rel="icon" href="../favicon.png" type="image/png">
 
   <!-- Apple Touch Icon -->
@@ -18,191 +18,250 @@
   <link rel="icon" sizes="48x48" href="../favicon-48x48.png">
   <link rel="icon" sizes="96x96" href="../favicon-96x96.png">
   <link rel="icon" sizes="192x192" href="../favicon-192x192.png">
+
+  <style>
+    /* Info Box Styles */
+    .info-box {
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .info-box-title {
+      background-color: #f5f5f5;
+      padding: 10px;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .info-text {
+      padding: 10px;
+      display: none;
+    }
+
+    .info-box.active .info-text {
+      display: block;
+    }
+
+    /* Arrow Styles */
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .arrow:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
 </head>
-  
+
 <body class="iot">
   <div class="loading-screen">
     <img src="../logos/logo.gif" alt="Loading...">
-</div>
-
- <!-- Top Banner -->
-<div class="top-banner">
-  <div class="logo">
-    <a href="/" class="logo-link">
-      <img 
-        src="../logos/logo.png" 
-        data-gif="../logos/logo.gif" 
-        data-duration="1520"
-        alt="Logo" 
-        class="logo-img"
-      >
-    </a>
   </div>
-   <div class="menu">
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <div class="logo">
+      <a href="/" class="logo-link">
+        <img
+          src="../logos/logo.png"
+          data-gif="../logos/logo.gif"
+          data-duration="1520"
+          alt="Logo"
+          class="logo-img"
+        >
+      </a>
+    </div>
+    <div class="menu">
       <a href="/about">About</a>
     </div>
-</div>
-
+  </div>
 
   <!-- Page Content -->
 
-<!-- Added Image at the Top -->
-<div class="header">
+  <!-- Added Image at the Top -->
+  <div class="header">
     <img src="CamdenCanalWalk.gif" alt="Camden Canal Walk" class="header-image">
     <p class="header-subtitle">An Enhancement Project for the Regent's Canal at Camden Lock</p>
-</div>
+  </div>
 
-<!-- Added Video Below the Subtitle -->
-<video class="intro-video" autoplay muted loop>
+  <!-- Added Video Below the Subtitle -->
+  <video class="intro-video" autoplay muted loop>
     <source src="CamdenModel.mp4" type="video/mp4">
     Your browser does not support the video tag.
-</video>
-    
-<div class="slider-container">
+  </video>
 
-  <div class="slide active">
-    <div class="slide-content">
-      <h2 class="slide-title">Graffiti NightLighting</h2>
-      <p class="slide-subtitle">For Regent's Canal</p>
-      <img class="slide-image" src="graffitinightlight.webp" alt="Slide 1 Image">
-      <h3 class="mini-title">A Responsive and Reflective Solution to Street Lighting</h3>
-      <p class="mini-subtitle">Responsive and Reflective of Camden’s Vibrant Culture</p>
-      <div class="info-boxes">
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Neon Piping</h3>
-          <p class="info-text">Relatively efficient lighting that is easily shapable</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Proximity Sensors</h3>
-          <p class="info-text">To save energy, proximity sensors can be used to gradually light up and dim sections of the graffiti depending on movement</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Local Collaboration</h3>
-          <p class="info-text">Existing graffiti and local graffiti artists can help to inspire the designs of the NightLighting</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="slider-container">
 
-  <div class="slide">
-    <div class="slide-content">
-      <h2 class="slide-title">Living Boathouse</h2>
-      <p class="slide-subtitle">For Regent's Canal</p>
-      <img class="slide-image" src="livingwall.webp" alt="Slide 2 Image">
-      <h3 class="mini-title">An Attractive Living Green Wall</h3>
-      <p class="mini-subtitle">To Attract Biodiversity and Improve Air Quality</p>
-      <div class="info-boxes">
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Supporting Local Bio-Life</h3>
-          <p class="info-text">Providing a safe haven for bees, butterflies, and other pollinators, contributing to a healthier ecosystem along the canal.</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>A Blend of Nature and Design</h3>
-          <p class="info-text">A fusion of the Lock's industrial design and the environment in its most organic form</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>A Canal-Powered Irrigation System</h3>
-          <p class="info-text">A self-sustaining irrigation system via the canal conserves water while promoting lush, thriving plant life along the canal</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="slide active">
+      <div class="slide-content">
+        <h2 class="slide-title">Graffiti NightLighting</h2>
+        <p class="slide-subtitle">For Regent's Canal</p>
+        <img class="slide-image" src="graffitinightlight.webp" alt="Slide 1 Image">
+        <h3 class="mini-title">A Responsive and Reflective Solution to Street Lighting</h3>
+        <p class="mini-subtitle">LED-Powered Graffiti</p>
+        <div class="info-boxes">
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Neon Piping</h3>
+            <p class="info-text">Relatively efficient lighting that is easily shapable</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Proximity Sensors</h3>
+            <p class="info-text">To save energy, proximity sensors can be used to gradually light up and dim sections of the graffiti depending on movement</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Local Collaboration</h3>
+            <p class="info-text">Existing graffiti and local graffiti artists can help to inspire the designs of the NightLighting</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="slide">
-    <div class="slide-content">
-      <h2 class="slide-title">Bin, Bench & Barge</h2>
-      <p class="slide-subtitle">For Regent's Canal</p>
-      <img class="slide-image" src="canalbin.webp" alt="Slide 3 Image">
-      <h3 class="mini-title">A way to Draw People To Dispose of Rubbish</h3>
-      <p class="mini-subtitle">A Rubbish Bin that Utilises Its Space to  be Sat on</p>
-      <div class="info-boxes">
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Simple Manufactured Design</h3>
-          <p class="info-text">Recylced polyethylene can be moulded into the body shape, whilst a steel lid and narrow wooden beams complete the design</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Made to Last</h3>
-          <p class="info-text">The bench would be anchored into the ground and can fit narrowly along empty space along the canal path</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>A Fitting Design</h3>
-          <p class="info-text">The rounded corners of the structure give it a barge-like form</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="slide">
+      <div class="slide-content">
+        <h2 class="slide-title">Living Boathouse</h2>
+        <p class="slide-subtitle">For Regent's Canal</p>
+        <img class="slide-image" src="livingwall.webp" alt="Slide 2 Image">
+        <h3 class="mini-title">An Attractive Living Green Wall</h3>
+        <p class="mini-subtitle">To Attract Biodiversity and Improve Air Quality</p>
+        <div class="info-boxes">
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Supporting Local Bio-Life</h3>
+            <p class="info-text">Providing a safe haven for bees, butterflies, and other pollinators, contributing to a healthier ecosystem along the canal.</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>A Blend of Nature and Design</h3>
+            <p class="info-text">A fusion of the Lock's industrial design and the environment in its most organic form</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>A Canal-Powered Irrigation System</h3>
+            <p class="info-text">A self-sustaining irrigation system via the canal conserves water while promoting lush, thriving plant life along the canal</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="slide">
-    <div class="slide-content">
-      <h2 class="slide-title">Co-Collaborative Fashion</h2>
-      <p class="slide-subtitle">For Regent's Canal</p>
-      <img class="slide-image" src="fashion.webp" alt="Slide 3 Image">
-      <h3 class="mini-title">Brining together Artists, Designers and Visitors</h3>
-      <p class="mini-subtitle">Active Display Stands Encouraging People to Experiment with Designs</p>
-      <div class="info-boxes">
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Public & Interactive Placement</h3>
-          <p class="info-text">Positioned along a pedestrian walkway, engaging passersby in an open-air fashion exhibit</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>Urban Integration</h3>
-          <p class="info-text">The installation blends into Camden’s creative, countercultural atmosphere, enhancing the street’s artistic appeal</p>
-        </div>
-        <div class="info-box">
-          <h3><i class="fas fa-info-circle"></i>A Fitting Design</h3>
-          <p class="info-text">The T-shirt displays incorporate reflective surfaces for added visual impact</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="slide">
+      <div class="slide-content">
+        <h2 class="slide-title">Bin, Bench & Barge</h2>
+        <p class="slide-subtitle">For Regent's Canal</p>
+        <img class="slide-image" src="canalbin.webp" alt="Slide 3 Image">
+        <h3 class="mini-title">A way to Draw People To Dispose of Rubbish</h3>
+        <p class="mini-subtitle">A Rubbish Bin that Utilises Its Space to  be Sat on</p>
+        <div class="info-boxes">
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Simple Manufactured Design</h3>
+            <p class="info-text">Recylced polyethylene can be moulded into the body shape, whilst a steel lid and narrow wooden beams complete the design</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Made to Last</h3>
+            <p class="info-text">The bench would be anchored into the ground and can fit narrowly along empty space along the canal path</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>A Fitting Design</h3>
+            <p class="info-text">The rounded corners of the structure give it a barge-like form</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <a class="prev arrow" onclick="changeSlide(-1)">&#10094;</a>
-  <a class="next arrow" onclick="changeSlide(1)">&#10095;</a>
+    <div class="slide">
+      <div class="slide-content">
+        <h2 class="slide-title">Co-Collaborative Fashion</h2>
+        <p class="slide-subtitle">For Regent's Canal</p>
+        <img class="slide-image" src="fashion.webp" alt="Slide 3 Image">
+        <h3 class="mini-title">Bringing together Artists, Designers and Visitors</h3>
+        <p class="mini-subtitle">Active Display Stands Encouraging People to Experiment with Designs</p>
+        <div class="info-boxes">
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Public & Interactive Placement</h3>
+            <p class="info-text">Positioned along a pedestrian walkway, engaging passersby in an open-air fashion exhibit</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>Urban Integration</h3>
+            <p class="info-text">The installation blends into Camden’s creative, countercultural atmosphere, enhancing the street’s artistic appeal</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title"><i class="fas fa-info-circle"></i>A Fitting Design</h3>
+            <p class="info-text">The T-shirt displays incorporate reflective surfaces for added visual impact</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <a class="prev arrow" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next arrow" onclick="changeSlide(1)">&#10095;</a>
 
-<script>
-let slideIndex = getSlideFromURL() || 0;
-showSlides(slideIndex);
+  </div>
 
-function changeSlide(n) {
-    slideIndex = (slideIndex + n + document.getElementsByClassName("slide").length) % document.getElementsByClassName("slide").length;
-    updateURL(slideIndex);
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.info-box-title').click(function() {
+        $(this).parent().toggleClass('active');
+        $(this).siblings('.info-text').slideToggle();
+      });
+    });
+
+    let slideIndex = getSlideFromURL() || 0;
     showSlides(slideIndex);
-}
 
-function showSlides(n) {
-    let slides = document.getElementsByClassName("slide");
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("active");
+    function changeSlide(n) {
+      slideIndex = (slideIndex + n + document.getElementsByClassName("slide").length) % document.getElementsByClassName("slide").length;
+      updateURL(slideIndex);
+      showSlides(slideIndex);
     }
-    slides[n].classList.add("active");
-}
 
-function updateURL(index) {
-    history.pushState(null, null, "?slide=" + index);
-}
+    function showSlides(n) {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+      }
+      slides[n].classList.add("active");
+    }
 
-function getSlideFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    return params.has("slide") ? parseInt(params.get("slide")) : null;
-}
-</script>
-<script src="../main.js"></script>
+    function updateURL(index) {
+      history.pushState(null, null, "?slide=" + index);
+    }
+
+    function getSlideFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.has("slide") ? parseInt(params.get("slide")) : null;
+    }
+  </script>
+  <script src="../main.js"></script>
 </body>
 
-    <footer class="footer" id="footer">
-  <div class="footer-content">
-    <img src="../logos/sig.gif" alt="Animated Logo" class="footer-gif" id="footer-gif">
-    <div class="footer-text">
-      <p>Designed by Benedict Jones</p>
-      <p>Contact: <a href="mailto:benedictjonez@gmail.com">benedictjonez@gmail.com</a></p>
-      <p>Follow me: 
-        <a href="https://www.linkedin.com/in/benjnz" target="_blank">LinkedIn</a> | 
-        <a href="https://github.com/benjnz" target="_blank">GitHub</a>
-      </p>
+<footer class="footer" id="footer">
+    <div class="footer-content">
+        <img src="../logos/sig.gif" alt="Animated Logo" class="footer-gif" id="footer-gif">
+        <div class="footer-text">
+            <p>Designed by Benedict Jones</p>
+            <p>Contact: <a href="mailto:benedictjonez@gmail.com">benedictjonez@gmail.com</a></p>
+            <p>Follow me:
+                <a href="https://www.linkedin.com/in/benjnz" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/benjnz" target="_blank">GitHub</a>
+            </p>
+        </div>
     </div>
-  </div>
 </footer>
-  
+
 </html>
