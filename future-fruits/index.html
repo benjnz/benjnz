@@ -75,6 +75,16 @@
         <p></p>
         
         <p></p>
+
+          <!-- Optional: Add a button to unmute the video -->
+        <button onclick="unmuteVideo()">Unmute Video</button>
+        
+        <script>
+            function unmuteVideo() {
+                document.querySelector('video').muted = false;
+            }
+        </script>
+        
     </div>
 </body>
 </html>
