@@ -39,12 +39,13 @@
             display: block;
             margin: 20px auto;
         }
-        .video-container {
+         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 177.78%; /* 9:16 aspect ratio */
             height: 0;
             overflow: hidden;
-            max-width: 100%;
+            max-width: 56.25%; /* This will make the video take up about the same width as a 16:9 video would */
+            margin: 0 auto; /* Center the video container */
         }
         .video-container video {
             position: absolute;
