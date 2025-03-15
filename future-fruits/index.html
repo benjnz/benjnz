@@ -67,6 +67,8 @@
                 Your browser does not support the video tag.
             </video>
         </div>
+
+        <button class="mute-toggle" onclick="toggleMute()">Unmute</button>
         
         <h1>Presenting a Nutritious and Biodegradable, yet Durable Material</h1>
         
@@ -76,15 +78,22 @@
         
         <p></p>
 
-          <!-- Optional: Add a button to unmute the video -->
-        <button onclick="unmuteVideo()">Unmute Video</button>
-        
-        <script>
-            function unmuteVideo() {
-                document.querySelector('video').muted = false;
-            }
-        </script>
+       
         
     </div>
+
+        <script>
+        function toggleMute() {
+            var video = document.getElementById("myVideo");
+            var button = document.querySelector(".mute-toggle");
+            if (video.muted) {
+                video.muted = false;
+                button.textContent = "Mute";
+            } else {
+                video.muted = true;
+                button.textContent = "Unmute";
+            }
+        }
+    </script>
 </body>
 </html>
