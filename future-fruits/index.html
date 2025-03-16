@@ -39,15 +39,24 @@
             display: block;
             margin: 20px auto;
         }
-        .video-container {
+        .video-container-16-9 {
             position: relative;
-            width: 100%; /* Full width */
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+        .video-container-9-16 {
+            position: relative;
+            width: 100%;
             padding-bottom: 177.78%; /* 9:16 aspect ratio */
             height: 0;
             overflow: hidden;
-            margin: 0 auto; /* Center the video container */
+            margin: 0 auto;
         }
-        .video-container video {
+        .video-container-16-9 video,
+        .video-container-9-16 video {
             position: absolute;
             top: 0;
             left: 0;
@@ -61,7 +70,14 @@
     <div class="container">
         <img src="../media/orangelogo.png" alt="Long Logo" class="logo">
         
-        <div class="video-container">
+        <div class="video-container-16-9">
+            <video id="landscapeVideo" autoplay muted loop playsinline>
+                <source src="../media/animation_orange.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div class="video-container-9-16">
             <video id="myVideo" autoplay muted loop playsinline>
                 <source src="../media/orange.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -78,22 +94,13 @@
         
         <p></p>
 
-       
-        
     </div>
 
-        <script>
+    <script>
         function toggleMute() {
             var video = document.getElementById("myVideo");
+            var landscapeVideo = document.getElementById("landscapeVideo");
             var button = document.querySelector(".mute-toggle");
             if (video.muted) {
                 video.muted = false;
-                button.textContent = "Mute";
-            } else {
-                video.muted = true;
-                button.textContent = "Unmute";
-            }
-        }
-    </script>
-</body>
-</html>
+                landscapeVideo.m
