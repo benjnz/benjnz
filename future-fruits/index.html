@@ -64,6 +64,13 @@
             height: 100%;
             object-fit: cover;
         }
+        .bottom-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
     </style>
 </head>
 <body>
@@ -83,16 +90,15 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-
-        <button class="mute-toggle" onclick="toggleMute()">Unmute</button>
         
         <h1>Presenting a Nutritious and Biodegradable, yet Durable Material</h1>
         
         <p>Future Fruits is an Initiative by five Royal College of Art students across five different creative discplines. Its purpose is to experiment with the way that fruit waste can be... unwasted. The fruit of focus was the orange, as orange peel is highly wasted, both industrially and amongst the general population.</p>
+
+                <img src="../media/orangeposter.png" alt="Bottom Image" class="bottom-image">
         
         <p>Arshia Bansal, Max Eugeni, Benedict Jones, Jadwiga Ligeza, Bana Quronfuleh; Royal College of Art 2025</p>
         
-        <p></p>
 
     </div>
 
@@ -103,4 +109,14 @@
             var button = document.querySelector(".mute-toggle");
             if (video.muted) {
                 video.muted = false;
-                landscapeVideo.m
+                landscapeVideo.muted = false;
+                button.textContent = "Mute";
+            } else {
+                video.muted = true;
+                landscapeVideo.muted = true;
+                button.textContent = "Unmute";
+            }
+        }
+    </script>
+</body>
+</html>
