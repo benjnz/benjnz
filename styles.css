@@ -153,6 +153,17 @@ body {
   align-items: center; /* Center vertically */
 }
 
+.m-half-row
+{
+  position: relative;
+  width: 100%; /* Full width of the page */
+  height: 20%; /* Set height of the row */
+  background-color: #dfd8c6; /* White background */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
 
 /* Zero row styling */
 .zero-row {
