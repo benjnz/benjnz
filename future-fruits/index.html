@@ -101,27 +101,18 @@ body {
 }
 
 @media (min-width: 1200px) {
-    .container {
-        max-width: 1400px;
-    }
-
-    .logo, .bottom-image {
-        max-width: 800px;
-    }
-
     .video-wrapper {
-        flex-direction: row;
+        display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 20px;
     }
 
     .video-container-16-9,
     .video-container-9-16 {
-        flex: 1;
-        max-width: calc(50% - 10px);
-        padding-bottom: 0; /* Remove padding-bottom */
-        height: auto; /* Allow height to be determined by aspect ratio */
+        flex: 0 1 auto;
+        height: 50vh;
+        width: auto;
     }
 
     .video-container-16-9 {
@@ -130,17 +121,16 @@ body {
 
     .video-container-9-16 {
         aspect-ratio: 9 / 16;
-        max-width: 400px; /* Limit width to maintain aspect ratio */
     }
 
     .video-container-16-9 video,
     .video-container-9-16 video {
-        position: static; /* Remove absolute positioning */
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 }
+
 
 
     </style>
