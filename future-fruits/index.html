@@ -18,7 +18,8 @@
             font-weight: 600;
             font-style: normal;
         }
-      
+    
+
 body {
     font-family: Eina Regular, Arial;
     line-height: 1.6;
@@ -43,23 +44,28 @@ body {
     margin: 20px auto;
 }
 
-.video-container-16-9 {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-    margin: 0 auto 20px;
+.video-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
+.video-container-16-9,
 .video-container-9-16 {
     position: relative;
     width: 100%;
-    max-width: 400px;
-    padding-bottom: 177.78%; /* 9:16 aspect ratio */
     height: 0;
     overflow: hidden;
     margin: 0 auto;
+}
+
+.video-container-16-9 {
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-container-9-16 {
+    padding-bottom: 177.78%; /* 9:16 aspect ratio */
+    max-width: 400px;
 }
 
 .video-container-16-9 video,
@@ -103,6 +109,18 @@ body {
         max-width: 800px;
     }
 
+    .video-wrapper {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .video-container-16-9,
+    .video-container-9-16 {
+        flex: 1;
+        max-width: calc(50% - 10px);
+    }
+
     .video-container-9-16 {
         max-width: 500px;
     }
@@ -113,21 +131,23 @@ body {
 <body>
     <div class="container">
         <img src="../media/orangelogo.png" alt="Long Logo" class="logo">
-        
-        <div class="video-container-16-9">
-            <video id="landscapeVideo" autoplay muted loop playsinline>
+
+        <div class="video-wrapper">
+    <div class="video-container-16-9">
+        <video id="landscapeVideo" autoplay muted loop playsinline>
                 <source src="../media/animation_orange.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-        </div>
-        
-        <div class="video-container-9-16">
-            <video id="myVideo" autoplay muted loop playsinline>
+    </div>
+    <div class="video-container-9-16">
+        <video id="myVideo" autoplay muted loop playsinline>
                 <source src="../media/orange.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-        </div>
-        
+    </div>
+</div>
+
+    
         <h1>Presenting a Nutritious and Biodegradable, yet Durable Material</h1>
         
         <p>Future Fruits is an Initiative by five Royal College of Art students across five different creative discplines. Its purpose is to experiment with the way that fruit waste can be... unwasted. The fruit of focus was the orange, as orange peel is highly wasted, both industrially and amongst the general population.</p>
