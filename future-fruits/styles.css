@@ -1,0 +1,137 @@
+<style>
+        @font-face {
+            font-family: "Eina Regular";
+            src: url("/fonts/eina-01-regular.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Eina Semi Bold";
+            src: url("/fonts/eina-01-semibold.ttf") format("truetype");
+            font-weight: 600;
+            font-style: normal;
+        }
+    
+
+body {
+    font-family: Eina Regular, Arial;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.logo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+.video-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.video-container-16-9,
+.video-container-9-16 {
+    position: relative;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.video-container-16-9 {
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-container-9-16 {
+    padding-bottom: 177.78%; /* 9:16 aspect ratio */
+    max-width: 400px;
+}
+
+.video-container-16-9 video,
+.video-container-9-16 video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bottom-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .logo, .bottom-image {
+        max-width: 100%;
+    }
+
+    .video-container-9-16 {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        height: 70vh; /* Fixed container height */
+    }
+
+    .video-container-16-9,
+    .video-container-9-16 {
+        height: 100%; /* Use full container height */
+        width: auto; /* Let width adjust based on aspect ratio */
+        position: relative;
+        flex: none; /* Prevent flex stretching */
+    }
+
+    .video-container-16-9 {
+        aspect-ratio: 16/9;
+    }
+
+    .video-container-9-16 {
+        aspect-ratio: 9/16;
+    }
+
+    .video-container-16-9 video,
+    .video-container-9-16 video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
+
+    </style>
